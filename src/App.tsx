@@ -121,7 +121,7 @@ export default function App() {
 
         {mode === 'list' ? <PriceTable rows={rows} ranked={ranked} currency={filters.currency} onSelect={setSelected} /> : <Matrix bundle={bundle} search={filters.search} onSelect={(row) => setSelected(row)} now={now} currency={filters.currency} tax={filters.tax} view={filters.view} />}
 
-        <footer><div><strong>口径说明</strong><p>当前仅显示官网直购。默认排名采用 72 小时内核实、明确标记为含税且存在汇率换算的官方金额；税状态选择“全部”时，每个地区优先使用当前含税金额，没有当前含税金额时再使用未税金额。主展示金额与官方另列金额分别按自身核实时间判断，不自动加税。含税标记不等于所有账号的最终结账金额。</p></div><div><strong>汇率快照</strong><p>{bundle.fx.fx_snapshot_id ?? '暂无汇率'} · {bundle.fx.fetched_at ? formatTime(bundle.fx.fetched_at) : '未取得'}{bundle.fx.stale ? ' · 已标记过期' : ''}</p></div></footer>
+        <footer><div><strong>汇率快照</strong><p>{bundle.fx.fx_snapshot_id ?? '暂无汇率'} · {bundle.fx.fetched_at ? formatTime(bundle.fx.fetched_at) : '未取得'}{bundle.fx.stale ? ' · 已标记过期' : ''}</p></div></footer>
       </>}
     </main>
     {selected && <Details row={selected} bundle={bundle!} currency={filters.currency} onClose={() => setSelected(null)} />}
