@@ -1,0 +1,337 @@
+{
+  "created_unix": 1792422606.500938,
+  "signature": "6b21d5988ced7550e0144c5960397ba5dc949520bc7eaae3994c9af2eea225ad",
+  "attempts": {
+    "PH": {
+      "kind": "access_blocked",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "observed_at": "2026-10-19T15:10:06.500938Z"
+    },
+    "CL": {
+      "kind": "access_blocked",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "observed_at": "2026-10-19T15:10:08.500252Z"
+    },
+    "EG": {
+      "kind": "access_blocked",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "observed_at": "2026-10-19T15:10:14.622352Z"
+    },
+    "JP": {
+      "kind": "access_blocked",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "observed_at": "2026-10-19T15:10:17.455410Z"
+    },
+    "US": {
+      "kind": "success",
+      "http_status": 200,
+      "normalized": {
+        "quotes": [
+          {
+            "record_id": "US:web:go:month:standard",
+            "target_id": "US",
+            "country_code": "US",
+            "config_id": "US",
+            "region_kind": "iso_3166_1",
+            "channel": "web",
+            "plan_id": "go",
+            "source_plan_key": "go",
+            "billing_interval": "month",
+            "offer_type": "standard",
+            "currency": "USD",
+            "display_price": {
+              "amount": "8.0",
+              "tax": "exclusive",
+              "source_tax_value": "exclusive",
+              "json_pointer": "/currency_config/go/month",
+              "last_success_at": "2026-10-19T15:10:19.464342Z",
+              "price_changed_at": "2026-10-19T15:10:19.464342Z",
+              "source": {
+                "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+                "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US"
+              }
+            },
+            "psp_override": null,
+            "psp_override_status": "not_present",
+            "tax_percent": null,
+            "minor_unit_exponent": "2",
+            "source_metadata": {
+              "tax_percent": null,
+              "minor_unit_exponent": "2"
+            },
+            "availability": {
+              "configuration_present": true,
+              "purchase_verified": false,
+              "pricing_rollout_gate": null
+            },
+            "source": {
+              "kind": "official_web_config",
+              "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US",
+              "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+              "collector_version": "1.0.0"
+            },
+            "estimates": {
+              "USD": null,
+              "CNY": null
+            },
+            "last_attempt_at": "2026-10-19T15:10:19.464342Z",
+            "last_success_at": "2026-10-19T15:10:19.464342Z",
+            "price_changed_at": "2026-10-19T15:10:19.464342Z",
+            "issues": []
+          },
+          {
+            "record_id": "US:web:plus:month:standard",
+            "target_id": "US",
+            "country_code": "US",
+            "config_id": "US",
+            "region_kind": "iso_3166_1",
+            "channel": "web",
+            "plan_id": "plus",
+            "source_plan_key": "plus",
+            "billing_interval": "month",
+            "offer_type": "standard",
+            "currency": "USD",
+            "display_price": {
+              "amount": "20.0",
+              "tax": "exclusive",
+              "source_tax_value": "exclusive",
+              "json_pointer": "/currency_config/plus/month",
+              "last_success_at": "2026-10-19T15:10:19.464342Z",
+              "price_changed_at": "2026-10-19T15:10:19.464342Z",
+              "source": {
+                "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+                "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US"
+              }
+            },
+            "psp_override": null,
+            "psp_override_status": "not_present",
+            "tax_percent": null,
+            "minor_unit_exponent": "2",
+            "source_metadata": {
+              "tax_percent": null,
+              "minor_unit_exponent": "2"
+            },
+            "availability": {
+              "configuration_present": true,
+              "purchase_verified": false,
+              "pricing_rollout_gate": null
+            },
+            "source": {
+              "kind": "official_web_config",
+              "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US",
+              "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+              "collector_version": "1.0.0"
+            },
+            "estimates": {
+              "USD": null,
+              "CNY": null
+            },
+            "last_attempt_at": "2026-10-19T15:10:19.464342Z",
+            "last_success_at": "2026-10-19T15:10:19.464342Z",
+            "price_changed_at": "2026-10-19T15:10:19.464342Z",
+            "issues": []
+          },
+          {
+            "record_id": "US:web:pro_100:month:standard",
+            "target_id": "US",
+            "country_code": "US",
+            "config_id": "US",
+            "region_kind": "iso_3166_1",
+            "channel": "web",
+            "plan_id": "pro_100",
+            "source_plan_key": "prolite",
+            "billing_interval": "month",
+            "offer_type": "standard",
+            "currency": "USD",
+            "display_price": {
+              "amount": "100.0",
+              "tax": "exclusive",
+              "source_tax_value": "exclusive",
+              "json_pointer": "/currency_config/prolite/month",
+              "last_success_at": "2026-10-19T15:10:19.464342Z",
+              "price_changed_at": "2026-10-19T15:10:19.464342Z",
+              "source": {
+                "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+                "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US"
+              }
+            },
+            "psp_override": null,
+            "psp_override_status": "not_present",
+            "tax_percent": null,
+            "minor_unit_exponent": "2",
+            "source_metadata": {
+              "tax_percent": null,
+              "minor_unit_exponent": "2"
+            },
+            "availability": {
+              "configuration_present": true,
+              "purchase_verified": false,
+              "pricing_rollout_gate": null
+            },
+            "source": {
+              "kind": "official_web_config",
+              "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US",
+              "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+              "collector_version": "1.0.0"
+            },
+            "estimates": {
+              "USD": null,
+              "CNY": null
+            },
+            "last_attempt_at": "2026-10-19T15:10:19.464342Z",
+            "last_success_at": "2026-10-19T15:10:19.464342Z",
+            "price_changed_at": "2026-10-19T15:10:19.464342Z",
+            "issues": []
+          },
+          {
+            "record_id": "US:web:pro_200:month:standard",
+            "target_id": "US",
+            "country_code": "US",
+            "config_id": "US",
+            "region_kind": "iso_3166_1",
+            "channel": "web",
+            "plan_id": "pro_200",
+            "source_plan_key": "pro",
+            "billing_interval": "month",
+            "offer_type": "standard",
+            "currency": "USD",
+            "display_price": {
+              "amount": "200.0",
+              "tax": "exclusive",
+              "source_tax_value": "exclusive",
+              "json_pointer": "/currency_config/pro/month",
+              "last_success_at": "2026-10-19T15:10:19.464342Z",
+              "price_changed_at": "2026-10-19T15:10:19.464342Z",
+              "source": {
+                "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+                "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US"
+              }
+            },
+            "psp_override": null,
+            "psp_override_status": "not_present",
+            "tax_percent": null,
+            "minor_unit_exponent": "2",
+            "source_metadata": {
+              "tax_percent": null,
+              "minor_unit_exponent": "2"
+            },
+            "availability": {
+              "configuration_present": true,
+              "purchase_verified": false,
+              "pricing_rollout_gate": null
+            },
+            "source": {
+              "kind": "official_web_config",
+              "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US",
+              "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+              "collector_version": "1.0.0"
+            },
+            "estimates": {
+              "USD": null,
+              "CNY": null
+            },
+            "last_attempt_at": "2026-10-19T15:10:19.464342Z",
+            "last_success_at": "2026-10-19T15:10:19.464342Z",
+            "price_changed_at": "2026-10-19T15:10:19.464342Z",
+            "issues": []
+          },
+          {
+            "record_id": "US:web:pro_500:month:standard",
+            "target_id": "US",
+            "country_code": "US",
+            "config_id": "US",
+            "region_kind": "iso_3166_1",
+            "channel": "web",
+            "plan_id": "pro_500",
+            "source_plan_key": "promax",
+            "billing_interval": "month",
+            "offer_type": "standard",
+            "currency": "USD",
+            "display_price": {
+              "amount": "500.0",
+              "tax": "exclusive",
+              "source_tax_value": "exclusive",
+              "json_pointer": "/currency_config/promax/month",
+              "last_success_at": "2026-10-19T15:10:19.464342Z",
+              "price_changed_at": "2026-10-19T15:10:19.464342Z",
+              "source": {
+                "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+                "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US"
+              }
+            },
+            "psp_override": null,
+            "psp_override_status": "not_present",
+            "tax_percent": null,
+            "minor_unit_exponent": "2",
+            "source_metadata": {
+              "tax_percent": null,
+              "minor_unit_exponent": "2"
+            },
+            "availability": {
+              "configuration_present": true,
+              "purchase_verified": false,
+              "pricing_rollout_gate": null
+            },
+            "source": {
+              "kind": "official_web_config",
+              "url": "https://chatgpt.com/backend-api/checkout_pricing_config/configs/US",
+              "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74",
+              "collector_version": "1.0.0"
+            },
+            "estimates": {
+              "USD": null,
+              "CNY": null
+            },
+            "last_attempt_at": "2026-10-19T15:10:19.464342Z",
+            "last_success_at": "2026-10-19T15:10:19.464342Z",
+            "price_changed_at": "2026-10-19T15:10:19.464342Z",
+            "issues": []
+          }
+        ],
+        "plan_results": [
+          {
+            "plan_id": "go",
+            "status": "valid_quote",
+            "reason": null
+          },
+          {
+            "plan_id": "plus",
+            "status": "valid_quote",
+            "reason": null
+          },
+          {
+            "plan_id": "pro_100",
+            "status": "valid_quote",
+            "reason": null
+          },
+          {
+            "plan_id": "pro_200",
+            "status": "valid_quote",
+            "reason": null
+          },
+          {
+            "plan_id": "pro_500",
+            "status": "valid_quote",
+            "reason": null
+          }
+        ],
+        "issues": [],
+        "response_country_code": "US",
+        "body_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74"
+      },
+      "observed_at": "2026-10-19T15:10:19.464342Z",
+      "evidence_sha256": "c5c51230be12807d40def0505b81fa3b3d36fc4ac8231f70ff03023c47278f74"
+    }
+  },
+  "initial_fill_attempt_counts": {
+    "PH": 10,
+    "CL": 2,
+    "EG": 2,
+    "JP": 10,
+    "US": 10
+  }
+}
