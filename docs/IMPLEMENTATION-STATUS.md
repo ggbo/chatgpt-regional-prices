@@ -73,6 +73,8 @@ Pages 已上线：[正式网站](https://ggbo.github.io/chatgpt-regional-prices/
 
 单并发重新全量扫描已完成，耗时 1,578.422 秒。252/252 个目标均尝试，0 未尝试；63 个配置取得五档，共 315 条当前报价，保留 AI、NC、SX、TO 的 20 条历史报价，共 335 条记录。178 个目标没有可保留价格且访问受限，另 7 个请求失败（AL 超时，BV/CN/CU/GS/RU/VE 返回 404）。完整结果摘要及逐目标收据见 `reports/serial-full-scan.json`；原始证据按 SHA256 去重，不能把该本机结果描述为 GitHub runner 连通性成功。
 
+这批数据与轮转配置已由[发布运行](https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39259560946)成功部署，源提交 `944fb8bf4fadf864ff3ee820b45c4e63fd22bf79`。线上版本 `0a1afe65852e3d4add5aa92a`，汇率版本 `b78551516d524dddad6d87354ccaf60b4e576877930eb136fc8545c5a9fe4c3f`；335 条记录均有 CNY 换算。已实际请求并核对 7 个公开 JSON 入口的字节散列、2 个 JS/CSS 资源及项目路径分享地址。收据见 `reports/serial-release-deployment.json`。首次全量账本已持久化，下一批按最旧尝试选择 US、PH、AD、AE、AF、AG；尚未观察下一轮 GitHub 定时实际执行。
+
 ## 未完成的核验与范围限制
 
 - 大量配置在本机受到 403 访问限制，必须保留真实覆盖缺口。
