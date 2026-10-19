@@ -516,6 +516,58 @@ class MergeTests(unittest.TestCase):
         self.assertEqual(len(quotes), 5)
         self.assertTrue(all(cell["last_success_at"] == NOW for cell in merged))
 
+    def test_older_failure_cannot_downgrade_newer_published_success(self):
+        targets = regions(1)
+        current_cells = cells_for(targets, at(minutes=2), "valid_quote")
+        current_quotes = []
+        for cell in current_cells:
+            cell["quote_record_id"] = cell["cell_id"]
+            current_quotes.append({"record_id": cell["cell_id"], "last_success_at": at(minutes=2), "amount": "new"})
+        older_failure = cells_for(targets, at(minutes=1), "access_blocked")
+        for cell in older_failure:
+            cell.update(status="stale_quote", quote_record_id=cell["cell_id"], last_success_at=at(minutes=2))
+        quotes, merged = merge_selected(
+            targets, PLANS, current_quotes, current_cells,
+            {"cells": older_failure, "quotes": current_quotes},
+        )
+        self.assertTrue(all(cell["status"] == "valid_quote" for cell in merged))
+        self.assertTrue(all(cell["last_attempt_at"] == at(minutes=2) for cell in merged))
+        self.assertTrue(all(quote["amount"] == "new" for quote in quotes))
+
+    def test_older_success_cannot_replace_newer_published_success(self):
+        targets = regions(1)
+        current_cells = cells_for(targets, at(minutes=2), "valid_quote")
+        older_cells = cells_for(targets, at(minutes=1), "valid_quote")
+        current_quotes, older_quotes = [], []
+        for current, older in zip(current_cells, older_cells):
+            current["quote_record_id"] = current["cell_id"]
+            older["quote_record_id"] = older["cell_id"]
+            current_quotes.append({"record_id": current["cell_id"], "last_success_at": at(minutes=2), "amount": "new"})
+            older_quotes.append({"record_id": older["cell_id"], "last_success_at": at(minutes=1), "amount": "old"})
+        quotes, merged = merge_selected(
+            targets, PLANS, current_quotes, current_cells,
+            {"cells": older_cells, "quotes": older_quotes},
+        )
+        self.assertTrue(all(cell["last_success_at"] == at(minutes=2) for cell in merged))
+        self.assertTrue(all(quote["amount"] == "new" for quote in quotes))
+
+    def test_newer_success_replaces_older_published_success(self):
+        targets = regions(1)
+        old_cells = cells_for(targets, at(minutes=1), "valid_quote")
+        new_cells = cells_for(targets, at(minutes=2), "valid_quote")
+        old_quotes, new_quotes = [], []
+        for old, new in zip(old_cells, new_cells):
+            old["quote_record_id"] = old["cell_id"]
+            new["quote_record_id"] = new["cell_id"]
+            old_quotes.append({"record_id": old["cell_id"], "last_success_at": at(minutes=1), "amount": "old"})
+            new_quotes.append({"record_id": new["cell_id"], "last_success_at": at(minutes=2), "amount": "new"})
+        quotes, merged = merge_selected(
+            targets, PLANS, old_quotes, old_cells,
+            {"cells": new_cells, "quotes": new_quotes},
+        )
+        self.assertTrue(all(cell["last_success_at"] == at(minutes=2) for cell in merged))
+        self.assertTrue(all(quote["amount"] == "new" for quote in quotes))
+
     def test_quality_failure_is_limited_to_selected_parsed_targets(self):
         targets = regions(1)
         old = cells_for(targets, status="valid_quote")

@@ -436,13 +436,21 @@ def merge_selected(regions, plans, previous_quotes, previous_cells, result):
     """Patch selected results; do not relabel or freshen an untouched target."""
     quotes = {q['record_id']: copy.deepcopy(q) for q in previous_quotes}
     cells = {c['cell_id']: copy.deepcopy(c) for c in previous_cells}
+    accepted_cells = set()
     for cell in result['cells']:
         if cell['attempt_status'] == 'not_attempted' and cell['cell_id'] in cells:
             continue
+        previous = cells.get(cell['cell_id'])
+        previous_at = parse_time(previous.get('last_attempt_at')) if previous else None
+        candidate_at = parse_time(cell.get('last_attempt_at'))
+        if previous_at and (candidate_at is None or candidate_at < previous_at):
+            continue
         cells[cell['cell_id']] = copy.deepcopy(cell)
+        accepted_cells.add(cell['cell_id'])
     for quote in result['quotes']:
         target_cell = next((c for c in result['cells'] if c['cell_id'] == quote['record_id']), None)
-        if target_cell and target_cell['attempt_status'] != 'not_attempted':
+        if (target_cell and quote['record_id'] in accepted_cells
+                and target_cell['attempt_status'] != 'not_attempted'):
             quotes[quote['record_id']] = copy.deepcopy(quote)
     # New/previously unknown targets are still represented in the full matrix.
     for region in regions:
