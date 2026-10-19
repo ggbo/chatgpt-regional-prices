@@ -49,7 +49,11 @@ Frankfurter 实际请求于 `2026-10-19T11:57:07.480086Z` 成功，取得同一�
 
 已将前述真实本机全量扫描、35 条报价及实际汇率快照初始化到独立 `data` 分支，并单独记录 runner 失败。它们保留原始核实时间。main 代码构建复用该有效版本，定时/手动采集仍执行正常刷新；没有放宽全源失败检查。网页显示采集受限横幅。
 
-Pages 正在执行首次静态快照部署，此处尚不声明成功。预期地址为 `https://ggbo.github.io/chatgpt-regional-prices/`，以最终部署结果和线上 manifest 核验为准。
+[第二次发布运行](https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39249650543)已在 GitHub runner 完成数据恢复、类型及回归检查、构建、项目路径 HTTP 校验，并成功 fast-forward 持久化到 `data` 分支，提交为 `123eb8eaf78444c9900cc5f0ba2f6a43fc76b8ce`。
+
+Pages 尚未上线。首次创建站点步骤被 GitHub 拒绝：`Create Pages site failed: Resource not accessible by integration`。当前连接器没有 Pages 设置写入工具，且环境无可用浏览器。需要管理员在仓库 Settings → Pages → Source 选择 GitHub Actions，然后重跑发布工作流。预期地址为 `https://ggbo.github.io/chatgpt-regional-prices/`；目前不能将该地址声称为已部署网站。
+
+该阻塞发生在测试、构建和数据持久化之后。不存在以空数据或模拟价格规避检查的部署。完整机器收据为 `reports/deployment-attempt.json`。
 
 ## 未完成的核验与范围限制
 

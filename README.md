@@ -8,6 +8,8 @@
 
 预期项目地址：`https://ggbo.github.io/chatgpt-regional-prices/`。是否上线以 Actions 部署和线上 manifest 为准，有源码或成功写入数据分支不等于部署完成。
 
+当前交付：源码、全目录扫描、35 条真实报价、汇率及 runner 构建/持久化已完成。GitHub runner 的价格请求全部受到 403 限制，页面保留有效快照并说明来源失败。**Pages 尚待管理员启用 GitHub Actions 来源**，自动创建已被 GitHub 权限限制拒绝。详细证据见 [实施记录](docs/IMPLEMENTATION-STATUS.md)。
+
 ## 完整目录与真实缺口
 
 初始目录有 249 个 ISO 国家与地区、单列 XK，以及不参加国家排名的 EU、US2 辅助配置。当前合计 252 个请求目标、1,260 个套餐单元；数量由版本化目录计算，不作为未来的固定上限。
