@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-19T15:56:40Z",
+  "generated_at": "2026-10-19T15:56:46Z",
   "catalog_version": "iso3166-2026-10-19",
   "baseline_id": "priceai-2026-10-13-extracted-2026-10-19",
   "baseline_status": "complete",
@@ -9,10 +9,10 @@
     "reference_web_identity_count": 386,
     "collector_cell_count": 1260,
     "comparison_counts": {
-      "both_have": 143,
-      "both_have_historical": 26,
+      "both_have": 138,
+      "both_have_historical": 36,
       "official_new_discovery": 321,
-      "reference_has_but_request_failed": 217
+      "reference_has_but_request_failed": 212
     },
     "special_config_count": 9
   },
@@ -409,9 +409,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__go-monthly",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "CM:web:go:month",
@@ -601,9 +601,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__go-monthly",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "ER:web:go:month",
@@ -2019,9 +2019,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__go-monthly",
-      "comparison": "reference_has_but_request_failed",
+      "comparison": "both_have",
       "flags": [],
-      "collector_status": "access_blocked"
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": "US2:web:go:month",
@@ -2443,9 +2443,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__plus-monthly",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "CO:web:plus:month",
@@ -2563,9 +2563,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__plus-monthly",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "ES:web:plus:month",
@@ -3655,9 +3655,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__plus-monthly",
-      "comparison": "reference_has_but_request_failed",
+      "comparison": "both_have",
       "flags": [],
-      "collector_status": "access_blocked"
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": null,
@@ -4017,9 +4017,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-5x",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": null,
@@ -4125,9 +4125,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-5x",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "ES:web:pro_100:month",
@@ -5207,9 +5207,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-5x",
-      "comparison": "reference_has_but_request_failed",
+      "comparison": "both_have",
       "flags": [],
-      "collector_status": "access_blocked"
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": null,
@@ -5569,9 +5569,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-20x",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "CO:web:pro_200:month",
@@ -5689,9 +5689,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-20x",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "ES:web:pro_200:month",
@@ -6793,9 +6793,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-20x",
-      "comparison": "reference_has_but_request_failed",
+      "comparison": "both_have",
       "flags": [],
-      "collector_status": "access_blocked"
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": null,
@@ -7155,9 +7155,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-500",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "CO:web:pro_500:month",
@@ -7275,9 +7275,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-500",
-      "comparison": "both_have",
+      "comparison": "both_have_historical",
       "flags": [],
-      "collector_status": "valid_quote"
+      "collector_status": "stale_quote"
     },
     {
       "reference_id": "ES:web:pro_500:month",
@@ -8403,9 +8403,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__pro-500",
-      "comparison": "reference_has_but_request_failed",
+      "comparison": "both_have",
       "flags": [],
-      "collector_status": "access_blocked"
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": null,
