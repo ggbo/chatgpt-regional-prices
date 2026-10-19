@@ -50,6 +50,28 @@ def body(amount=1100, psp=982.14, psp_tax="exclusive"):
 
 
 class CollectTests(unittest.TestCase):
+    def test_initial_fill_counts_real_passes_and_resume_never_adds_a_pass(self):
+        def blocked(request, timeout):
+            raise urllib.error.HTTPError(request.full_url, 403, 'blocked', {}, io.BytesIO())
+        with tempfile.TemporaryDirectory() as temp:
+            checkpoint = Path(temp) / 'fill.json'
+            first = collect([REGION], PLANS, [], temp, opener=blocked, initial_fill=True, initial_fill_counts={'PH': 2}, checkpoint_path=checkpoint)
+            self.assertEqual(first['initial_fill_attempt_counts'], {'PH': 3})
+            replay = collect([REGION], PLANS, [], temp, opener=lambda *_a, **_k: self.fail('must replay'), initial_fill=True, checkpoint_path=checkpoint)
+            self.assertEqual(replay['initial_fill_attempt_counts'], {'PH': 3})
+            capped = collect([REGION], PLANS, [], temp, opener=lambda *_a, **_k: self.fail('ten attempts must stop'), initial_fill=True, initial_fill_counts={'PH': 10})
+            self.assertEqual(capped['summary']['attempted_request_count'], 0)
+
+    def test_serial_retry_preserves_scheduler_order_instead_of_alphabetic_order(self):
+        targets = [{**REGION, 'target_id': code, 'config_id': code, 'country_code': code} for code in ('ZW', 'US', 'AD')]
+        calls = []
+        def blocked(request, timeout):
+            calls.append(request.full_url.rsplit('/', 1)[-1])
+            raise urllib.error.HTTPError(request.full_url, 403, 'blocked', {}, io.BytesIO())
+        with tempfile.TemporaryDirectory() as temp:
+            collect(targets, PLANS, [], temp, concurrency=1, probe_first=False, opener=blocked)
+        self.assertEqual(calls, ['ZW', 'US', 'AD'])
+
     def test_request_interval_spaces_concurrent_request_starts(self):
         regions = [
             {**REGION, "target_id": code, "country_code": code, "config_id": code}

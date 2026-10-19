@@ -39,7 +39,7 @@ def read(path, fallback=None):
 def write(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8', newline='\n')
 
 
 def digest(path):
@@ -243,8 +243,22 @@ def prepare(args):
     evidence.mkdir(exist_ok=True)
     regions, plans = read(ROOT / 'config/regions.json'), read(ROOT / 'config/plans.json')
     policy = read(ROOT / 'config/collection-policy.json')
-    selection = select_targets(regions['regions'], plans['plans'], read(Path(args.state_dir) / 'collection/ledger.json'), policy, utcnow(), force_full=args.full_scan)
     old_dir, old, old_coverage, old_fx = previous_state(args.state_dir)
+    previous_ledger = read(Path(args.state_dir) / 'collection/ledger.json')
+    if args.mode != 'reuse' and previous_ledger and previous_ledger.get('initial_fill', {}).get('active'):
+        args.mode = 'fill'
+    selection = select_targets(regions['regions'], plans['plans'], previous_ledger, policy, utcnow(),
+                               force_full=args.full_scan, retry_only=args.mode == 'retry', fill_missing=args.mode == 'fill', previous_cells=(old_coverage or {}).get('cells', []))
+    if args.targets:
+        requested = list(dict.fromkeys(part.strip().upper() for part in args.targets.split(',') if part.strip()))
+        by_id = {r['target_id']: r for r in regions['regions']}
+        if not requested or any(key not in by_id for key in requested):
+            raise ValueError('explicit target list must contain known catalog IDs')
+        if selection['bootstrap']:
+            raise ValueError('initial acquisition must attempt the complete catalog before targeted maintenance')
+        selection.update(targets=[by_id[key] for key in requested], mode='targeted')
+    if args.mode == 'fill' and not selection['bootstrap']:
+        selection['mode'] = 'fill'
     if args.fx_seed:
         seed = read(args.fx_seed)
         source_hash = (seed or {}).get('source', {}).get('body_sha256', '')
@@ -265,14 +279,20 @@ def prepare(args):
         mode = 'refresh'
     if os.environ.get('GITHUB_ACTIONS') == 'true' and current_head(args.state_dir) is None:
         mode = 'refresh'  # initial runner connectivity must be measured, not inferred from a seed
-    if selection['bootstrap'] or args.full_scan:
+    if selection['bootstrap'] or (args.full_scan and args.mode != 'fill'):
         mode = 'refresh'
+    elif not selection['targets']:
+        mode = 'reuse'  # no failed target is due; do not recheck healthy targets or refresh FX
     if mode == 'reuse':
         latest, coverage, fx = old, old_coverage, old_fx
         status = read(old_dir / 'status.json', {'schema_version': VERSION, 'data_snapshot_id': old['data_snapshot_id'], 'result': 'reused', 'last_run_at': utcnow()})
         if not selection['bootstrap']:
             status['collection_policy'] = policy
             status['collection_window'] = window_metrics(selection['ledger'], policy, utcnow())
+            write(candidate / 'collection/ledger.json', selection['ledger'])
+            previous_run = Path(args.state_dir) / 'collection/last-run.json'
+            if previous_run.is_file():
+                shutil.copyfile(previous_run, candidate / 'collection/last-run.json')
         reviews = []
     else:
         if not args.resume:
@@ -282,12 +302,16 @@ def prepare(args):
         result = collect(selection['targets'], plans['plans'], old['quotes'] if old else [], evidence,
                          budget_seconds=budget, concurrency=policy['concurrency'],
                          min_request_interval_seconds=policy['min_request_interval_seconds'],
+                          probe_first=selection['bootstrap'] or args.full_scan,
+                          initial_fill=mode == 'fill',
+                          initial_fill_counts={r['target_id']: selection['ledger']['targets'][r['target_id']].get('initial_fill_attempts', 0) for r in selection['targets']} if mode == 'fill' else None,
                          checkpoint_path=candidate / 'collection-checkpoint.json',
                          checkpoint_max_age_seconds=72 * 3600,
                          accepted_change_hashes=set(approvals.get('body_sha256', [])))
         generated = utcnow()
         ledger, collection_run = record_attempts(selection, result['cells'], policy, read(candidate / 'prepare-receipt.json')['started_at'], generated,
-                                               os.environ.get('GITHUB_RUN_ID', 'local-' + generated))
+                                                os.environ.get('GITHUB_RUN_ID', 'local-' + generated),
+                                                observed_fill_counts=result.get('initial_fill_attempt_counts'))
         collection_run['environment'] = 'GitHub Actions' if os.environ.get('GITHUB_ACTIONS') == 'true' else 'local workspace'
         if os.environ.get('GITHUB_RUN_ID'):
             collection_run['run_url'] = f'https://github.com/{os.environ.get("GITHUB_REPOSITORY", "ggbo/chatgpt-regional-prices")}/actions/runs/{os.environ["GITHUB_RUN_ID"]}'
@@ -323,7 +347,7 @@ def prepare(args):
         validate(latest, coverage, fx, regions, plans)
     except (ValueError, KeyError, TypeError) as exc:
         failures.append(str(exc))
-    if mode == 'refresh':
+    if mode in {'refresh', 'retry', 'fill'}:
         failures.extend(selected_quality_failures((old_coverage or {}).get('cells', []), result, {r['target_id'] for r in selection['targets']}))
         if selection['bootstrap'] and collection_run['window']['bootstrap_remaining_count']:
             failures.append('initial_full_catalog_incomplete')
@@ -332,7 +356,7 @@ def prepare(args):
         write(state / 'status.json', status)
         print(json.dumps({'result': 'rejected', 'diagnostics': str(candidate), 'failures': failures}, ensure_ascii=False))
         return 2
-    status['result'] = 'validated' if mode == 'refresh' else 'reused'
+    status['result'] = 'validated' if mode in {'refresh', 'retry', 'fill'} else 'reused'
     write(state / 'status.json', status)
     manifest = publish_files(state, args.public_dir, evidence)
     write(candidate / 'validated.json', {'data_snapshot_id': latest['data_snapshot_id'], 'manifest_sha256': digest(Path(args.public_dir) / 'manifest.json'), 'mode': mode,
@@ -493,7 +517,7 @@ def persist(args):
         if (candidate / 'collection/ledger.json').is_file():
             shutil.copytree(candidate / 'collection', state_dir / 'collection', dirs_exist_ok=True)
         coverage = read(candidate / 'state/coverage.json')
-        if validated['mode'] == 'refresh':
+        if validated['mode'] in {'refresh', 'retry', 'fill'}:
             if coverage['summary']['not_attempted_request_count']:
                 save_progress_files(candidate, state_dir, coverage)
             else:
@@ -600,7 +624,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
     p = sub.add_parser('prepare')
-    p.add_argument('--mode', choices=['refresh', 'reuse'], required=True)
+    p.add_argument('--mode', choices=['refresh', 'reuse', 'retry', 'fill'], required=True)
     p.add_argument('--state-dir', default='data-state')
     p.add_argument('--candidate-dir', default='work/candidate')
     p.add_argument('--public-dir', default='public/data')
@@ -608,6 +632,7 @@ def main():
     p.add_argument('--resume', action='store_true', help='Resume the same interrupted collection; never relabel observations as a new run')
     p.add_argument('--fx-seed', help='Recover a prior real FX snapshot; exact-byte evidence must already be in candidate/evidence')
     p.add_argument('--full-scan', action='store_true', help='Explicitly request the complete catalog; otherwise use the durable 72h rotation policy')
+    p.add_argument('--targets', help='Explicit maintainer verification of comma-separated catalog IDs after the initial full scan')
     p = sub.add_parser('verify-dist')
     p.add_argument('--dist-dir', default='dist')
     p.add_argument('--candidate-dir', default='work/candidate')

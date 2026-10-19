@@ -155,9 +155,11 @@ function CoverageStrip({ bundle }: { bundle: DataBundle }) {
 function CollectionStatus({ bundle }: { bundle: DataBundle }) {
   const window = bundle.runStatus?.collection_window
   const policy = bundle.runStatus?.collection_policy
+  const run = bundle.runStatus?.collection_run
   if (!window) return null
   const retry = policy?.retry_interval_minutes
-  return <aside className="collection-status" role="status"><p><strong>{window.window_hours} 小时轮转采集</strong>最近窗口已尝试 {window.attempted_within_window_count}/{window.target_count} 个地区，成功取得价格 {window.successful_within_window_count} 个。{window.bootstrap_remaining_count ? `首次全量采集还剩 ${window.bootstrap_remaining_count} 个地区。` : window.overdue_target_count ? `有 ${window.overdue_target_count} 个地区等待本窗口采集。` : '本窗口目录已全部尝试。'}{retry ? ` 每 ${retry} 分钟仅补查失败或暂缺地区；成功后退出补查队列，恢复 ${window.window_hours} 小时轮转。待补查 ${window.retry_pending_count ?? 0} 个，其中已到期 ${window.retry_due_count ?? 0} 个。` : ''}</p></aside>
+  const fillLimit = policy?.initial_fill_max_attempts_per_target
+  return <aside className="collection-status" role="status"><p><strong>{window.window_hours} 小时轮转采集</strong>最近窗口已尝试 {window.attempted_within_window_count}/{window.target_count} 个地区，成功取得价格 {window.successful_within_window_count} 个。{window.bootstrap_remaining_count ? `首次全量采集还剩 ${window.bootstrap_remaining_count} 个地区。` : window.overdue_target_count ? `有 ${window.overdue_target_count} 个地区等待本窗口采集。` : '本窗口目录已全部尝试。'}{fillLimit ? ` 初始暂缺地区立即补查，单地区最多 ${fillLimit} 次；达到上限后转入低频补查。当前可继续 ${run?.initial_fill_eligible_count ?? 0} 个，已达上限 ${run?.initial_fill_exhausted_count ?? 0} 个。` : ''}{retry ? ` 每 ${retry} 分钟仅补查失败或暂缺地区；成功后退出补查队列，恢复 ${window.window_hours} 小时轮转。待补查 ${window.retry_pending_count ?? 0} 个，其中已到期 ${window.retry_due_count ?? 0} 个。` : ''}</p></aside>
 }
 
 function DataStatusDetails({ bundle }: { bundle: DataBundle }) {

@@ -4,8 +4,16 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      collection_mode:
+        description: Collection mode
+        type: choice
+        default: retry
+        options: [retry, refresh, fill]
   schedule:
     - cron: '23 * * * *'
+      timezone: Asia/Shanghai
+    - cron: '53 * * * *'
       timezone: Asia/Shanghai
 
 permissions:
@@ -23,8 +31,11 @@ jobs:
     permissions:
       contents: write
       pages: write
+    outputs:
+      continue_fill: ${{ steps.continuation.outputs.continue_initial_fill }}
     env:
-      PRICE_MODE: ${{ github.event_name == 'push' && 'reuse' || 'refresh' }}
+      PRICE_MODE: ${{ github.event_name == 'push' && 'reuse' || github.event_name == 'workflow_dispatch' && inputs.collection_mode || github.event.schedule == '53 * * * *' && 'retry' || 'refresh' }}
+      START_INITIAL_FILL: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[fill-missing]') }}
       PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -67,10 +78,15 @@ jobs:
         with:
           path: dist
       - name: Preserve attempts when collection or a later check failed
+        id: accounting
         if: failure() && (steps.prepare.outcome == 'success' || steps.prepare.outcome == 'failure') && steps.persist.outcome != 'success'
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/pipeline.py persist-collection --candidate-dir work/candidate --state-dir data-state
+      - name: Continue only a persisted unfinished initial fill
+        id: continuation
+        if: always() && (steps.persist.outcome == 'success' || steps.accounting.outcome == 'success')
+        run: python scripts/continue_fill.py --state-dir data-state
       - name: Keep short-lived failure diagnostics
         if: failure()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -104,3 +120,15 @@ jobs:
           DEPLOYED_URL: ${{ steps.publish.outputs.page_url }}
         run: |
           printf 'Pages deployment succeeded: %s\nSource commit: %s\nLive manifest: %sdata/manifest.json\n' "$DEPLOYED_URL" "$GITHUB_SHA" "$DEPLOYED_URL" >> "$GITHUB_STEP_SUMMARY"
+
+  continue-fill:
+    needs: [prepare, deploy]
+    if: always() && needs.prepare.outputs.continue_fill == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Start the next failed-only fill immediately
+        run: gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main -f collection_mode=fill

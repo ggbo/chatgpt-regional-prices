@@ -7,9 +7,10 @@ import tempfile
 import unittest
 import subprocess
 from types import SimpleNamespace
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from pipeline import validate, safe_path, publish_files, read, write, candidate_hashes, persist_progress, restore_progress, clear_completed_progress, current_head
+from pipeline import ROOT, prepare, validate, safe_path, publish_files, read, write, candidate_hashes, persist_progress, persist_collection, restore_progress, clear_completed_progress, current_head
 from reconcile_reference import reconcile
 
 
@@ -34,6 +35,60 @@ def example():
 
 
 class PublicationTests(unittest.TestCase):
+    def retry_fixture(self, root):
+        latest, coverage, fx, regions, plans = example()
+        regions['regions'][0]['region_kind'] = 'test'
+        for plan in plans['plans']:
+            plan['billing_interval'] = 'month'
+        for quote in latest['quotes']:
+            quote['display_price']['last_success_at'] = '2026-10-19T00:00:00Z'
+            quote['last_success_at'] = '2026-10-19T00:00:00Z'
+        for cell in coverage['cells']:
+            cell['last_success_at'] = '2026-10-19T00:00:00Z'
+        policy = read(ROOT / 'config/collection-policy.json')
+        for name, value in [('regions', regions), ('plans', plans), ('collection-policy', policy)]:
+            write(root / f'config/{name}.json', value)
+        state = root / 'persisted'
+        for name, value in [('latest', latest), ('coverage', coverage), ('fx', fx), ('plans', plans), ('status', {'schema_version': '1.0.0', 'data_snapshot_id': 'test'})]:
+            write(state / f'state/{name}.json', value)
+        ledger = {'schema_version': '1.0.0', 'plan_count': 5, 'bootstrap': {'started_at': latest['generated_at'], 'completed_at': latest['generated_at']},
+                  'initial_fill': {'active': False, 'cohort_target_ids': ['US']},
+                  'targets': {'US': {'config_id': 'US', 'bootstrap_attempted': True, 'last_attempt_at': latest['generated_at'],
+                                     'last_success_at': latest['generated_at'], 'all_five_success_at': latest['generated_at'],
+                                     'retry_pending': True, 'initial_fill_attempts': 10, 'initial_fill_done': True}}}
+        write(state / 'collection/ledger.json', ledger)
+        args = SimpleNamespace(mode='retry', state_dir=state, candidate_dir=root / 'candidate', public_dir=root / 'public',
+                               resume=False, fx_seed=None, full_scan=False, targets=None, budget_seconds=None)
+        selection = {'ledger': ledger, 'targets': regions['regions'], 'bootstrap': False, 'mode': 'retry'}
+        return args, selection, latest, coverage, fx
+
+    def test_retry_all_failure_preserves_publication_but_records_the_attempt(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            args, selection, latest, coverage, fx = self.retry_fixture(root)
+            cells = copy.deepcopy(coverage['cells'])
+            for cell in cells:
+                cell.update(status='stale_quote', attempt_status='access_blocked', http_status=403, last_attempt_at='2026-10-19T01:00:00Z')
+            result = {'quotes': latest['quotes'], 'cells': cells, 'source_status': {'all_source_failed': True}, 'change_reviews': []}
+            write(root / 'public/manifest.json', {'keep': 'previous-deployment'})
+            with patch('pipeline.ROOT', root), patch('scheduling.select_targets', return_value=selection), patch('collect.collect', return_value=result), patch('fx.fetch_fx', return_value=fx):
+                self.assertEqual(prepare(args), 2)
+            self.assertEqual(read(root / 'public/manifest.json'), {'keep': 'previous-deployment'})
+            self.assertFalse((root / 'candidate/validated.json').exists())
+            self.assertEqual(read(root / 'candidate/collection/ledger.json')['targets']['US']['last_attempt_at'], '2026-10-19T01:00:00Z')
+
+    def test_retry_without_due_failures_does_not_fetch_healthy_prices_or_fx(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            args, selection, latest, coverage, fx = self.retry_fixture(root)
+            selection['targets'] = []
+            with patch('pipeline.ROOT', root), patch('scheduling.select_targets', return_value=selection), patch('collect.collect') as collect_mock, patch('fx.fetch_fx') as fx_mock:
+                self.assertEqual(prepare(args), 0)
+            collect_mock.assert_not_called()
+            fx_mock.assert_not_called()
+            self.assertEqual(read(root / 'public/manifest.json')['data_snapshot_id'], 'test')
+            self.assertTrue((root / 'candidate/collection/ledger.json').is_file())
+
     def test_public_reference_comparison_only_contains_official_web(self):
         latest, coverage, fx, regions, plans = example()
         baseline = {'entries': [{'reference_id': f'US:{channel}:plus:month', 'target_id': 'US', 'channel': channel,
@@ -139,6 +194,31 @@ class PublicationTests(unittest.TestCase):
             self.assertFalse(restore_progress(fresh, target))
             clear_completed_progress(fresh)
             self.assertFalse(restore_progress(fresh, target))
+
+    def test_failed_fill_accounting_survives_a_new_runner_without_replacing_prices(self):
+        def run(*args):
+            subprocess.run(['git', *map(str, args)], capture_output=True, check=True)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            remote, state, candidate = root / 'remote.git', root / 'state', root / 'candidate'
+            run('init', '--bare', remote)
+            run('init', '-b', 'data', state)
+            run('-C', state, 'remote', 'add', 'origin', remote)
+            baseline = {'validated': 'keep-the-original-price'}
+            write(state / 'state/latest.json', baseline)
+            run('-C', state, 'add', '.')
+            run('-C', state, '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-m', 'Keep valid prices independent of retry accounting')
+            run('-C', state, 'push', 'origin', 'data')
+            ledger = {'targets': {'PH': {'retry_pending': True, 'initial_fill_attempts': 10}}}
+            write(candidate / 'collection/ledger.json', ledger)
+            write(candidate / 'collection/last-run.json', {'window': {'bootstrap_remaining_count': 0}})
+            write(candidate / 'prepare-receipt.json', {'state_head': current_head(state), 'source_head': current_head(ROOT)})
+            (candidate / 'evidence').mkdir(parents=True)
+            self.assertEqual(persist_collection(SimpleNamespace(candidate_dir=candidate, state_dir=state)), 0)
+            fresh = root / 'new-runner'
+            run('clone', '--branch', 'data', remote, fresh)
+            self.assertEqual(read(fresh / 'state/latest.json'), baseline)
+            self.assertEqual(read(fresh / 'collection/ledger.json'), ledger)
 
 
 if __name__ == '__main__':

@@ -1,12 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "policy_revision": "serial-72h-v1",
+  "policy_revision": "serial-72h-v3-fill10",
+  "compatible_policy_revisions": [
+    "serial-72h-v1",
+    "serial-72h-v2-retry30m"
+  ],
   "window_hours": 72,
   "target_cycle_hours": 48,
   "schedule_interval_hours": 1,
+  "retry_interval_minutes": 30,
+  "initial_fill_max_attempts_per_target": 10,
   "concurrency": 1,
   "min_request_interval_seconds": 2,
   "bootstrap_budget_seconds": 2700,
-  "rotation_budget_seconds": 600,
-  "note": "First attempt every catalog target; then rotate the oldest actual attempt first. The 72h window measures attempted coverage, never guaranteed successful upstream prices."
+  "rotation_budget_seconds": 1500,
+  "note": "Bootstrap attempts every catalog target. The initial missing cohort immediately retries each target at most 10 logical passes. Success or exhaustion permanently exits that immediate cohort; later failures remain queued for half-hour retries. Hourly runs retry due incomplete targets and rotate six complete targets. Failed attempts preserve verified prices until all five plans are accepted."
 }

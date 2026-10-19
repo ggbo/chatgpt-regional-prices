@@ -332,6 +332,9 @@ def collect(
     now: Callable[[], str] | None = None,
     checkpoint_max_age_seconds: float = 72 * 3600,
     min_request_interval_seconds: float = 0,
+    probe_first: bool = True,
+    initial_fill: bool = False,
+    initial_fill_counts: dict[str, int] | None = None,
 ) -> dict[str, Any]:
     """Collect the entire target matrix within a hard scheduling budget."""
 
@@ -346,6 +349,7 @@ def collect(
     evidence_path = Path(evidence_dir)
     checkpoint = Path(checkpoint_path) if checkpoint_path else None
     attempts: dict[str, dict[str, Any]] = {}
+    initial_fill_attempt_counts = copy.deepcopy(initial_fill_counts or {})
     checkpoint_signature = hashlib.sha256(json.dumps({
         "targets": [(item["target_id"], item["config_id"]) for item in regions],
         "plans": [(item["plan_id"], item["source_plan_key"], item.get("billing_interval")) for item in plans],
@@ -374,35 +378,61 @@ def collect(
         )
         if (saved.get("signature") == checkpoint_signature or legacy_compatible) and 0 <= checkpoint_age <= checkpoint_max_age_seconds:
             attempts = saved.get("attempts", {})
+            saved_counts = saved.get("initial_fill_attempt_counts", {})
+            if not isinstance(saved_counts, dict):
+                raise ValueError('invalid initial fill attempt accounting in checkpoint')
+            for key, count in saved_counts.items():
+                initial_fill_attempt_counts[key] = max(initial_fill_attempt_counts.get(key, 0), count) if type(count) is int else count
+            expected_ids = {item['target_id'] for item in regions}
+            if not isinstance(initial_fill_attempt_counts, dict) or any(
+                key not in expected_ids or type(value) is not int or not 0 <= value <= 10
+                for key, value in initial_fill_attempt_counts.items()
+            ):
+                raise ValueError('invalid initial fill attempt accounting in checkpoint')
             checkpoint_created = saved_created
             if legacy_compatible:
                 _atomic_json(checkpoint, {
                     "created_unix": checkpoint_created,
                     "signature": checkpoint_signature,
                     "attempts": attempts,
+                    "initial_fill_attempt_counts": initial_fill_attempt_counts,
                 })
 
+    expected_ids = {item['target_id'] for item in regions}
+    if any(key not in expected_ids or type(count) is not int or not 0 <= count <= 10 for key, count in initial_fill_attempt_counts.items()):
+        raise ValueError('invalid initial fill attempt accounting')
+    if initial_fill:
+        for item in regions:
+            key = item['target_id']
+            if initial_fill_attempt_counts.get(key, 0) >= 10 and key not in attempts:
+                attempts[key] = {'kind': 'not_attempted', 'observed_at': None, 'reason': 'initial fill attempt limit reached'}
     pending = [
         item for item in regions
-        if item["target_id"] not in attempts
+        if (not initial_fill or initial_fill_attempt_counts.get(item['target_id'], 0) < 10) and (item["target_id"] not in attempts
         or (
             attempts[item["target_id"]].get("kind") == "not_attempted"
             and attempts[item["target_id"]].get("observed_at") is None
-        )
+        ))
     ]
-    probes = sorted((item for item in pending if item["target_id"] in {"US", "PH"}), key=lambda item: item["target_id"] == "PH")
-    remaining_targets = sorted((item for item in pending if item["target_id"] not in {"US", "PH"}), key=lambda item: item["target_id"])
+    probes = sorted((item for item in pending if probe_first and item["target_id"] in {"US", "PH"}), key=lambda item: item["target_id"] == "PH")
+    probe_ids = {item["target_id"] for item in probes}
+    # Scheduler order prevents budget-limited retries from starving the tail.
+    remaining_targets = [item for item in pending if item["target_id"] not in probe_ids]
 
     def save_attempt(target: dict[str, Any], attempt: dict[str, Any]) -> None:
         raw = attempt.pop("raw", None)
         if raw is not None:
             attempt["evidence_sha256"] = _save_evidence(raw, evidence_path)
+        if initial_fill and attempt.get('observed_at') and attempt['kind'] != 'not_attempted':
+            key = target['target_id']
+            initial_fill_attempt_counts[key] = min(10, initial_fill_attempt_counts.get(key, 0) + 1)
         attempts[target["target_id"]] = attempt
         if checkpoint:
             _atomic_json(checkpoint, {
                 "created_unix": checkpoint_created,
                 "signature": checkpoint_signature,
                 "attempts": attempts,
+                "initial_fill_attempt_counts": initial_fill_attempt_counts,
             })
 
     with ThreadPoolExecutor(max_workers=concurrency) as executor:
@@ -436,6 +466,7 @@ def collect(
                     "created_unix": checkpoint_created,
                     "signature": checkpoint_signature,
                     "attempts": attempts,
+                    "initial_fill_attempt_counts": initial_fill_attempt_counts,
                 })
         else:
             run_batch(remaining_targets)
@@ -497,6 +528,7 @@ def collect(
         "elapsed_seconds": round(time.monotonic() - started, 3),
     }
     return {
+        'initial_fill_attempt_counts': initial_fill_attempt_counts,
         "quotes": sorted(output_quotes.values(), key=lambda item: item["record_id"]),
         "cells": cells,
         "summary": summary,

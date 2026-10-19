@@ -27,8 +27,9 @@ export interface CollectionWindow {
   retry_pending_count?: number; retry_due_count?: number
   attempt_window_complete: boolean; successful_price_window_complete: boolean
 }
-export interface CollectionPolicy { policy_revision: string; window_hours: number; target_cycle_hours: number; schedule_interval_hours: number; retry_interval_minutes?: number }
-export interface RunStatus { schema_version: string; data_snapshot_id: string; result?: string; latest_refresh_failure?: { environment: string; run_url: string; completed_at: string; attempted_request_count: number; successful_response_count: number; reason: string }; collection_policy?: CollectionPolicy; collection_window?: CollectionWindow; [key: string]: unknown }
+export interface CollectionPolicy { policy_revision: string; window_hours: number; target_cycle_hours: number; schedule_interval_hours: number; retry_interval_minutes?: number; initial_fill_max_attempts_per_target?: number }
+export interface CollectionRunStatus { initial_fill_eligible_count?: number; initial_fill_exhausted_count?: number; [key: string]: unknown }
+export interface RunStatus { schema_version: string; data_snapshot_id: string; result?: string; latest_refresh_failure?: { environment: string; run_url: string; completed_at: string; attempted_request_count: number; successful_response_count: number; reason: string }; collection_policy?: CollectionPolicy; collection_window?: CollectionWindow; collection_run?: CollectionRunStatus; [key: string]: unknown }
 export interface DataBundle { manifest: Manifest; latest: LatestDocument; coverage: CoverageDocument; fx: FxDocument; referenceComparison: ReferenceComparison; regions: RegionsDocument; plans: PlansDocument; runStatus?: RunStatus }
 
 export type DataView = 'current' | 'all' | 'history' | 'missing'
