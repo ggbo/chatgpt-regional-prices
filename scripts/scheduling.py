@@ -436,6 +436,7 @@ def merge_selected(regions, plans, previous_quotes, previous_cells, result):
     """Patch selected results; do not relabel or freshen an untouched target."""
     quotes = {q['record_id']: copy.deepcopy(q) for q in previous_quotes}
     cells = {c['cell_id']: copy.deepcopy(c) for c in previous_cells}
+    candidate_quotes = {q['record_id']: q for q in result['quotes']}
     accepted_cells = set()
     for cell in result['cells']:
         if cell['attempt_status'] == 'not_attempted' and cell['cell_id'] in cells:
@@ -444,6 +445,30 @@ def merge_selected(regions, plans, previous_quotes, previous_cells, result):
         previous_at = parse_time(previous.get('last_attempt_at')) if previous else None
         candidate_at = parse_time(cell.get('last_attempt_at'))
         if previous_at and (candidate_at is None or candidate_at < previous_at):
+            candidate_quote = candidate_quotes.get(cell['cell_id'])
+            candidate_success = (
+                cell.get('status') == 'valid_quote'
+                and cell.get('attempt_status') == 'valid_quote'
+                and cell.get('last_success_at')
+                and candidate_quote
+            )
+            previous_success = (
+                previous.get('status') == 'valid_quote'
+                and previous.get('attempt_status') == 'valid_quote'
+            )
+            if candidate_success and not previous_success:
+                existing_quote = quotes.get(cell['cell_id'])
+                existing_success_at = parse_time(existing_quote.get('last_success_at')) if existing_quote else None
+                candidate_success_at = parse_time(candidate_quote.get('last_success_at') or cell['last_success_at'])
+                if not existing_success_at or candidate_success_at > existing_success_at:
+                    quotes[cell['cell_id']] = copy.deepcopy(candidate_quote)
+                retained_quote = quotes.get(cell['cell_id'])
+                if retained_quote:
+                    historical = copy.deepcopy(previous)
+                    historical['status'] = 'stale_quote'
+                    historical['quote_record_id'] = cell['cell_id']
+                    historical['last_success_at'] = retained_quote.get('last_success_at') or cell['last_success_at']
+                    cells[cell['cell_id']] = historical
             continue
         cells[cell['cell_id']] = copy.deepcopy(cell)
         accepted_cells.add(cell['cell_id'])
