@@ -15,14 +15,6 @@ main { background:rgba(255,253,250,.94); border:1px solid #dedfd9; border-radius
 .plan-bar button, .view-switch button { border:0; background:transparent; color:#58635f; border-radius:8px; padding:9px 16px; white-space:nowrap; font-weight:650; }
 .plan-bar button.active, .view-switch button.active { background:var(--ink); color:#fff; box-shadow:0 3px 10px #13211e22; }
 .plan-note { margin-left:auto; color:#78827f; font-size:12px; white-space:nowrap; padding:0 6px; }
-.data-status { margin:0; padding:0 18px 14px; background:#faf9f5; }
-.data-status > summary { width:max-content; color:#586a65; font-size:11px; font-weight:700; }
-.data-status > div { margin-top:9px; padding:12px 14px; border:1px solid #e4d7bb; border-radius:8px; background:#fff9ec; color:#725725; }
-.data-status > div > p { margin:0; font-size:11px; line-height:1.6; }
-.data-status a { color:#72500e; font-weight:700; text-decoration:none; }
-.collection-status { margin-top:8px; padding:9px 11px; border:1px solid #d9e8e2; border-radius:7px; background:#eff8f4; color:#46655d; }
-.collection-status p { margin:0; font-size:11px; line-height:1.55; }
-.collection-status strong { color:#155d53; margin-right:8px; }
 .controls { display:grid; grid-template-columns:minmax(270px, 1fr) auto auto auto auto; gap:10px; padding:18px; align-items:end; border-bottom:1px solid var(--line); }
 .controls label:not(.search-control) { display:grid; gap:5px; color:#68736f; font-size:11px; font-weight:650; }
 select { border:1px solid #d4d9d4; border-radius:8px; padding:10px 30px 10px 10px; background:#fff; color:var(--ink); font-size:13px; height:40px; }
@@ -42,10 +34,6 @@ select { border:1px solid #d4d9d4; border-radius:8px; padding:10px 30px 10px 10p
 .summary-grid small { display:block; color:#89918e; font-size:11px; margin-top:7px; }
 .summary-grid .price-card { background:#eaf4ef; border-color:#cee1d8; }
 .summary-grid .price-card strong { font-size:17px; color:#125f56; }
-.coverage-strip { display:flex; align-items:center; gap:0; overflow:auto; padding:0 18px 14px; background:#faf9f5; color:#66716d; }
-.coverage-strip > div { display:flex; align-items:baseline; gap:6px; padding:0 13px; border-right:1px solid #daddd8; white-space:nowrap; }
-.coverage-strip > div:first-child { padding-left:0; }.coverage-strip span { font-size:10px; }.coverage-strip strong { color:#26332f; font-size:13px; font-variant-numeric:tabular-nums; }
-.coverage-strip a { margin-left:auto; padding-left:16px; color:var(--teal-dark); font-size:11px; font-weight:650; text-decoration:none; white-space:nowrap; }
 .table-toolbar { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 18px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .view-switch { display:flex; background:#f1f1ed; border-radius:9px; padding:3px; }
 .view-switch button { padding:7px 13px; font-size:12px; }

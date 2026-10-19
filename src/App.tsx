@@ -83,7 +83,7 @@ export default function App() {
       <div className="brand-block">
         <div className="eyebrow"><span className="live-dot" />官网直购价格快照</div>
         <h1>ChatGPT 各地区订阅价格</h1>
-        <p>仅比较官网直购的月付展示标价，默认显示官方明确标记为含税的价格。人民币换算仅作估算，最终金额与账号可购资格请以结账页为准。</p>
+        <p>仅比较官网直购的月付展示标价。人民币换算仅作估算，最终金额与账号可购资格请以结账页为准。</p>
       </div>
     </header>
 
@@ -115,9 +115,6 @@ export default function App() {
           <article className="price-card"><span>已核验地区含税展示价范围</span><strong>{ranked.length ? `${formatEstimate(ranked[0].estimate, filters.currency)} — ${formatEstimate(ranked[ranked.length - 1].estimate, filters.currency)}` : '暂无新鲜数据'}</strong><small>官网直购 · 同一汇率快照 · 不含缺失换算</small></article>
         </section>
 
-        <CoverageStrip bundle={bundle} />
-        <DataStatusDetails bundle={bundle} />
-
         <div className="table-toolbar">
           <div className="view-switch"><button className={mode === 'list' ? 'active' : ''} onClick={() => setMode('list')}>价格排序表</button><button className={mode === 'matrix' ? 'active' : ''} onClick={() => setMode('matrix')}>全地区五档矩阵</button></div>
           <div className="actions"><button onClick={() => download(`chatgpt-${filters.planId}-${filters.currency}.csv`, rowsToCsv(rows, filters.currency))}>下载 CSV</button><button onClick={() => void share()}>分享筛选</button><button onClick={() => void refresh()} disabled={loading}>{loading ? '读取中…' : '读取最新快照'}</button></div>
@@ -144,29 +141,6 @@ function Matrix({ bundle, search, onSelect, now, currency, tax }: { bundle: Data
   const regions = bundle.regions.regions.filter((region) => !query || [region.name_zh, region.name_en, region.country_code, region.config_id].some((v) => v?.toLocaleLowerCase().includes(query)))
   const cells = new Map(bundle.coverage.cells.map((cell) => [`${cell.target_id}:${cell.plan_id}`, cell]))
   return <div className="table-wrap matrix-wrap"><table className="matrix"><thead><tr><th className="region-column">国家或地区</th>{bundle.plans.plans.map((plan) => <th key={plan.plan_id}>{plan.label}</th>)}</tr></thead><tbody>{regions.map((region) => <tr key={region.target_id}><td className="region-column"><strong>{region.name_zh}</strong><span>{region.name_en} · {region.country_code ?? region.config_id}</span></td>{bundle.plans.plans.map((plan) => { const availableQuote = quoteFor(bundle, region, plan.plan_id); const excludedTax = tax !== 'all' && availableQuote?.display_price.tax !== tax ? availableQuote?.display_price.tax ?? null : null; const quote = excludedTax ? null : availableQuote; const cell = cells.get(`${region.target_id}:${plan.plan_id}`) ?? null; const fresh = quote ? isFresh(quote, cell, now) : false; const row: DisplayRow = { region, quote, cell, freshness: fresh ? 'fresh' : quote ? 'historical' : 'missing', estimate: quote?.estimates[currency]?.amount ?? null, excludedTax }; return <td key={plan.plan_id}><button className={`matrix-cell ${row.freshness}`} onClick={() => onSelect(row)}><strong>{quote ? formatOriginal(quote.display_price.amount, quote.currency) : '—'}</strong><span>{excludedTax ? `无匹配${taxLabels[tax as TaxStatus]}价` : fresh ? statusLabels.fresh : quote ? statusLabels.historical : statusLabels[regionStatus(cell)] ?? regionStatus(cell)}</span></button></td> })}</tr>)}</tbody></table></div>
-}
-
-function CoverageStrip({ bundle }: { bundle: DataBundle }) {
-  const summary = bundle.coverage.summary
-  const count = (key: string) => typeof summary[key] === 'number' ? summary[key] : 0
-  return <section className="coverage-strip" aria-label="全目录采集覆盖"><div><span>预期请求</span><strong>{count('expected_request_count')}</strong></div><div><span>已尝试</span><strong>{count('attempted_request_count')}</strong></div><div><span>未尝试</span><strong>{count('not_attempted_request_count')}</strong></div><div><span>响应成功</span><strong>{count('successful_response_count')}</strong></div><div><span>五档完整</span><strong>{count('complete_five_plan_target_count')}</strong></div><div><span>辅助配置</span><strong>{count('auxiliary_target_count')}</strong></div><a href="https://github.com/ggbo/chatgpt-regional-prices/blob/data/collection/last-run.json" target="_blank" rel="noreferrer">查看最新采集状态 ↗</a></section>
-}
-
-function CollectionStatus({ bundle }: { bundle: DataBundle }) {
-  const window = bundle.runStatus?.collection_window
-  const policy = bundle.runStatus?.collection_policy
-  const run = bundle.runStatus?.collection_run
-  if (!window) return null
-  const retry = policy?.retry_interval_minutes
-  const fillLimit = policy?.initial_fill_max_attempts_per_target
-  return <aside className="collection-status" role="status"><p><strong>{window.window_hours} 小时轮转采集</strong>最近窗口已尝试 {window.attempted_within_window_count}/{window.target_count} 个地区，成功取得价格 {window.successful_within_window_count} 个。{window.bootstrap_remaining_count ? `首次全量采集还剩 ${window.bootstrap_remaining_count} 个地区。` : window.overdue_target_count ? `有 ${window.overdue_target_count} 个地区等待本窗口采集。` : '本窗口目录已全部尝试。'}{fillLimit ? ` 初始暂缺地区立即补查，单地区最多 ${fillLimit} 次；达到上限后转入低频补查。当前可继续 ${run?.initial_fill_eligible_count ?? 0} 个，已达上限 ${run?.initial_fill_exhausted_count ?? 0} 个。` : ''}{retry ? ` 每 ${retry} 分钟仅补查失败或暂缺地区；成功后退出补查队列，恢复 ${window.window_hours} 小时轮转。待补查 ${window.retry_pending_count ?? 0} 个，其中已到期 ${window.retry_due_count ?? 0} 个。` : ''}</p></aside>
-}
-
-function DataStatusDetails({ bundle }: { bundle: DataBundle }) {
-  const failure = bundle.runStatus?.latest_refresh_failure
-  const window = bundle.runStatus?.collection_window
-  if (!failure && !window) return null
-  return <details className="data-status"><summary>数据状态与采集进度</summary><div>{failure && <p><strong>最近一次 GitHub 采集受限。</strong> 当前继续显示上一份已验证快照，各价格核实时间保持原值。该轮尝试 {failure.attempted_request_count} 个地区，成功 {failure.successful_response_count} 个，完成于 {formatTime(failure.completed_at)}。 <a href={failure.run_url} target="_blank" rel="noreferrer">查看运行记录 ↗</a></p>}{window && <CollectionStatus bundle={bundle} />}</div></details>
 }
 
 function Details({ row, bundle, currency, onClose }: { row: DisplayRow; bundle: DataBundle; currency: 'CNY' | 'USD'; onClose: () => void }) {
