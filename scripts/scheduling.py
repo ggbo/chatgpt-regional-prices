@@ -237,6 +237,8 @@ def select_targets(
                 r['target_id'],
             ),
         )
+        immediate_ids = {r['target_id'] for r in pending_retry}
+        timed_retry = [r for r in due if r['target_id'] not in immediate_ids]
         cutoff = parse_time(now) - timedelta(hours=policy['target_cycle_hours'])
         at_risk_healthy = sorted(
             (
@@ -249,7 +251,15 @@ def select_targets(
             ),
             key=lambda r: (parse_time(ledger['targets'][r['target_id']].get('last_attempt_at')) or first, r['target_id']),
         ) if pending_retry else []
-        selected = pending_retry + at_risk_healthy
+        retry_union = sorted(
+            {r['target_id']: r for r in pending_retry + timed_retry}.values(),
+            key=lambda r: (
+                ledger['targets'][r['target_id']].get('last_attempt_at') is not None,
+                parse_time(ledger['targets'][r['target_id']].get('last_attempt_at')) or first,
+                r['target_id'],
+            ),
+        )
+        selected = at_risk_healthy + retry_union
         ledger['initial_fill']['active'] = bool(pending_retry)
     elif retry_only:
         selected = due
@@ -262,8 +272,18 @@ def select_targets(
         # Protect the 72-hour healthy rotation from a large retry backlog. The
         # half-hour retry-only run handles the same due queue without normals.
         selected = [r for r in normal if r['target_id'] not in due_ids] + due
+    selected_ids = {r['target_id'] for r in selected}
+    initial_cohort = set(ledger['initial_fill'].get('cohort_target_ids', []))
+    initial_fill_target_ids = [
+        r['target_id'] for r in regions
+        if fill_missing and r['target_id'] in selected_ids
+        and r['target_id'] in initial_cohort
+        and ledger['targets'][r['target_id']].get('retry_pending')
+        and not ledger['targets'][r['target_id']].get('initial_fill_done')
+    ]
     return {'ledger': ledger, 'targets': selected, 'bootstrap': bootstrap,
             'normal_batch_size': size, 'retry_due_count': len(due),
+            'initial_fill_target_ids': initial_fill_target_ids,
             'mode': ('bootstrap' if bootstrap else 'full' if force_full else 'fill' if fill_missing
                      else 'retry' if retry_only else 'rotation')}
 
@@ -279,10 +299,13 @@ def record_attempts(
     attempted, not_started, resumed, out_of_order = [], [], [], []
     observations = {}
     complete_observations = set()
-    selected_pending_before = {
+    initial_target_ids = set(selection.get('initial_fill_target_ids', (
         region['target_id'] for region in selection['targets']
-        if ledger['targets'][region['target_id']].get('retry_pending')
-    }
+        if region['target_id'] in set(ledger.get('initial_fill', {}).get('cohort_target_ids', []))
+        and ledger['targets'][region['target_id']].get('retry_pending')
+        and not ledger['targets'][region['target_id']].get('initial_fill_done')
+    )))
+    selected_pending_before = set(initial_target_ids)
     for region in selection['targets']:
         key = region['target_id']
         target_cells = by_target.get(key, [])
@@ -343,12 +366,10 @@ def record_attempts(
     if selection['mode'] == 'fill':
         cohort = set(ledger['initial_fill'].get('cohort_target_ids', []))
         for key, observed in observations.items():
+            if key not in initial_target_ids:
+                continue
             entry = ledger['targets'][key]
             imported = fill_counts.get(key, 0)
-            if imported > 0 and key not in cohort:
-                cohort.add(key)
-                entry['initial_fill_done'] = False
-                entry.pop('initial_fill_done_reason', None)
             counted = entry.setdefault('initial_fill_observation_times', [])
             already_current = entry.get('last_attempt_at') == observed and key in resumed
             if observed not in counted:

@@ -13,6 +13,8 @@
 
 `data:collection/ledger.json` 是长期账本，`data:collection/last-run.json` 是最近采集收据。有效价格位于 `data:state/`；两者独立。全批失败或检查失败仍保存账本，保留上次有效网站，不给旧价格更新核实时间。查看 [Actions](https://github.com/ggbo/chatgpt-regional-prices/actions) 和[最新账本](https://github.com/ggbo/chatgpt-regional-prices/blob/data/collection/ledger.json)。
 
+界面代码更新由只读发布工作流立即使用最新有效快照构建，不等待采集队列，也不写入数据分支。定时及手动采集仍由原工作流串行持久化；两种工作流的 Pages 部署共用发布锁。持续初始补查会同时处理到期的普通失败，并优先保障接近 72 小时窗口的健康地区，避免暂缺队列长期占用预算。
+
 GitHub 支持通过 `GITHUB_TOKEN` 显式触发 `workflow_dispatch`；继续补查 job 只申请本仓库 `actions: write`，不需要用户提供 ChatGPT Token 或个人访问令牌。[官方触发说明](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)。
 
 ## 本地操作
