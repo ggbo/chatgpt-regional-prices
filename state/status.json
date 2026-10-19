@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "data_snapshot_id": "cd0aac68268cb220b18122d5",
+  "data_snapshot_id": "5ae89722de62bb135a0c1c94",
   "result": "validated",
-  "last_run_at": "2026-10-19T15:56:45Z",
+  "last_run_at": "2026-10-19T15:56:50Z",
   "source_status": {
-    "started_at": "2026-10-19T15:56:45.969737Z",
-    "completed_at": "2026-10-19T15:56:45.970774Z",
+    "started_at": "2026-10-19T15:56:50.227627Z",
+    "completed_at": "2026-10-19T15:56:50.228236Z",
     "all_source_failed": false,
     "structural_failure": false,
     "elapsed_seconds": 0.001
@@ -20,14 +20,14 @@
     "successful_response_count": 76,
     "expected_cell_count": 1260,
     "status_counts": {
-      "valid_quote": 380,
-      "access_blocked": 760,
+      "valid_quote": 390,
+      "access_blocked": 750,
       "stale_quote": 115,
       "request_failed": 5
     },
-    "current_quote_cell_count": 380,
+    "current_quote_cell_count": 390,
     "historical_quote_cell_count": 115,
-    "complete_five_plan_target_count": 76
+    "complete_five_plan_target_count": 78
   },
   "collection_policy": {
     "schema_version": "1.0.0",
@@ -59,11 +59,11 @@
     "window_hours": 72,
     "target_count": 252,
     "attempted_within_window_count": 252,
-    "successful_within_window_count": 95,
+    "successful_within_window_count": 97,
     "overdue_target_ids": [],
     "overdue_target_count": 0,
     "oldest_attempt_at": "2026-10-19T12:46:19.278038Z",
-    "oldest_attempt_age_hours": 3.173811656111111,
+    "oldest_attempt_age_hours": 3.175200545,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
     "retry_pending_count": 177,
@@ -76,52 +76,43 @@
     "run_id": "39280407550",
     "policy_revision": "serial-72h-v5-priority",
     "mode": "fill",
-    "started_at": "2026-10-19T15:56:45Z",
-    "completed_at": "2026-10-19T15:56:45Z",
+    "started_at": "2026-10-19T15:56:50Z",
+    "completed_at": "2026-10-19T15:56:50Z",
     "selected_target_ids": [
       "PH",
-      "CL",
-      "EG",
-      "JP",
-      "US"
+      "JP"
     ],
     "attempted_target_ids": [
       "PH",
-      "CL",
-      "EG",
-      "JP",
-      "US"
+      "JP"
     ],
     "not_started_target_ids": [],
     "resumed_target_ids": [],
     "out_of_order_target_ids": [
       "PH",
-      "JP",
-      "US"
+      "JP"
     ],
-    "accepted_valid_cell_count": 5,
+    "accepted_valid_cell_count": 10,
     "initial_fill_progress_count": 0,
-    "initial_fill_pending_count": 157,
-    "initial_fill_eligible_count": 157,
+    "initial_fill_pending_count": 155,
+    "initial_fill_eligible_count": 155,
     "initial_fill_exhausted_count": 0,
     "initial_fill_exhausted_target_ids": [],
     "immediate_continuation": true,
-    "observation_started_at": "2026-10-19T15:10:06.500938Z",
-    "observation_completed_at": "2026-10-19T15:10:19.464342Z",
+    "observation_started_at": "2026-10-19T15:38:31Z",
+    "observation_completed_at": "2026-10-19T15:38:31Z",
     "status_counts": {
-      "access_blocked": 10,
-      "stale_quote": 10,
-      "valid_quote": 5
+      "valid_quote": 10
     },
     "window": {
       "window_hours": 72,
       "target_count": 252,
       "attempted_within_window_count": 252,
-      "successful_within_window_count": 95,
+      "successful_within_window_count": 97,
       "overdue_target_ids": [],
       "overdue_target_count": 0,
       "oldest_attempt_at": "2026-10-19T12:46:19.278038Z",
-      "oldest_attempt_age_hours": 3.173811656111111,
+      "oldest_attempt_age_hours": 3.175200545,
       "bootstrap_remaining_count": 0,
       "bootstrap_completed_at": "2026-10-19T13:16:35Z",
       "retry_pending_count": 177,
