@@ -10,6 +10,7 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from pipeline import validate, safe_path, publish_files, read, write, candidate_hashes, persist_progress, restore_progress, clear_completed_progress, current_head
+from reconcile_reference import reconcile
 
 
 def example():
@@ -33,6 +34,15 @@ def example():
 
 
 class PublicationTests(unittest.TestCase):
+    def test_public_reference_comparison_only_contains_official_web(self):
+        latest, coverage, fx, regions, plans = example()
+        baseline = {'entries': [{'reference_id': f'US:{channel}:plus:month', 'target_id': 'US', 'channel': channel,
+                                 'plan_id': 'plus', 'billing_interval': 'month', 'reference_status': 'listed'}
+                                for channel in ('web', 'ios', 'google_play')]}
+        report = reconcile(regions, plans, coverage['cells'], baseline)
+        self.assertEqual(report['summary']['reference_identity_count'], 1)
+        self.assertTrue(all(row['channel'] == 'web' for row in report['comparisons']))
+
     def test_no_fx_does_not_remove_original_currency_price(self):
         self.assertTrue(validate(*example()))
 

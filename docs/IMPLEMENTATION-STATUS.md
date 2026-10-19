@@ -31,6 +31,8 @@ Frankfurter 实际请求于 `2026-10-19T11:57:07.480086Z` 成功，取得同一�
 
 五档参考页共核对 697 条地区/渠道身份：Web 386、iOS 235、Google Play 推测 76，178 个地区 ID，零未映射。Go 页为 170 地区、235 条报价。参考价格金额未导入本站。
 
+用户随后明确缩小展示渠道为官网直购。网页、CSV 和新生成的公开参考差异只包含 Web；原始多渠道基准仅作历史审计资料，不作为商店接入计划或有效报价数。
+
 官网支持清单独立关联：支持 208、未列入支持清单 41、未知 3。该状态不控制是否请求价格。详见 `config/support-status.json`、`config/reference-coverage.json`、`docs/SOURCES.md`。
 
 ## 已运行验证
@@ -51,14 +53,30 @@ Frankfurter 实际请求于 `2026-10-19T11:57:07.480086Z` 成功，取得同一�
 
 [第二次发布运行](https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39249650543)已在 GitHub runner 完成数据恢复、类型及回归检查、构建、项目路径 HTTP 校验，并成功 fast-forward 持久化到 `data` 分支，提交为 `123eb8eaf78444c9900cc5f0ba2f6a43fc76b8ce`。
 
-Pages 尚未上线。首次创建站点步骤被 GitHub 拒绝：`Create Pages site failed: Resource not accessible by integration`。当前连接器没有 Pages 设置写入工具，且环境无可用浏览器。需要管理员在仓库 Settings → Pages → Source 选择 GitHub Actions，然后重跑发布工作流。预期地址为 `https://ggbo.github.io/chatgpt-regional-prices/`；目前不能将该地址声称为已部署网站。
+Pages 已上线：[正式网站](https://ggbo.github.io/chatgpt-regional-prices/)。用户将 Source 设为 GitHub Actions 后，已重跑[发布运行的第 2 次尝试](https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39250086839/attempts/2)，prepare 和 deploy 均成功，完成于 `2026-10-19T12:37:51Z`（北京时间 20:37:51）。
 
-该阻塞发生在测试、构建和数据持久化之后。不存在以空数据或模拟价格规避检查的部署。完整机器收据为 `reports/deployment-attempt.json`。
+线上 `data/manifest.json` 返回 HTTP 200，价格版本为 `6d4d50b8d6d29afd95a98456`，汇率版本为 `3892ac2b1c5e9d22584f147d20cb7ec8e7284399bad9dd3141167dfe7f96eb5e`，与通过校验的有效快照一致。
+
+此前自动创建站点被拒的历史收据保留于 `reports/deployment-attempt.json`；解除阻塞后的成功记录另存，避免把历史失败改写成成功。
+
+## 官网展示与低频轮转更新
+
+界面修改已在[发布运行](https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39257077443)成功部署，源提交 `63840fb43a6dcedf3bcfac78e0781ec1874f25a1`。线上 JS 已核对：原价、约合人民币、默认含税已生效；顶部版本号和生成时间已移除，采集失败说明收进折叠的数据状态。界面保留每条报价的来源及实际核实时间，技术版本仅在展开的证据中显示。
+
+默认含税仅采用官方主展示字段明确标记 `inclusive` 的报价。不自行计算税额，也不以支付覆盖金额替换主展示值；无匹配含税价的地区仍可搜索，或切换税筛选查看。
+
+轮转策略见 `config/collection-policy.json`：首次尝试全目录；之后每小时第 23 分钟处理最久未尝试的少量目标，单并发，请求起始间隔至少 2 秒，重试同样限速。批量为 `ceil(N/48)`，当前 252 目标每轮 6 个，42 个正常批次能轮转一遍，为 72 小时目标留余量。
+
+`data:collection/ledger.json` 与最近运行记录独立持久化。整批 403 也推进真实尝试账本，下一批继续轮转，不覆盖有效价格。窗口内已尝试与五档成功核实分别统计；失败时间不改变价格新鲜度。GitHub 调度或上游阻断时会出现明确缺口，不能承诺所有地区 72 小时成功取得最新价格。失败诊断 artifact 仅保留 3 天，长期公开响应证据仍按内容散列保存在数据分支。
+
+更新后的验证：Python 39/39、前端关键逻辑 6/6、TypeScript 通过。覆盖连续 403 的 42 轮公平性、零预算、预算中断后恢复、策略改变触发首轮、未选中地区不变、五档分别核实、网络局部失败合并及拒绝候选仅持久化账本。临时 bare Git 与新 runner clone 已验证原价格快照保持不变。
+
+单并发重新全量扫描已完成，耗时 1,578.422 秒。252/252 个目标均尝试，0 未尝试；63 个配置取得五档，共 315 条当前报价，保留 AI、NC、SX、TO 的 20 条历史报价，共 335 条记录。178 个目标没有可保留价格且访问受限，另 7 个请求失败（AL 超时，BV/CN/CU/GS/RU/VE 返回 404）。完整结果摘要及逐目标收据见 `reports/serial-full-scan.json`；原始证据按 SHA256 去重，不能把该本机结果描述为 GitHub runner 连通性成功。
 
 ## 未完成的核验与范围限制
 
 - 大量配置在本机受到 403 访问限制，必须保留真实覆盖缺口。
 - 当前环境没有可用浏览器，未执行实际渲染的视觉或点击检查；已完成类型、逻辑、产物及 HTTP 检查。
-- iOS、Google Play 尚无价格适配器；已逐项标明渠道范围，不宣称复现三渠道 235 条有效报价。
+- 仅展示官网直购，不接入或展示 iOS、Google Play；不宣称复现三渠道 235 条有效报价。
 - 账户可购买性未验证；只观察公开配置。
 - 尚未观察下一轮定时执行，价格是否过期由实际成功时间计算。

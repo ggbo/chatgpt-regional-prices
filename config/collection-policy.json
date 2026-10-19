@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "policy_revision": "serial-72h-v1",
+  "window_hours": 72,
+  "target_cycle_hours": 48,
+  "schedule_interval_hours": 1,
+  "concurrency": 1,
+  "min_request_interval_seconds": 2,
+  "bootstrap_budget_seconds": 2700,
+  "rotation_budget_seconds": 600,
+  "note": "First attempt every catalog target; then rotate the oldest actual attempt first. The 72h window measures attempted coverage, never guaranteed successful upstream prices."
+}

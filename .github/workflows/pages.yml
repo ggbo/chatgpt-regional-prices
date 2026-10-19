@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: '23 3,15 * * *'
+    - cron: '23 * * * *'
       timezone: Asia/Shanghai
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
   prepare:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     permissions:
       contents: write
       pages: write
@@ -48,11 +48,6 @@ jobs:
           python scripts/pipeline.py prepare --mode "$PRICE_MODE"
           --state-dir data-state --candidate-dir work/candidate
           --public-dir public/data
-      - name: Save unfinished acquisition for the next runner
-        if: failure() && steps.prepare.outcome == 'failure'
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: python scripts/pipeline.py persist-progress --candidate-dir work/candidate --state-dir data-state
       - name: Check types and price logic
         run: npm run check
       - name: Verify collector and publication rules
@@ -60,6 +55,7 @@ jobs:
       - run: npm run build
       - run: npm run verify:dist
       - name: Persist the version that passed the build
+        id: persist
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/pipeline.py persist --candidate-dir work/candidate --state-dir data-state
@@ -70,13 +66,24 @@ jobs:
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
           path: dist
-      - name: Keep real collection evidence and failure diagnostics
-        if: always()
+      - name: Preserve attempts when collection or a later check failed
+        if: failure() && (steps.prepare.outcome == 'success' || steps.prepare.outcome == 'failure') && steps.persist.outcome != 'success'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/pipeline.py persist-collection --candidate-dir work/candidate --state-dir data-state
+      - name: Keep short-lived failure diagnostics
+        if: failure()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: collection-${{ github.run_id }}-${{ github.run_attempt }}
-          path: work/candidate
-          retention-days: 30
+          path: |
+            work/candidate/state/status.json
+            work/candidate/state/coverage.json
+            work/candidate/state/change-reviews.json
+            work/candidate/collection/
+            work/candidate/collection-checkpoint.json
+            work/candidate/prepare-receipt.json
+          retention-days: 3
           if-no-files-found: ignore
 
   deploy:

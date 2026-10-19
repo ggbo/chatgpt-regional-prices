@@ -2,6 +2,7 @@ import copy
 import io
 import json
 import tempfile
+import time
 import unittest
 import urllib.error
 from email.message import Message
@@ -49,6 +50,45 @@ def body(amount=1100, psp=982.14, psp_tax="exclusive"):
 
 
 class CollectTests(unittest.TestCase):
+    def test_request_interval_spaces_concurrent_request_starts(self):
+        regions = [
+            {**REGION, "target_id": code, "country_code": code, "config_id": code}
+            for code in ("AI", "HU", "NC")
+        ]
+        starts = []
+        def timed_response(request, timeout):
+            starts.append(time.monotonic())
+            target = request.full_url.rsplit("/", 1)[-1]
+            payload = json.dumps({"country_code": target, "currency_config": {"symbol_code": "USD", "plus": {"month": {"amount": 20, "tax": "exclusive"}}}}).encode()
+            return Response(payload)
+        with tempfile.TemporaryDirectory() as temp:
+            result = collect(regions, PLANS, [], temp, concurrency=2, min_request_interval_seconds=0.03, opener=timed_response)
+        self.assertEqual(result["summary"]["attempted_request_count"], 3)
+        ordered = sorted(starts)
+        self.assertTrue(all(later - earlier >= 0.025 for earlier, later in zip(ordered, ordered[1:])))
+
+    def test_request_interval_budget_marks_unscheduled_target_not_attempted(self):
+        regions = [
+            {**REGION, "target_id": code, "country_code": code, "config_id": code}
+            for code in ("AI", "HU")
+        ]
+        calls = []
+        def response(request, timeout):
+            target = request.full_url.rsplit("/", 1)[-1]
+            calls.append(target)
+            payload = json.dumps({"country_code": target, "currency_config": {"symbol_code": "USD", "plus": {"month": {"amount": 20, "tax": "exclusive"}}}}).encode()
+            return Response(payload)
+        with tempfile.TemporaryDirectory() as temp:
+            checkpoint = Path(temp) / "checkpoint.json"
+            result = collect(regions, PLANS, [], temp, budget_seconds=0.02, concurrency=1, min_request_interval_seconds=0.1, checkpoint_path=checkpoint, opener=response)
+            self.assertEqual(len(calls), 1)
+            self.assertEqual(result["summary"]["attempted_request_count"], 1)
+            self.assertEqual(result["summary"]["not_attempted_request_count"], 1)
+            resumed = collect(regions, PLANS, [], temp, budget_seconds=1, concurrency=1, min_request_interval_seconds=0, checkpoint_path=checkpoint, opener=response)
+        self.assertEqual(len(calls), 2)
+        self.assertEqual(resumed["summary"]["attempted_request_count"], 2)
+        self.assertEqual(resumed["summary"]["not_attempted_request_count"], 0)
+
     def test_shared_structural_probe_failure_stops_remaining_requests_explicitly(self):
         regions = [
             {**REGION, "target_id": "US", "country_code": "US", "config_id": "US"},

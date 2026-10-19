@@ -197,12 +197,12 @@ def publish_files(state, public_dir, evidence_dir=None):
 
 def candidate_hashes(candidate):
     return {str(p.relative_to(candidate)).replace('\\', '/'): digest(p)
-            for folder in ('state', 'evidence')
+            for folder in ('state', 'evidence', 'collection')
             for p in sorted((candidate / folder).rglob('*')) if p.is_file()}
 
 
 def collector_signature():
-    files = ('scripts/collect.py', 'scripts/pricing.py', 'scripts/fx.py', 'docs/CONTRACT.md')
+    files = ('scripts/collect.py', 'scripts/pricing.py', 'scripts/fx.py', 'scripts/scheduling.py', 'config/collection-policy.json', 'docs/CONTRACT.md')
     return hashlib.sha256(''.join(digest(ROOT / name) for name in files).encode()).hexdigest()
 
 
@@ -226,10 +226,14 @@ def prepare(args):
     from collect import collect
     from fx import fetch_fx, apply_estimates
     from reconcile_reference import reconcile
+    from scheduling import select_targets, record_attempts, merge_selected, matrix_summary, selected_quality_failures, window_metrics
 
     candidate = Path(args.candidate_dir)
     if (candidate / 'build-receipt.json').exists():
         (candidate / 'build-receipt.json').unlink()
+    (candidate / 'validated.json').unlink(missing_ok=True)
+    for name in ('ledger.json', 'last-run.json'):
+        (candidate / 'collection' / name).unlink(missing_ok=True)
     checkpoint = candidate / 'collection-checkpoint.json'
     if checkpoint.exists() and not args.resume:
         checkpoint.unlink()  # a new refresh must not re-label the previous run's attempts
@@ -238,6 +242,8 @@ def prepare(args):
     evidence = candidate / 'evidence'
     evidence.mkdir(exist_ok=True)
     regions, plans = read(ROOT / 'config/regions.json'), read(ROOT / 'config/plans.json')
+    policy = read(ROOT / 'config/collection-policy.json')
+    selection = select_targets(regions['regions'], plans['plans'], read(Path(args.state_dir) / 'collection/ledger.json'), policy, utcnow(), force_full=args.full_scan)
     old_dir, old, old_coverage, old_fx = previous_state(args.state_dir)
     if args.fx_seed:
         seed = read(args.fx_seed)
@@ -259,26 +265,42 @@ def prepare(args):
         mode = 'refresh'
     if os.environ.get('GITHUB_ACTIONS') == 'true' and current_head(args.state_dir) is None:
         mode = 'refresh'  # initial runner connectivity must be measured, not inferred from a seed
+    if selection['bootstrap'] or args.full_scan:
+        mode = 'refresh'
     if mode == 'reuse':
         latest, coverage, fx = old, old_coverage, old_fx
-        status = read(old_dir / 'status.json', {'result': 'reused', 'last_run_at': utcnow()})
+        status = read(old_dir / 'status.json', {'schema_version': VERSION, 'data_snapshot_id': old['data_snapshot_id'], 'result': 'reused', 'last_run_at': utcnow()})
+        if not selection['bootstrap']:
+            status['collection_policy'] = policy
+            status['collection_window'] = window_metrics(selection['ledger'], policy, utcnow())
         reviews = []
     else:
         if not args.resume:
             restore_progress(args.state_dir, checkpoint)
         approvals = read(ROOT / 'config/accepted-changes.json', {'body_sha256': []})
-        result = collect(regions['regions'], plans['plans'], old['quotes'] if old else [], evidence,
-                         budget_seconds=args.budget_seconds, concurrency=2,
+        budget = args.budget_seconds if args.budget_seconds is not None else policy['bootstrap_budget_seconds'] if selection['bootstrap'] else policy['rotation_budget_seconds']
+        result = collect(selection['targets'], plans['plans'], old['quotes'] if old else [], evidence,
+                         budget_seconds=budget, concurrency=policy['concurrency'],
+                         min_request_interval_seconds=policy['min_request_interval_seconds'],
                          checkpoint_path=candidate / 'collection-checkpoint.json',
                          checkpoint_max_age_seconds=72 * 3600,
                          accepted_change_hashes=set(approvals.get('body_sha256', [])))
         generated = utcnow()
-        identity = hashlib.sha256(json.dumps({'time': generated, 'cells': result['cells'], 'quotes': result['quotes']}, sort_keys=True).encode()).hexdigest()[:24]
+        ledger, collection_run = record_attempts(selection, result['cells'], policy, read(candidate / 'prepare-receipt.json')['started_at'], generated,
+                                               os.environ.get('GITHUB_RUN_ID', 'local-' + generated))
+        collection_run['environment'] = 'GitHub Actions' if os.environ.get('GITHUB_ACTIONS') == 'true' else 'local workspace'
+        if os.environ.get('GITHUB_RUN_ID'):
+            collection_run['run_url'] = f'https://github.com/{os.environ.get("GITHUB_REPOSITORY", "ggbo/chatgpt-regional-prices")}/actions/runs/{os.environ["GITHUB_RUN_ID"]}'
+        write(candidate / 'collection/ledger.json', ledger)
+        write(candidate / 'collection/last-run.json', collection_run)
+        merged_quotes, merged_cells = merge_selected(regions['regions'], plans['plans'], (old or {}).get('quotes', []), (old_coverage or {}).get('cells', []), result)
+        summary = matrix_summary(regions['regions'], merged_cells)
+        identity = hashlib.sha256(json.dumps({'time': generated, 'cells': merged_cells, 'quotes': merged_quotes}, sort_keys=True).encode()).hexdigest()[:24]
         latest = {'schema_version': VERSION, 'data_snapshot_id': identity, 'generated_at': generated,
                   'catalog_version': regions['catalog_version'], 'fx_snapshot_id': None,
-                  'collector_version': VERSION, 'quotes': result['quotes']}
+                  'collector_version': VERSION, 'quotes': merged_quotes}
         coverage = {k: latest[k] for k in ('schema_version', 'data_snapshot_id', 'generated_at', 'catalog_version')}
-        coverage.update(summary=result['summary'], cells=result['cells'])
+        coverage.update(summary=summary, cells=merged_cells)
         fx = fetch_fx(old_fx, evidence, currencies={q['currency'] for q in latest['quotes']} | {'CNY'})
         latest['fx_snapshot_id'] = fx['fx_snapshot_id']
         estimated = apply_estimates(latest['quotes'], fx)
@@ -286,7 +308,8 @@ def prepare(args):
             latest['quotes'] = estimated
         reviews = result.get('change_reviews', [])
         status = {'schema_version': VERSION, 'data_snapshot_id': identity, 'result': 'candidate', 'last_run_at': generated,
-                  'source_status': result.get('source_status'), 'coverage': result['summary'],
+                  'source_status': result.get('source_status'), 'coverage': summary,
+                  'collection_policy': policy, 'collection_window': collection_run['window'], 'collection_run': collection_run,
                   'deployment': {'state': 'not_deployed', 'note': 'Consult the Pages deployment run and live manifest for the deployed version.'}}
     for name, doc in [('latest', latest), ('coverage', coverage), ('fx', fx), ('status', status), ('regions', regions), ('plans', plans)]:
         write(state / f'{name}.json', doc)
@@ -301,14 +324,9 @@ def prepare(args):
     except (ValueError, KeyError, TypeError) as exc:
         failures.append(str(exc))
     if mode == 'refresh':
-        current = {c['cell_id'] for c in coverage['cells'] if c['status'] == 'valid_quote'}
-        previous = {c['cell_id'] for c in (old_coverage or {}).get('cells', []) if c['status'] == 'valid_quote'}
-        if not current:
-            failures.append('all_sources_failed: no current validated quote; existing deployment is preserved')
-        if not old and coverage['summary']['not_attempted_request_count']:
+        failures.extend(selected_quality_failures((old_coverage or {}).get('cells', []), result, {r['target_id'] for r in selection['targets']}))
+        if selection['bootstrap'] and collection_run['window']['bootstrap_remaining_count']:
             failures.append('initial_full_catalog_incomplete')
-        if previous and len(current & previous) / len(previous) < 0.7:
-            failures.append('coverage_drop: <70% of previously valid targets refreshed')
     if failures:
         status.update(result='rejected', failures=failures)
         write(state / 'status.json', status)
@@ -472,6 +490,8 @@ def persist(args):
         changed = [q for q in latest['quotes'] if old_prices.get(q['record_id']) != (q['currency'], q['display_price']['amount'], q['display_price']['tax'])]
         for name in ('state', 'evidence'):
             shutil.copytree(candidate / name, state_dir / name, dirs_exist_ok=True)
+        if (candidate / 'collection/ledger.json').is_file():
+            shutil.copytree(candidate / 'collection', state_dir / 'collection', dirs_exist_ok=True)
         coverage = read(candidate / 'state/coverage.json')
         if validated['mode'] == 'refresh':
             if coverage['summary']['not_attempted_request_count']:
@@ -488,17 +508,60 @@ def persist(args):
             git(state_dir, 'add', '--', 'history')
         if (state_dir / 'progress').exists():
             git(state_dir, 'add', '-A', '--', 'progress')
+        if (state_dir / 'collection').exists():
+            git(state_dir, 'add', '--', 'collection')
         staged = git(state_dir, 'diff', '--cached', '--name-only')
         if not staged:
             print('Persisted state is unchanged')
             return 0
-        if any(p.split('/')[0] not in {'state', 'evidence', 'history', 'progress'} for p in staged.splitlines()):
+        if any(p.split('/')[0] not in {'state', 'evidence', 'history', 'progress', 'collection'} for p in staged.splitlines()):
             raise ValueError('non-whitelisted staged path')
         git(state_dir, 'config', 'user.name', 'github-actions[bot]')
         git(state_dir, 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com')
         git(state_dir, 'commit', '-m', f'Keep verified regional observations recoverable\n\nSnapshot {latest["data_snapshot_id"]}; Pages deployment is recorded separately.\n\nConfidence: high\nScope-risk: narrow\nTested: Candidate integrity and project-path production build')
         git(state_dir, 'push', 'origin', 'HEAD:refs/heads/data', env=env)
     print(f'Persisted {latest["data_snapshot_id"]}; deployment remains a separate outcome')
+    return 0
+
+
+def persist_collection(args):
+    """Commit attempt accounting even when no new price snapshot can be published."""
+    candidate, state_dir = Path(args.candidate_dir), Path(args.state_dir)
+    ledger = read(candidate / 'collection/ledger.json')
+    run = read(candidate / 'collection/last-run.json')
+    if not ledger or not run:
+        print('No completed acquisition accounting to persist')
+        return 0
+    receipt = read(candidate / 'prepare-receipt.json')
+    if not receipt or current_head(state_dir) != receipt['state_head'] or git(state_dir, 'status', '--porcelain'):
+        raise ValueError('state checkout changed before collection accounting')
+    if receipt.get('source_head') != current_head(ROOT):
+        raise ValueError('source changed since collection accounting was prepared')
+    with tempfile.TemporaryDirectory(prefix='regional-prices-auth-') as temp:
+        env = auth_environment(Path(temp) / 'askpass')
+        refs = git(state_dir, 'ls-remote', '--heads', 'origin', 'refs/heads/data', env=env)
+        remote_head = refs.split()[0] if refs else None
+        if remote_head != receipt['state_head']:
+            raise ValueError('remote state changed; refusing acquisition overwrite')
+        shutil.copytree(candidate / 'collection', state_dir / 'collection', dirs_exist_ok=True)
+        shutil.copytree(candidate / 'evidence', state_dir / 'evidence', dirs_exist_ok=True)
+        if run['window']['bootstrap_remaining_count'] and (candidate / 'collection-checkpoint.json').is_file():
+            save_progress_files(candidate, state_dir, read(candidate / 'state/coverage.json'))
+        else:
+            clear_completed_progress(state_dir)
+        git(state_dir, 'add', '--', 'collection', 'evidence')
+        if (state_dir / 'progress').exists():
+            git(state_dir, 'add', '-A', '--', 'progress')
+        staged = git(state_dir, 'diff', '--cached', '--name-only')
+        if not staged:
+            return 0
+        if any(p.split('/')[0] not in {'collection', 'evidence', 'progress'} for p in staged.splitlines()):
+            raise ValueError('non-acquisition path staged')
+        git(state_dir, 'config', 'user.name', 'github-actions[bot]')
+        git(state_dir, 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com')
+        git(state_dir, 'commit', '-m', 'Keep low-frequency regional acquisition moving despite source failures\n\nPersist actual request times independently of validated prices.\n\nConfidence: high\nScope-risk: narrow\nTested: Round-robin fairness and unchanged valid-price state')
+        git(state_dir, 'push', 'origin', 'HEAD:refs/heads/data', env=env)
+    print('Persisted acquisition ledger; valid price state was not replaced')
     return 0
 
 
@@ -541,21 +604,22 @@ def main():
     p.add_argument('--state-dir', default='data-state')
     p.add_argument('--candidate-dir', default='work/candidate')
     p.add_argument('--public-dir', default='public/data')
-    p.add_argument('--budget-seconds', type=float, default=900)
-    p.add_argument('--resume', action='store_true', help='Resume the same interrupted collection; never use for a new daily run')
+    p.add_argument('--budget-seconds', type=float)
+    p.add_argument('--resume', action='store_true', help='Resume the same interrupted collection; never relabel observations as a new run')
     p.add_argument('--fx-seed', help='Recover a prior real FX snapshot; exact-byte evidence must already be in candidate/evidence')
+    p.add_argument('--full-scan', action='store_true', help='Explicitly request the complete catalog; otherwise use the durable 72h rotation policy')
     p = sub.add_parser('verify-dist')
     p.add_argument('--dist-dir', default='dist')
     p.add_argument('--candidate-dir', default='work/candidate')
     p = sub.add_parser('checkout-state')
     p.add_argument('--state-dir', default='data-state')
-    for command in ('persist', 'persist-progress'):
+    for command in ('persist', 'persist-progress', 'persist-collection'):
         p = sub.add_parser(command)
         p.add_argument('--state-dir', default='data-state')
         p.add_argument('--candidate-dir', default='work/candidate')
     args = parser.parse_args()
     try:
-        return {'prepare': prepare, 'verify-dist': verify_dist, 'checkout-state': checkout_state, 'persist': persist, 'persist-progress': persist_progress}[args.command](args)
+        return {'prepare': prepare, 'verify-dist': verify_dist, 'checkout-state': checkout_state, 'persist': persist, 'persist-progress': persist_progress, 'persist-collection': persist_collection}[args.command](args)
     except (ValueError, OSError, KeyError, TypeError) as exc:
         print(f'Publication refused: {exc}', file=sys.stderr)
         return 1

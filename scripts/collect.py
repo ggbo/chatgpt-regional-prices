@@ -7,6 +7,7 @@ import copy
 import hashlib
 import json
 import os
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -24,6 +25,32 @@ except ImportError:  # pragma: no cover - direct script execution
 
 MAX_RESPONSE_BYTES = 2 * 1024 * 1024
 RETRYABLE_HTTP = {429, 500, 502, 503, 504}
+
+
+class _RequestPacer:
+    """Reserve globally spaced request start times across collector threads."""
+
+    def __init__(self, interval_seconds: float):
+        if interval_seconds < 0:
+            raise ValueError("min_request_interval_seconds must not be negative")
+        self.interval_seconds = interval_seconds
+        self._lock = threading.Lock()
+        self._next_allowed = 0.0
+
+    def wait(self, deadline: float) -> bool:
+        if self.interval_seconds == 0:
+            return time.monotonic() < deadline
+        with self._lock:
+            now = time.monotonic()
+            scheduled = max(now, self._next_allowed)
+            if scheduled >= deadline:
+                return False
+            self._next_allowed = scheduled + self.interval_seconds
+        delay = scheduled - now
+        while delay > 0:
+            time.sleep(delay)
+            delay = scheduled - time.monotonic()
+        return time.monotonic() < deadline
 
 
 def utc_now() -> str:
@@ -64,14 +91,24 @@ def _request_target(
     plans: list[dict[str, Any]],
     deadline: float,
     opener: Callable[..., Any],
+    pacer: _RequestPacer,
 ) -> dict[str, Any]:
-    observed_at = utc_now()
+    observed_at: str | None = None
     url = f"{SOURCE_ROOT}/{target['config_id']}"
     headers = {"Accept": "application/json", "User-Agent": "chatgpt-regional-prices/1.0"}
     for attempt in range(3):
         remaining = deadline - time.monotonic()
         if remaining <= 0:
-            return {"kind": "not_attempted", "reason": "collection budget exhausted", "observed_at": None}
+            kind = "not_attempted" if attempt == 0 else "request_failed"
+            return {"kind": kind, "reason": "collection budget exhausted", "observed_at": observed_at}
+        if not pacer.wait(deadline):
+            kind = "not_attempted" if attempt == 0 else "request_failed"
+            return {"kind": kind, "reason": "request interval exceeds remaining collection budget", "observed_at": observed_at}
+        observed_at = utc_now()
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            kind = "not_attempted" if attempt == 0 else "request_failed"
+            return {"kind": kind, "reason": "collection budget exhausted", "observed_at": observed_at if attempt else None}
         request = urllib.request.Request(url, headers=headers)
         try:
             with opener(request, timeout=min(15.0, remaining)) as response:
@@ -294,6 +331,7 @@ def collect(
     opener: Callable[..., Any] | None = None,
     now: Callable[[], str] | None = None,
     checkpoint_max_age_seconds: float = 72 * 3600,
+    min_request_interval_seconds: float = 0,
 ) -> dict[str, Any]:
     """Collect the entire target matrix within a hard scheduling budget."""
 
@@ -302,6 +340,7 @@ def collect(
     started_at = (now or utc_now)()
     accepted = accepted_change_hashes or set()
     opener = opener or urllib.request.urlopen
+    pacer = _RequestPacer(min_request_interval_seconds)
     started = time.monotonic()
     deadline = started + max(0.0, budget_seconds)
     evidence_path = Path(evidence_dir)
@@ -343,7 +382,14 @@ def collect(
                     "attempts": attempts,
                 })
 
-    pending = [item for item in regions if item["target_id"] not in attempts]
+    pending = [
+        item for item in regions
+        if item["target_id"] not in attempts
+        or (
+            attempts[item["target_id"]].get("kind") == "not_attempted"
+            and attempts[item["target_id"]].get("observed_at") is None
+        )
+    ]
     probes = sorted((item for item in pending if item["target_id"] in {"US", "PH"}), key=lambda item: item["target_id"] == "PH")
     remaining_targets = sorted((item for item in pending if item["target_id"] not in {"US", "PH"}), key=lambda item: item["target_id"])
 
@@ -362,7 +408,7 @@ def collect(
     with ThreadPoolExecutor(max_workers=concurrency) as executor:
         def run_batch(targets: list[dict[str, Any]]) -> None:
             futures = {
-                executor.submit(_request_target, target, plans, deadline, opener): target
+                executor.submit(_request_target, target, plans, deadline, opener, pacer): target
                 for target in targets if time.monotonic() < deadline
             }
             for future in as_completed(futures):
@@ -468,6 +514,8 @@ def main() -> int:
     parser.add_argument("--checkpoint", default="work/collector-checkpoint.json")
     parser.add_argument("--output", default="work/local-scan.json")
     parser.add_argument("--budget-seconds", type=float, default=900)
+    parser.add_argument("--concurrency", type=int, default=2)
+    parser.add_argument("--min-request-interval-seconds", type=float, default=0)
     args = parser.parse_args()
     regions_doc = json.loads(Path(args.regions).read_text(encoding="utf-8"))
     plans_doc = json.loads(Path(args.plans).read_text(encoding="utf-8"))
@@ -476,7 +524,8 @@ def main() -> int:
         previous = json.loads(Path(args.previous).read_text(encoding="utf-8")).get("quotes", [])
     result = collect(
         regions_doc["regions"], plans_doc["plans"], previous, args.evidence_dir,
-        budget_seconds=args.budget_seconds, concurrency=2, checkpoint_path=args.checkpoint,
+        budget_seconds=args.budget_seconds, concurrency=args.concurrency, checkpoint_path=args.checkpoint,
+        min_request_interval_seconds=args.min_request_interval_seconds,
     )
     _atomic_json(Path(args.output), result)
     print(json.dumps(result["summary"], ensure_ascii=False))

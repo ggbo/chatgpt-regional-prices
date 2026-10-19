@@ -1,0 +1,2054 @@
+{
+  "schema_version": "1.0.0",
+  "environment": "local Windows workspace",
+  "auth_used": false,
+  "concurrency": 1,
+  "min_request_interval_seconds": 2,
+  "source_status": {
+    "started_at": "2026-10-19T12:45:58.166734Z",
+    "completed_at": "2026-10-19T13:12:16.589520Z",
+    "all_source_failed": false,
+    "structural_failure": false,
+    "elapsed_seconds": 1578.422
+  },
+  "summary": {
+    "target_count": 252,
+    "country_target_count": 250,
+    "auxiliary_target_count": 2,
+    "expected_request_count": 252,
+    "attempted_request_count": 252,
+    "not_attempted_request_count": 0,
+    "successful_response_count": 63,
+    "expected_cell_count": 1260,
+    "status_counts": {
+      "access_blocked": 890,
+      "valid_quote": 315,
+      "stale_quote": 20,
+      "request_failed": 35
+    },
+    "current_quote_cell_count": 315,
+    "historical_quote_cell_count": 20,
+    "complete_five_plan_target_count": 63
+  },
+  "quote_record_count": 335,
+  "change_review_count": 0,
+  "result_sha256": "df7c7e0ce4bc3428cebe0e6e0dff660d9cb727e5023834626161c281ae20f0fd",
+  "targets": [
+    {
+      "target_id": "AD",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:46:05.502428Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:46:14.293473Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AF",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:46:19.278038Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "be5f858ed7da69dc2253f641064a9e00859adbcbadc81eb90a14542538417ee2"
+    },
+    {
+      "target_id": "AG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:46:25.124659Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:46:31.026694Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AL",
+      "attempt_status": "request_failed",
+      "observed_at": "2026-10-19T12:47:02.884081Z",
+      "http_status": null,
+      "reason": "The read operation timed out",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AM",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:47:22.308312Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "6f715561b0d12d598f55bdb6f17065ed3e3a3ea2d6a0f578fe6b087d0f41fb7a"
+    },
+    {
+      "target_id": "AO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:47:24.370707Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AQ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:47:26.538068Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AR",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:47:33.072285Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "2845b59bd8e05a399c1d6414e0a198a971bd8c56713754fffd58931781dfe2b1"
+    },
+    {
+      "target_id": "AS",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:47:39.613060Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "2626b3b5e99814808cf2977b688d4958ad1aeb00d05e28ff9a34e75542484b5a"
+    },
+    {
+      "target_id": "AT",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:47:43.689371Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AU",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:47:49.923732Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:47:55.564179Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AX",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:01.484923Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "AZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:06.504786Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:11.932611Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BB",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:13.928553Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BD",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:19.068404Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:21.081202Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BF",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:48:25.457073Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "a18f1257b1c5ac195f72ba66173cb844c448320cf7c091acb8cb9270f8aae5a0"
+    },
+    {
+      "target_id": "BG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:30.710461Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BH",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:32.720289Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:37.410958Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BJ",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:48:43.459918Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "665ad9b973122664f972fdb5fc0388c52574eb122a148cfae8e4c2e6465aca4d"
+    },
+    {
+      "target_id": "BL",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:49.043838Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:48:54.291254Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BN",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:48:56.292840Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "3c567e66b80765b9194133fc89d2d7901c1b9a010383532589714bfd9ea40406"
+    },
+    {
+      "target_id": "BO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:49:01.302809Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BQ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:49:08.956792Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BR",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:49:14.613834Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "460d3dcd6cfcb26b125572ae88e33c8c82db1fc8694bb6a39e6527ba68614ce7"
+    },
+    {
+      "target_id": "BS",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:49:19.411228Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "a9f02a9ffb852a26fb52c708d331bbe26f63eeecc5995b2f895f8071d68223b6"
+    },
+    {
+      "target_id": "BT",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:49:41.300283Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "c7b4c82d4536399fff5805de23db3d0ea45f156f7643389d1430331d229bbf70"
+    },
+    {
+      "target_id": "BV",
+      "attempt_status": "request_failed",
+      "observed_at": "2026-10-19T12:49:43.297071Z",
+      "http_status": 404,
+      "reason": "configuration not found",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:49:50.823618Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:01.879975Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "BZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:07.781465Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CA",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:50:13.370682Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "0560f238b5b13808d8b93e8ff32f8b0cf672e66593c3a25f241d5ae95954c27b"
+    },
+    {
+      "target_id": "CC",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:19.122490Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CD",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:25.358101Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CF",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:31.154473Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:36.029761Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CH",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:50:38.021693Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "6cff32ec8b272b5e9d500575649f58f51713b9c60b1df85d88b9407c6977cb19"
+    },
+    {
+      "target_id": "CI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:43.162241Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:49.074563Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CL",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:51.077618Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:50:55.472992Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CN",
+      "attempt_status": "request_failed",
+      "observed_at": "2026-10-19T12:51:16.929260Z",
+      "http_status": 404,
+      "reason": "configuration not found",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:51:19.479215Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:51:25.464393Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CU",
+      "attempt_status": "request_failed",
+      "observed_at": "2026-10-19T12:51:30.385999Z",
+      "http_status": 404,
+      "reason": "configuration not found",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CV",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:51:37.104917Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "220db47ec4ceecfdbd7939b792d189266fa17fedf6b5d44f284e497135701fb8"
+    },
+    {
+      "target_id": "CW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:51:43.066268Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CX",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:51:45.065705Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:51:49.912820Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "CZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:51:55.441294Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "DE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:52:01.546968Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "DJ",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:52:14.611735Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "10c7924a1f95af98dd7d6c7207a075db7157d3454785f0efc72bcc3c1d2eb864"
+    },
+    {
+      "target_id": "DK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:52:35.519639Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "DM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:52:41.290501Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "DO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:52:45.917957Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "DZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:52:51.677749Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "EC",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:52:57.044266Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "EE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:02.904524Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "EG",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:53:04.906475Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "06c48c08281171db0bcc9ff6bf4e83af16f0776f6b52137e3845f2b28454b482"
+    },
+    {
+      "target_id": "EH",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:11.539929Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "ER",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:16.453405Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "ES",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:21.313857Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "ET",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:23.309752Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "EU",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:28.723073Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "FI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:34.586330Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "FJ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:40.656940Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "FK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:53:46.340984Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "FM",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:53:58.931358Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "9cce9f347a11aad242d8492bf94f0370da5c5463980129b3bf026a0bed935952"
+    },
+    {
+      "target_id": "FO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:54:15.675828Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "FR",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:54:37.531015Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "877de99b467d1dc7dc454b6b5a9b7a9dcb28f1da9bdfc8416440226ed91686d5"
+    },
+    {
+      "target_id": "GA",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:54:40.421576Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "ed990ff195af161c602ae0fed841add297ccab2d8d6533600c4a230bdd98fb2f"
+    },
+    {
+      "target_id": "GB",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:54:46.674791Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GD",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:54:52.586377Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "47f6bb7a351cbe4bb9e45c548c8242fb9c3eae158b2ba0a8213e106d81f503ae"
+    },
+    {
+      "target_id": "GE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:54:58.373610Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GF",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:55:04.725065Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:55:10.062719Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GH",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:55:12.058617Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:55:16.682418Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GL",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:55:21.750847Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GM",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:55:33.924085Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "4122fcb14e6cba98e4b56994486b372308812a5a1d485ff54772ca95b3db5cdc"
+    },
+    {
+      "target_id": "GN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:55:40.345923Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GP",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:55:45.404630Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "e0241c703d20bec2066dd42a4b17986b8ee1d64e1fbe6ede544054010fb77d12"
+    },
+    {
+      "target_id": "GQ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:55:50.803929Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GR",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:56:14.089025Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "2d7f08abfab65cbe8bec9830aa85d8c3c9ac147a80a04ce46728cfbb1b369abd"
+    },
+    {
+      "target_id": "GS",
+      "attempt_status": "request_failed",
+      "observed_at": "2026-10-19T12:56:19.328718Z",
+      "http_status": 404,
+      "reason": "configuration not found",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GT",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:56:25.423555Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "0505402e73fcb392688fa5d420df13334d0ecd94e11ae4a3aebb1eb27f4b4890"
+    },
+    {
+      "target_id": "GU",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:56:31.822880Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "GW",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:56:33.824661Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "17dcfb473ae6bc8960c2050d419b202df8d1974b0a2ac9e0e3b6aab30cf227c4"
+    },
+    {
+      "target_id": "GY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:56:39.287903Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "HK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:56:45.382375Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "HM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:56:47.383482Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "HN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:56:53.489265Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "HR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:56:57.754265Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "HT",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:57:04.178997Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "HU",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:57:10.604872Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "96495e613ff85c268aab1281c8896c631647497688b3bdc537de5bbddf6458e1"
+    },
+    {
+      "target_id": "ID",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:57:16.401648Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "e6ce559278a0291b4dfaab9fd9abd06e96de57f5803587224c217a60352deb46"
+    },
+    {
+      "target_id": "IE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:57:34.034822Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "IL",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:57:39.519853Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "IM",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:57:44.727208Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "ba8e49d48351283be758593c7dc0d9c25c213e5c93f9ea0eb7258839f3bbbf56"
+    },
+    {
+      "target_id": "IN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:58:02.607961Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "IO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:58:04.638251Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "IQ",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:58:17.223157Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "5dcbf3f59edb8bfe9358ff609948ab8a5b4ccfdeab666f865ec1d65c8097bd51"
+    },
+    {
+      "target_id": "IR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:58:22.057332Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "IS",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:58:27.649575Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "471f3fd944a9c0726a5c7f3930c317c9940af66422933755f6a5dfe73f936c21"
+    },
+    {
+      "target_id": "IT",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:58:36.140345Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "7357271bc444da50061626e97b9fa07dfd3946e7135b07eb8d813f22f9d541c1"
+    },
+    {
+      "target_id": "JE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:58:39.881677Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "JM",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:58:41.892591Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "032b56364b7b847c3d2dd61e5f05bed2f5b821d0883737bcc610782fc18d4a79"
+    },
+    {
+      "target_id": "JO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:58:46.668223Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "JP",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:58:52.165779Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:58:57.889931Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:00.840964Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KH",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T12:59:04.191907Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "5a5eae0d0d473bd57c2bc4f8754f97530fc8e2cd345808ecaa89ecbb656ce902"
+    },
+    {
+      "target_id": "KI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:10.758901Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:16.318576Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:22.573815Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KP",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:28.565070Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:34.145709Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:47.061156Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:52.820776Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "KZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:59:58.053794Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:03.089594Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LB",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:05.096214Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LC",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:09.742471Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:11.751078Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:22.392360Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:28.485444Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LS",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:34.873114Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LT",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:00:41.488077Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "dc64ee476a312fca0c698b24c6b1cb3df832262a2d2d5961d211933a0762ca20"
+    },
+    {
+      "target_id": "LU",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:00:46.314193Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "b9a2ca74cd36f292d8d216846fc4f86363257452678f69569aea4d6c836d5709"
+    },
+    {
+      "target_id": "LV",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:52.344960Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "LY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:00:57.921632Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MA",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:01:04.310841Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "9a6e12c731120de855dc7a2842e0bc1407dfbb5da06115612fd33b40b29f0789"
+    },
+    {
+      "target_id": "MC",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:01:09.725369Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MD",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:01:11.731048Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "a9506ff3cbdcdf7ab11b39a6517825e31f392807ef56978a3946b15339b742cd"
+    },
+    {
+      "target_id": "ME",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:01:32.566935Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MF",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:01:46.108852Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "e2f346c6521e7a1ef333e10eef031fc134863e85f752c9e3da5cc6227246c814"
+    },
+    {
+      "target_id": "MG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:01:48.110989Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MH",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:01:52.237986Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "dd528b194472ab7963db5d44d55bcd097bc61ff5d33cb8649966d3730015d0db"
+    },
+    {
+      "target_id": "MK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:01:58.239637Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "ML",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:02:01.953773Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "84197f499388cffc90e060f5ceb0307b11c626505723f39ff273ad6e62b54cf0"
+    },
+    {
+      "target_id": "MM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:02:10.918559Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:02:32.471897Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:02:34.474510Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MP",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:02:40.404880Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MQ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:02:46.616720Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:02:52.413703Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MS",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:02:58.204123Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MT",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:03:05.091162Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MU",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:03:10.212860Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MV",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:03:16.628570Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "7e251170e6fe8b37d7792945e4e2d31516947baddf417e927a57e0dcad4ee239"
+    },
+    {
+      "target_id": "MW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:03:22.337337Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MX",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:03:28.420783Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "050e9809bc9f6ee242ce9871d18013b4cfc2da5e395cd83e8af3e9f137bab052"
+    },
+    {
+      "target_id": "MY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:03:50.415363Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "MZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:03:52.678266Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:00.857773Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NC",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:03.684470Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:05.684380Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NF",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:10.516259Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:18.332644Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NI",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:21.389287Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NL",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:04:23.893551Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "6d7502fe766e1151992c284dc02458633b41ba0eabfe800de88efb4a3d3cd068"
+    },
+    {
+      "target_id": "NO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:28.519455Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NP",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:34.653535Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "NR",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:04:47.020442Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "d9c55743b02eb53bcef4d22c6be923585e3ca826ba0b0153086b2d8ecf0065a5"
+    },
+    {
+      "target_id": "NU",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:04:52.617859Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "3dcde17d0ed0061f31a6f2655ef04edc80cad3bdfbb3effa2e3519295ddec8a9"
+    },
+    {
+      "target_id": "NZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:04:58.123595Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "OM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:00.127502Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:04.437682Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PE",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:05:10.249931Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "cace439029590bee108554ff8247e1fca185c1dd58580a34b5c394fe2a3d85d8"
+    },
+    {
+      "target_id": "PF",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:15.807568Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PG",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:05:17.805843Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "cc4e81edd12a81d7a632e69f6eabf86b1134231198ebf157c0deb6c05bb5777f"
+    },
+    {
+      "target_id": "PH",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:46:00.225307Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:22.399344Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PL",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:24.397861Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:28.625613Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:34.648014Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:40.275625Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PS",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:05:42.423844Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "dded86e78287a9444e6e099ec1d55b3425a1e40091a2ca53629c212fadc5e24e"
+    },
+    {
+      "target_id": "PT",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:46.639949Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:05:52.898483Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "PY",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:06:05.574064Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "ccc774bc554cea8aa4e71f85530046a2d5694cd94ecd4ab133216eabefb2a605"
+    },
+    {
+      "target_id": "QA",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:06:10.437142Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "d630ea040d70be3f807cb8472f9f73556b4f914507b3fb5d77dbc442badfa1ef"
+    },
+    {
+      "target_id": "RE",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:06:16.788262Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "dc71834887c1c594b7c9a040d48795b25734bfbbf7cc6737ac2ff3c7961b00c8"
+    },
+    {
+      "target_id": "RO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:06:24.157103Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "RS",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:06:26.158956Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "RU",
+      "attempt_status": "request_failed",
+      "observed_at": "2026-10-19T13:06:31.382765Z",
+      "http_status": 404,
+      "reason": "configuration not found",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "RW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:06:52.823153Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:06:55.880248Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SB",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:01.275990Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SC",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:07.764868Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SD",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:07:20.642501Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "d22964669660c4b3b5b3fc436a88c290626137814474e78c54f09621ad9e3560"
+    },
+    {
+      "target_id": "SE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:25.530031Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:31.571547Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SH",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:37.288985Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SI",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:07:39.294688Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "f2649de711cddd3f52029f2492985f5b288459f3dc990933749b3e96194fd10b"
+    },
+    {
+      "target_id": "SJ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:43.860258Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:50.072960Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SL",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:07:56.179704Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:02.713065Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:07.505666Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:15.377195Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:21.069874Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SS",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:25.577709Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "ST",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:31.409269Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SV",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:33.412766Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SX",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:38.730853Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:40.728766Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "SZ",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:08:44.892238Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "52adb0d0004f532c7d80e8954fd207617d7bd0f8f81e44aa7e6e79f2b3806f8d"
+    },
+    {
+      "target_id": "TC",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:08:49.941562Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "edb7458a9ecb4cb81e2126ea8a4aa1a9f5fdb240349a68c068b35d02bfa4b720"
+    },
+    {
+      "target_id": "TD",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:08:55.508384Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TF",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:09:01.473490Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "720a45f4158fb29adeed2ef5c895d7e9aeeec488628a425b210d12faf40f4ee3"
+    },
+    {
+      "target_id": "TG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:09:08.780176Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TH",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:09:13.484646Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "59b40f57108ab44aa6949ac73996bd8c01b4cac77e6cd22906ec209d9b973a33"
+    },
+    {
+      "target_id": "TJ",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:09:19.471263Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "e11961061de477fbe0a1f82eb9bd224f0d2e688add96fc77bfce7047c967b371"
+    },
+    {
+      "target_id": "TK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:09:25.450097Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TL",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:09:32.646283Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:09:37.138625Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TN",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:09:39.139794Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "9cdae7f5cbcc21fb7aea698c4478e40036b8771e692c29ab7d7c2ffbc3ec0f7b"
+    },
+    {
+      "target_id": "TO",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:09:43.869942Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TR",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:09:49.716101Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TT",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:09:55.075116Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TV",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:00.157849Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:05.999882Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "TZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:08.784963Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "UA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:15.055199Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "UG",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:27.704627Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "UM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:29.697102Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "US",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T12:45:58.169241Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "US2",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:35.913170Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "UY",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:40.563509Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "UZ",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:45.378088Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "VA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:10:51.251127Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "VC",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:11:09.263627Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "d2fbe326a22b31e3e93516625645f17ab17f5e30458b954321218698fe77673d"
+    },
+    {
+      "target_id": "VE",
+      "attempt_status": "request_failed",
+      "observed_at": "2026-10-19T13:11:11.261112Z",
+      "http_status": 404,
+      "reason": "configuration not found",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "VG",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:11:16.551039Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "9015040bd00d43cab9462a72fcdaf7aae7a1224457b3a34f52c39afa58f7b9a3"
+    },
+    {
+      "target_id": "VI",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:11:21.746457Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "c1635db6ed05044472ca14ec3c21146fe5f0e57f77a8e8c3c30b89c2300d3f2d"
+    },
+    {
+      "target_id": "VN",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:11:34.156693Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "VU",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:11:36.161146Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "9a519b1257a46b7a9177a012d461735cf57ad7517ebf5ef5316838fbca74cd10"
+    },
+    {
+      "target_id": "WF",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:11:40.867147Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "WS",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:11:46.051855Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "XK",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:11:51.603834Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "YE",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:11:53.780003Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "YT",
+      "attempt_status": "success",
+      "observed_at": "2026-10-19T13:11:58.362138Z",
+      "http_status": 200,
+      "reason": null,
+      "evidence_sha256": "a790c1dc9d999c860c9ac937cd6f292e24bb88f8d27b89afbf507e580b4011df"
+    },
+    {
+      "target_id": "ZA",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:12:04.446528Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "ZM",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:12:09.373591Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    },
+    {
+      "target_id": "ZW",
+      "attempt_status": "access_blocked",
+      "observed_at": "2026-10-19T13:12:11.368354Z",
+      "http_status": 403,
+      "reason": "HTTP 403",
+      "evidence_sha256": null
+    }
+  ]
+}

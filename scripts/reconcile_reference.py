@@ -309,7 +309,10 @@ def reconcile(
         ): cell
         for cell in cells
     }
-    entries = baseline.get("entries", baseline.get("identities", []))
+    # Public comparison follows the site's official web-only product scope.
+    # The dated source baseline can retain other channel identities for audit.
+    entries = [entry for entry in baseline.get("entries", baseline.get("identities", []))
+               if entry.get("channel") == "web"]
     comparisons: list[dict[str, Any]] = []
     reference_web_keys: set[tuple[Any, ...]] = set()
 
