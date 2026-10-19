@@ -453,6 +453,44 @@ class RetrySchedulingTests(unittest.TestCase):
         )
         self.assertEqual(selection["initial_fill_target_ids"], ["R000"])
 
+    def test_priority_retry_precedes_older_ordinary_gap(self):
+        targets = regions(3)
+        policy = {**POLICY, "priority_target_ids": ["R002", "R000"]}
+        ledger = recorded(targets, "access_blocked")
+        ledger["targets"]["R000"]["last_attempt_at"] = at(minutes=20)
+        ledger["targets"]["R001"]["last_attempt_at"] = at(minutes=-20)
+        ledger["targets"]["R002"]["last_attempt_at"] = at(minutes=25)
+        selection = select_targets(targets, PLANS, ledger, policy, at(hours=1), fill_missing=True)
+        self.assertEqual(
+            [item["target_id"] for item in selection["targets"]],
+            ["R002", "R000", "R001"],
+        )
+
+    def test_successful_priority_target_does_not_reenter_fill(self):
+        targets = regions(2)
+        policy = {**POLICY, "priority_target_ids": ["R000"]}
+        ledger = recorded(targets, "access_blocked")
+        recovered = {"ledger": ledger, "targets": targets[:1], "bootstrap": False, "mode": "retry"}
+        ledger, _ = record_attempts(
+            recovered, cells_for(targets[:1], at(minutes=1), "valid_quote"), policy,
+            at(minutes=1), at(minutes=1), "priority-success",
+        )
+        selection = select_targets(targets, PLANS, ledger, policy, at(minutes=2), fill_missing=True)
+        self.assertEqual([item["target_id"] for item in selection["targets"]], ["R001"])
+        self.assertNotIn("R000", selection["initial_fill_target_ids"])
+
+    def test_nonpriority_retry_order_remains_oldest_then_target_id(self):
+        targets = regions(4)
+        policy = {**POLICY, "priority_target_ids": ["R003"]}
+        ledger = recorded(targets, "access_blocked")
+        for key, minute in (("R000", 10), ("R001", 5), ("R002", 5), ("R003", 20)):
+            ledger["targets"][key]["last_attempt_at"] = at(minutes=minute)
+        selection = select_targets(targets, PLANS, ledger, policy, at(hours=1), retry_only=True)
+        self.assertEqual(
+            [item["target_id"] for item in selection["targets"]],
+            ["R003", "R001", "R002", "R000"],
+        )
+
     def test_imported_fill_count_must_be_nonnegative_integer(self):
         targets = regions(1)
         ledger = recorded(targets, "access_blocked")

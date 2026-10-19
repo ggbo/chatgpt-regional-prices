@@ -210,13 +210,21 @@ def select_targets(
     bootstrap = bool(pending)
     retry_interval = policy.get('retry_interval_minutes', 30)
     first = datetime.min.replace(tzinfo=timezone.utc)
+    priority_rank = {key: index for index, key in enumerate(policy.get('priority_target_ids', []))}
+
+    def retry_sort_key(region):
+        key = region['target_id']
+        entry = ledger['targets'][key]
+        return (
+            priority_rank.get(key, len(priority_rank)),
+            entry.get('last_attempt_at') is not None,
+            parse_time(entry.get('last_attempt_at')) or first,
+            key,
+        )
+
     due = sorted(
         (r for r in regions if _retry_due(ledger['targets'][r['target_id']], now, retry_interval)),
-        key=lambda r: (
-            ledger['targets'][r['target_id']].get('last_attempt_at') is not None,
-            parse_time(ledger['targets'][r['target_id']].get('last_attempt_at')) or first,
-            r['target_id'],
-        ),
+        key=retry_sort_key,
     )
     size = max(1, math.ceil(len(regions) * policy['schedule_interval_hours'] / policy['target_cycle_hours']))
     if force_full:
@@ -253,11 +261,7 @@ def select_targets(
         ) if pending_retry else []
         retry_union = sorted(
             {r['target_id']: r for r in pending_retry + timed_retry}.values(),
-            key=lambda r: (
-                ledger['targets'][r['target_id']].get('last_attempt_at') is not None,
-                parse_time(ledger['targets'][r['target_id']].get('last_attempt_at')) or first,
-                r['target_id'],
-            ),
+            key=retry_sort_key,
         )
         selected = at_risk_healthy + retry_union
         ledger['initial_fill']['active'] = bool(pending_retry)
