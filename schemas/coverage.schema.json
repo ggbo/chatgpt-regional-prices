@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Complete catalog target × plan result matrix",
+  "type": "object",
+  "required": ["schema_version", "data_snapshot_id", "catalog_version", "summary", "cells"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "summary": {"type": "object", "required": ["target_count", "expected_request_count", "attempted_request_count", "not_attempted_request_count", "expected_cell_count", "status_counts"]},
+    "cells": {"type": "array", "items": {"type": "object", "required": ["cell_id", "target_id", "config_id", "plan_id", "status", "attempt_status", "quote_record_id", "last_attempt_at", "last_success_at"], "properties": {
+      "status": {"enum": ["valid_quote", "stale_quote", "plan_field_missing", "request_failed", "access_blocked", "country_mismatch", "amount_invalid", "period_unverified", "unverified_range", "not_attempted"]},
+      "attempt_status": {"enum": ["valid_quote", "plan_field_missing", "request_failed", "access_blocked", "country_mismatch", "amount_invalid", "period_unverified", "unverified_range", "not_attempted"]},
+      "quote_record_id": {"type": ["string", "null"]}
+    }}}
+  }
+}
