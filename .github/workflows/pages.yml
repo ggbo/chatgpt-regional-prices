@@ -22,6 +22,7 @@ permissions:
 concurrency:
   group: chatgpt-regional-prices-production
   cancel-in-progress: false
+  queue: max
 
 jobs:
   prepare:
