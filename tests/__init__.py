@@ -1,1 +1,0 @@
-"""Collector regression tests."""

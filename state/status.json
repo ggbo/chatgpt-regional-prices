@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "data_snapshot_id": "6d4d50b8d6d29afd95a98456",
+  "result": "validated",
+  "last_run_at": "2026-10-19T11:57:07Z",
+  "source_status": {
+    "started_at": "2026-10-19T11:57:07.469075Z",
+    "completed_at": "2026-10-19T11:57:07.475461Z",
+    "all_source_failed": false,
+    "structural_failure": false,
+    "elapsed_seconds": 0
+  },
+  "coverage": {
+    "target_count": 252,
+    "country_target_count": 250,
+    "auxiliary_target_count": 2,
+    "expected_request_count": 252,
+    "attempted_request_count": 252,
+    "not_attempted_request_count": 0,
+    "successful_response_count": 7,
+    "expected_cell_count": 1260,
+    "status_counts": {
+      "access_blocked": 1225,
+      "valid_quote": 35
+    },
+    "current_quote_cell_count": 35,
+    "historical_quote_cell_count": 0,
+    "complete_five_plan_target_count": 7
+  },
+  "deployment": {
+    "state": "not_deployed",
+    "note": "Consult the Pages deployment run and live manifest for the deployed version."
+  },
+  "observation_environment": "local Windows workspace",
+  "latest_refresh_failure": {
+    "environment": "GitHub Actions",
+    "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39248950729",
+    "completed_at": "2026-10-19T12:02:28Z",
+    "attempted_request_count": 252,
+    "successful_response_count": 0,
+    "reason": "all regional requests returned HTTP 403"
+  }
+}
