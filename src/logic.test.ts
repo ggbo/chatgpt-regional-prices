@@ -33,9 +33,9 @@ function bundle(quotes: Quote[], regions = quotes.map((item) => region(item.targ
 
 const filters = (overrides: Partial<Filters> = {}): Filters => ({ planId: 'plus', currency: 'CNY', sort: 'price_asc', tax: 'inclusive', view: 'all', search: '', ...overrides })
 
-test('default view is CNY and strictly inclusive', () => {
+test('default view is CNY with all taxes preferring inclusive amounts', () => {
   assert.equal(DEFAULT_FILTERS.currency, 'CNY')
-  assert.equal(DEFAULT_FILTERS.tax, 'inclusive')
+  assert.equal(DEFAULT_FILTERS.tax, 'all')
 })
 
 test('decimal sorting preserves precision and always puts null last', () => {

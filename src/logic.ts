@@ -1,7 +1,7 @@
 import type { CoverageCell, DataBundle, DisplayRow, Filters, FxDocument, PriceVariant, Quote, Region, SelectedPriceKind, TaxStatus } from './types'
 
 export const FRESH_MS = 72 * 60 * 60 * 1000
-export const DEFAULT_FILTERS: Filters = { planId: 'plus', currency: 'CNY', sort: 'price_asc', tax: 'inclusive', view: 'current', search: '' }
+export const DEFAULT_FILTERS: Filters = { planId: 'plus', currency: 'CNY', sort: 'price_asc', tax: 'all', view: 'current', search: '' }
 
 export function compareDecimal(a: string, b: string): number {
   const normalize = (value: string) => {
