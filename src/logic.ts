@@ -1,6 +1,7 @@
 import type { CoverageCell, DataBundle, DisplayRow, Filters, Quote, Region } from './types'
 
 export const FRESH_MS = 72 * 60 * 60 * 1000
+export const DEFAULT_FILTERS: Filters = { planId: 'plus', currency: 'CNY', sort: 'price_asc', tax: 'inclusive', view: 'current', search: '' }
 
 export function compareDecimal(a: string, b: string): number {
   const normalize = (value: string) => {
@@ -25,12 +26,14 @@ export function buildRows(bundle: DataBundle, filters: Filters, nowMs = Date.now
   const cells = new Map(bundle.coverage.cells.filter((c) => c.plan_id === filters.planId && c.channel === 'web').map((c) => [c.target_id, c]))
   const query = filters.search.trim().toLocaleLowerCase()
   let rows = bundle.regions.regions.map((region): DisplayRow => {
-    const quote = quotes.get(region.target_id) ?? null
+    const availableQuote = quotes.get(region.target_id) ?? null
+    const excludedTax = filters.tax !== 'all' && availableQuote?.display_price.tax !== filters.tax ? availableQuote?.display_price.tax ?? null : null
+    const quote = excludedTax ? null : availableQuote
     const cell = cells.get(region.target_id) ?? null
     const fresh = quote ? isFresh(quote, cell, nowMs) : false
-    return { region, quote, cell, freshness: fresh ? 'fresh' : quote ? 'historical' : 'missing', estimate: quote?.estimates[filters.currency]?.amount ?? null }
+    return { region, quote, cell, freshness: fresh ? 'fresh' : quote ? 'historical' : 'missing', estimate: quote?.estimates[filters.currency]?.amount ?? null, excludedTax }
   })
-  if (query) rows = rows.filter(({ region, quote }) => [region.name_zh, region.name_en, region.country_code, region.config_id, quote?.currency].some((value) => value?.toLocaleLowerCase().includes(query)))
+  if (query) rows = rows.filter(({ region }) => [region.name_zh, region.name_en, region.country_code, region.config_id, quotes.get(region.target_id)?.currency].some((value) => value?.toLocaleLowerCase().includes(query)))
   if (!query) {
     if (filters.view === 'current') rows = rows.filter((row) => row.freshness === 'fresh')
     if (filters.view === 'history') rows = rows.filter((row) => row.freshness === 'historical')
@@ -38,7 +41,6 @@ export function buildRows(bundle: DataBundle, filters: Filters, nowMs = Date.now
   } else if (filters.view !== 'current' && filters.view !== 'all') {
     rows = rows.filter((row) => row.freshness === (filters.view === 'history' ? 'historical' : 'missing'))
   }
-  if (filters.tax !== 'all') rows = rows.filter((row) => row.quote?.display_price.tax === filters.tax)
   return sortRows(rows, filters.sort)
 }
 
@@ -62,8 +64,8 @@ export function eligibleFreshRows(rows: DisplayRow[]): DisplayRow[] {
 
 export function rowsToCsv(rows: DisplayRow[], currency: 'CNY' | 'USD'): string {
   const escape = (value: unknown) => `"${String(value ?? '').replaceAll('"', '""')}"`
-  const header = ['地区代码', '中文名', '英文名', '套餐', '原币金额', '币种', `${currency}估算`, '税状态', '数据状态', '最近核实', '官方来源']
-  const lines = rows.map((row) => [row.region.country_code ?? row.region.target_id, row.region.name_zh, row.region.name_en, row.quote?.plan_id, row.quote?.display_price.amount, row.quote?.currency, row.estimate, row.quote?.display_price.tax, row.freshness, row.quote?.display_price.last_success_at, row.quote?.source.url].map(escape).join(','))
+  const header = ['地区代码', '中文名', '英文名', '渠道', '套餐', '原币金额', '币种', `${currency}估算`, '税状态', '数据状态', '最近核实', '官方来源']
+  const lines = rows.map((row) => [row.region.country_code ?? row.region.target_id, row.region.name_zh, row.region.name_en, '官网直购', row.quote?.plan_id, row.quote?.display_price.amount, row.quote?.currency, row.estimate, row.quote?.display_price.tax, row.freshness, row.quote?.display_price.last_success_at, row.quote?.source.url].map(escape).join(','))
   return ['\uFEFF' + header.map(escape).join(','), ...lines].join('\r\n')
 }
 

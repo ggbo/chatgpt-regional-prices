@@ -21,10 +21,16 @@ export interface CoverageDocument { schema_version: string; data_snapshot_id: st
 export interface FxDocument { schema_version: string; fx_snapshot_id: string | null; generated_at: string; fetched_at: string | null; base: 'USD'; stale: boolean; source: unknown; rates: Array<{ quote: string; rate: string; rate_date: string; providers: unknown[] }> }
 export interface ReferenceComparison { schema_version?: string; data_snapshot_id?: string; [key: string]: unknown }
 export interface Manifest { schema_version: string; data_snapshot_id: string; generated_at: string; catalog_version: string; fx_snapshot_id: string | null; entrypoints: { latest: string; coverage: string; fx: string; reference_comparison: string; regions: string; plans: string; status?: string; [key: string]: string | undefined }; files: Array<{ path: string; sha256: string; bytes: number; media_type: string }> }
-export interface RunStatus { schema_version: string; data_snapshot_id: string; result?: string; latest_refresh_failure?: { environment: string; run_url: string; completed_at: string; attempted_request_count: number; successful_response_count: number; reason: string }; [key: string]: unknown }
+export interface CollectionWindow {
+  window_hours: number; target_count: number; attempted_within_window_count: number; successful_within_window_count: number
+  overdue_target_count: number; bootstrap_remaining_count: number; bootstrap_completed_at: string | null
+  attempt_window_complete: boolean; successful_price_window_complete: boolean
+}
+export interface CollectionPolicy { policy_revision: string; window_hours: number; target_cycle_hours: number; schedule_interval_hours: number }
+export interface RunStatus { schema_version: string; data_snapshot_id: string; result?: string; latest_refresh_failure?: { environment: string; run_url: string; completed_at: string; attempted_request_count: number; successful_response_count: number; reason: string }; collection_policy?: CollectionPolicy; collection_window?: CollectionWindow; [key: string]: unknown }
 export interface DataBundle { manifest: Manifest; latest: LatestDocument; coverage: CoverageDocument; fx: FxDocument; referenceComparison: ReferenceComparison; regions: RegionsDocument; plans: PlansDocument; runStatus?: RunStatus }
 
 export type DataView = 'current' | 'all' | 'history' | 'missing'
 export type SortMode = 'price_asc' | 'price_desc' | 'name' | 'verified'
 export interface Filters { planId: PlanId; currency: 'CNY' | 'USD'; sort: SortMode; tax: 'all' | TaxStatus; view: DataView; search: string }
-export interface DisplayRow { region: Region; quote: Quote | null; cell: CoverageCell | null; freshness: 'fresh' | 'historical' | 'missing'; estimate: string | null }
+export interface DisplayRow { region: Region; quote: Quote | null; cell: CoverageCell | null; freshness: 'fresh' | 'historical' | 'missing'; estimate: string | null; excludedTax: TaxStatus | null }

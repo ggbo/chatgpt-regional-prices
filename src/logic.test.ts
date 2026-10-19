@@ -1,16 +1,42 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { buildRows, compareDecimal, eligibleFreshRows, rowsToCsv, sortRows } from './logic.ts'
+import { buildRows, compareDecimal, DEFAULT_FILTERS, eligibleFreshRows, rowsToCsv, sortRows } from './logic.ts'
 import type { DataBundle, DisplayRow, Filters, Quote, Region } from './types.ts'
 
 const region = (id: string): Region => ({ target_id: id, country_code: id, config_id: id, name_zh: id, name_en: id, region_kind: 'iso', is_country_directory: true, ranking_eligible: true, supported_status: 'unknown', supported_checked_at: null, source_url: '', discovered_from: [] })
-const quote = (id: string, estimate: string | null, at: string): Quote => ({ record_id: `${id}:web:plus:month:standard`, target_id: id, country_code: id, config_id: id, region_kind: 'iso', channel: 'web', plan_id: 'plus', source_plan_key: 'plus', billing_interval: 'month', offer_type: 'standard', currency: 'USD', display_price: { amount: '20', tax: 'exclusive', source_tax_value: 'exclusive', json_pointer: '', last_success_at: at }, psp_override: null, psp_override_status: 'not_present', tax_percent: null, minor_unit_exponent: '2', availability: { configuration_present: true, purchase_verified: false, pricing_rollout_gate: null }, source: { kind: 'official', url: `https://example.com/${id}`, body_sha256: '', collector_version: '1' }, estimates: { USD: estimate ? { amount: estimate, fx_snapshot_id: 'fx' } : null, CNY: estimate ? { amount: estimate, fx_snapshot_id: 'fx' } : null }, last_attempt_at: at, last_success_at: at, price_changed_at: at, issues: [] })
+const quote = (id: string, estimate: string | null, at: string, tax: Quote['display_price']['tax'] = 'exclusive'): Quote => ({ record_id: `${id}:web:plus:month:standard`, target_id: id, country_code: id, config_id: id, region_kind: 'iso', channel: 'web', plan_id: 'plus', source_plan_key: 'plus', billing_interval: 'month', offer_type: 'standard', currency: 'USD', display_price: { amount: '20', tax, source_tax_value: tax, json_pointer: '', last_success_at: at }, psp_override: null, psp_override_status: 'not_present', tax_percent: null, minor_unit_exponent: '2', availability: { configuration_present: true, purchase_verified: false, pricing_rollout_gate: null }, source: { kind: 'official', url: `https://example.com/${id}`, body_sha256: '', collector_version: '1' }, estimates: { USD: estimate ? { amount: estimate, fx_snapshot_id: 'fx' } : null, CNY: estimate ? { amount: estimate, fx_snapshot_id: 'fx' } : null }, last_attempt_at: at, last_success_at: at, price_changed_at: at, issues: [] })
+
+test('default view is CNY and strictly inclusive', () => {
+  assert.equal(DEFAULT_FILTERS.currency, 'CNY')
+  assert.equal(DEFAULT_FILTERS.tax, 'inclusive')
+})
 
 test('decimal sorting preserves precision and always puts null last', () => {
   assert.equal(compareDecimal('9.999', '10'), -1)
-  const base = (id: string, value: string | null): DisplayRow => ({ region: region(id), quote: null, cell: null, freshness: 'fresh', estimate: value })
+  const base = (id: string, value: string | null): DisplayRow => ({ region: region(id), quote: null, cell: null, freshness: 'fresh', estimate: value, excludedTax: null })
   assert.deepEqual(sortRows([base('A', null), base('B', '9.999'), base('C', '10')], 'price_desc').map((r) => r.region.target_id), ['C', 'B', 'A'])
   assert.deepEqual(sortRows([base('A', null), base('B', '9.999'), base('C', '10')], 'price_asc').map((r) => r.region.target_id), ['B', 'C', 'A'])
+})
+
+test('inclusive filter excludes untaxed amounts from ranking and CSV but keeps the directory row', () => {
+  const now = Date.parse('2026-10-19T12:00:00Z'); const recent = '2026-10-19T11:00:00Z'
+  const bundle = { latest: { quotes: [quote('US', '20', recent, 'exclusive'), quote('PH', '18', recent, 'inclusive')] }, coverage: { cells: [{ target_id: 'US', plan_id: 'plus', channel: 'web', status: 'valid_quote' }, { target_id: 'PH', plan_id: 'plus', channel: 'web', status: 'valid_quote' }] }, regions: { regions: [region('US'), region('PH')] } } as unknown as DataBundle
+  const filters: Filters = { planId: 'plus', currency: 'CNY', sort: 'price_asc', tax: 'inclusive', view: 'all', search: '' }
+  const rows = buildRows(bundle, filters, now)
+  const us = rows.find((row) => row.region.target_id === 'US')!
+  assert.equal(us.quote, null); assert.equal(us.estimate, null); assert.equal(us.excludedTax, 'exclusive')
+  assert.deepEqual(eligibleFreshRows(rows).map((row) => row.region.target_id), ['PH'])
+  const csv = rowsToCsv(rows, 'CNY')
+  assert.match(csv, /官网直购/); assert.doesNotMatch(csv, /"US"[^\r\n]*"20"/)
+})
+
+test('search retains a catalog match when its official web quote is not inclusive', () => {
+  const now = Date.parse('2026-10-19T12:00:00Z'); const recent = '2026-10-19T11:00:00Z'
+  const ph = { ...region('PH'), name_zh: '菲律宾', name_en: 'Philippines' }
+  const bundle = { latest: { quotes: [quote('PH', '20', recent, 'exclusive')] }, coverage: { cells: [{ target_id: 'PH', plan_id: 'plus', channel: 'web', status: 'valid_quote' }] }, regions: { regions: [ph] } } as unknown as DataBundle
+  const filters: Filters = { planId: 'plus', currency: 'CNY', sort: 'price_asc', tax: 'inclusive', view: 'current', search: '菲律宾' }
+  const rows = buildRows(bundle, filters, now)
+  assert.equal(rows.length, 1); assert.equal(rows[0].quote, null); assert.equal(rows[0].excludedTax, 'exclusive')
 })
 
 test('browser clock expires a quote after 72 hours and excludes it from ranking summary', () => {
