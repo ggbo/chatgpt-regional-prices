@@ -8,10 +8,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from scheduling import merge_selected, policy_ledger, record_attempts, select_targets, selected_quality_failures
 
 POLICY = {
-    "policy_revision": "serial-72h-v3-fill10",
-    "compatible_policy_revisions": ["serial-72h-v1", "serial-72h-v2-retry30m"],
+    "policy_revision": "serial-72h-v4-fill-unbounded",
+    "compatible_policy_revisions": ["serial-72h-v1", "serial-72h-v2-retry30m", "serial-72h-v3-fill10"],
     "window_hours": 72, "target_cycle_hours": 48, "schedule_interval_hours": 1,
-    "retry_interval_minutes": 30, "initial_fill_max_attempts_per_target": 10,
+    "retry_interval_minutes": 30,
 }
 PLANS = [
     {"plan_id": key, "source_plan_key": source, "billing_interval": "month"}
@@ -123,6 +123,7 @@ class RetrySchedulingTests(unittest.TestCase):
         migrated = select_targets(targets, PLANS, old, POLICY, at(minutes=1), fill_missing=True)
         self.assertEqual(migrated["ledger"]["migrated_from_policy_revision"], "serial-72h-v2-retry30m")
         self.assertEqual(migrated["ledger"]["targets"]["R000"]["initial_fill_attempts"], 6)
+        self.assertEqual(migrated["ledger"]["targets"]["R000"]["initial_fill_observation_times"], [])
 
     def test_missing_ledger_is_seeded_from_full_historical_coverage(self):
         targets = regions(2)
@@ -227,11 +228,11 @@ class RetrySchedulingTests(unittest.TestCase):
         self.assertFalse(ledger["initial_fill"]["active"])
         self.assertEqual(ledger["targets"]["R001"]["initial_fill_attempts"], 1)
 
-    def test_initial_fill_caps_each_failed_target_at_ten_attempts(self):
+    def test_initial_fill_continues_beyond_ten_failed_attempts(self):
         targets = regions(1)
         ledger = recorded(targets, "access_blocked")
         last_run = None
-        for number in range(1, 11):
+        for number in range(1, 13):
             fill = select_targets(targets, PLANS, ledger, POLICY, at(minutes=number), fill_missing=True)
             self.assertEqual([item["target_id"] for item in fill["targets"]], ["R000"])
             ledger, last_run = record_attempts(
@@ -239,12 +240,35 @@ class RetrySchedulingTests(unittest.TestCase):
                 at(minutes=number), at(minutes=number), f"fill-{number}",
             )
             self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], number)
-        self.assertEqual(last_run["initial_fill_exhausted_target_ids"], ["R000"])
-        self.assertEqual(last_run["initial_fill_exhausted_count"], 1)
-        self.assertEqual(last_run["initial_fill_eligible_count"], 0)
-        self.assertFalse(last_run["immediate_continuation"])
+        self.assertEqual(last_run["initial_fill_exhausted_target_ids"], [])
+        self.assertEqual(last_run["initial_fill_exhausted_count"], 0)
+        self.assertEqual(last_run["initial_fill_eligible_count"], 1)
+        self.assertTrue(last_run["immediate_continuation"])
         self.assertTrue(ledger["targets"]["R000"]["retry_pending"])
-        self.assertEqual(select_targets(targets, PLANS, ledger, POLICY, at(minutes=11), fill_missing=True)["targets"], [])
+        self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 12)
+        self.assertEqual(
+            [item["target_id"] for item in select_targets(
+                targets, PLANS, ledger, POLICY, at(minutes=13), fill_missing=True,
+            )["targets"]],
+            ["R000"],
+        )
+
+    def test_v3_exhausted_failure_is_reopened_but_prior_success_stays_done(self):
+        targets = regions(2)
+        old = recorded(targets, "access_blocked")
+        old["policy_revision"] = "serial-72h-v3-fill10"
+        old["initial_fill"]["exhausted_target_ids"] = ["R000"]
+        old["targets"]["R000"].update(
+            initial_fill_attempts=10, initial_fill_done=True, all_five_success_at=at(hours=-2),
+        )
+        old["targets"]["R001"].update(
+            initial_fill_attempts=10, initial_fill_done=True, all_five_success_at=at(hours=-1),
+        )
+        migrated = select_targets(targets, PLANS, old, POLICY, NOW, fill_missing=True)
+        self.assertEqual([item["target_id"] for item in migrated["targets"]], ["R000"])
+        self.assertFalse(migrated["ledger"]["targets"]["R000"]["initial_fill_done"])
+        self.assertTrue(migrated["ledger"]["targets"]["R001"]["initial_fill_done"])
+        self.assertEqual(migrated["ledger"]["targets"]["R001"]["initial_fill_done_reason"], "success")
 
     def test_replayed_fill_observation_does_not_increment_attempt_count(self):
         targets = regions(1)
@@ -260,7 +284,75 @@ class RetrySchedulingTests(unittest.TestCase):
             at(minutes=2), at(minutes=2), "replay", observed_fill_counts={"R000": 7},
         )
         self.assertEqual(run["resumed_target_ids"], ["R000"])
-        self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 1)
+        self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 7)
+        replay = select_targets(targets, PLANS, ledger, POLICY, at(minutes=3), fill_missing=True)
+        ledger, _ = record_attempts(
+            replay, cells_for(targets, at(minutes=1), "access_blocked"), POLICY,
+            at(minutes=3), at(minutes=3), "replay-again", observed_fill_counts={"R000": 7},
+        )
+        self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 7)
+        self.assertEqual(ledger["targets"]["R000"]["initial_fill_observation_times"], [at(minutes=1)])
+
+    def test_older_success_is_audited_without_reverting_latest_failure(self):
+        targets = regions(1)
+        ledger = recorded(targets, "access_blocked")
+        fill = select_targets(targets, PLANS, ledger, POLICY, at(minutes=2), fill_missing=True)
+        ledger, _ = record_attempts(
+            fill, cells_for(targets, at(minutes=2), "access_blocked"), POLICY,
+            at(minutes=2), at(minutes=2), "latest-failure",
+        )
+        older = {"ledger": ledger, "targets": targets, "bootstrap": False, "mode": "fill"}
+        ledger, run = record_attempts(
+            older, cells_for(targets, at(minutes=1), "valid_quote"), POLICY,
+            at(minutes=3), at(minutes=3), "older-success",
+        )
+        entry = ledger["targets"]["R000"]
+        self.assertEqual(run["attempted_target_ids"], ["R000"])
+        self.assertEqual(run["out_of_order_target_ids"], ["R000"])
+        self.assertEqual(entry["last_attempt_at"], at(minutes=2))
+        self.assertEqual(entry["last_attempt_status"], "access_blocked")
+        self.assertEqual(entry["last_http_status"], 403)
+        self.assertTrue(entry["retry_pending"])
+        self.assertEqual(entry["retry_due_at"], at(minutes=32))
+        self.assertTrue(all(value["attempt_status"] == "access_blocked" for value in entry["plan_outcomes"].values()))
+        self.assertEqual(entry["last_success_at"], at(minutes=1))
+        self.assertEqual(entry["all_five_success_at"], at(minutes=1))
+        self.assertTrue(entry["initial_fill_done"])
+        self.assertEqual(select_targets(targets, PLANS, ledger, POLICY, at(minutes=3), fill_missing=True)["targets"], [])
+        self.assertEqual(select_targets(targets, PLANS, ledger, POLICY, at(minutes=31), retry_only=True)["targets"], [])
+        self.assertEqual(
+            [item["target_id"] for item in select_targets(
+                targets, PLANS, ledger, POLICY, at(minutes=32), retry_only=True,
+            )["targets"]],
+            ["R000"],
+        )
+
+    def test_out_of_order_fill_observation_counts_once_across_replays(self):
+        targets = regions(1)
+        ledger = recorded(targets, "access_blocked")
+        ledger["targets"]["R000"]["initial_fill_attempts"] = 4
+        latest = {"ledger": ledger, "targets": targets, "bootstrap": False, "mode": "fill"}
+        ledger, _ = record_attempts(
+            latest, cells_for(targets, at(minutes=2), "access_blocked"), POLICY,
+            at(minutes=2), at(minutes=2), "latest", observed_fill_counts={"R000": 4},
+        )
+        older = {"ledger": ledger, "targets": targets, "bootstrap": False, "mode": "fill"}
+        ledger, _ = record_attempts(
+            older, cells_for(targets, at(minutes=1), "access_blocked"), POLICY,
+            at(minutes=3), at(minutes=3), "older", observed_fill_counts={"R000": 6},
+        )
+        self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 6)
+        replay = {"ledger": ledger, "targets": targets, "bootstrap": False, "mode": "fill"}
+        ledger, _ = record_attempts(
+            replay, cells_for(targets, at(minutes=1), "access_blocked"), POLICY,
+            at(minutes=4), at(minutes=4), "older-replay", observed_fill_counts={"R000": 6},
+        )
+        self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 6)
+        self.assertEqual(
+            ledger["targets"]["R000"]["initial_fill_observation_times"],
+            [at(minutes=2), at(minutes=1)],
+        )
+        self.assertEqual(ledger["targets"]["R000"]["last_attempt_at"], at(minutes=2))
 
     def test_imported_fill_counts_never_decrease_and_include_current_attempt(self):
         targets = regions(1)
@@ -296,16 +388,21 @@ class RetrySchedulingTests(unittest.TestCase):
         self.assertEqual(ledger["targets"]["R001"]["initial_fill_attempts"], 3)
         self.assertFalse(ledger["targets"]["R001"]["initial_fill_done"])
 
-    def test_imported_fill_count_must_be_bounded_integer(self):
+    def test_imported_fill_count_must_be_nonnegative_integer(self):
         targets = regions(1)
         ledger = recorded(targets, "access_blocked")
         fill = select_targets(targets, PLANS, ledger, POLICY, at(minutes=1), fill_missing=True)
-        for invalid in (True, -1, 11, 1.5):
+        for invalid in (True, -1, 1.5):
             with self.subTest(invalid=invalid), self.assertRaises(ValueError):
                 record_attempts(
                     fill, cells_for(targets, at(minutes=1), "access_blocked"), POLICY,
                     at(minutes=1), at(minutes=1), "invalid", observed_fill_counts={"R000": invalid},
                 )
+        ledger, _ = record_attempts(
+            fill, cells_for(targets, at(minutes=1), "access_blocked"), POLICY,
+            at(minutes=1), at(minutes=1), "large-valid", observed_fill_counts={"R000": 100},
+        )
+        self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 100)
 
     def test_exhausted_fill_target_remains_eligible_for_half_hour_retry(self):
         targets = regions(1)
@@ -323,14 +420,20 @@ class RetrySchedulingTests(unittest.TestCase):
         self.assertEqual(ledger["targets"]["R000"]["initial_fill_attempts"], 10)
         self.assertFalse(ledger["targets"]["R000"]["retry_pending"])
 
-    def test_exhausted_pending_target_does_not_pull_healthy_targets_into_fill(self):
+    def test_legacy_exhausted_pending_target_and_at_risk_healthy_continue_fill(self):
         targets = regions(2)
-        ledger = recorded(targets, "valid_quote")
-        ledger["targets"]["R000"].update(retry_pending=True, initial_fill_attempts=10)
+        ledger = recorded(targets, "access_blocked")
+        recovered = {"ledger": ledger, "targets": targets[1:], "bootstrap": False, "mode": "retry"}
+        ledger, _ = record_attempts(
+            recovered, cells_for(targets[1:], at(minutes=1), "valid_quote"), POLICY,
+            at(minutes=1), at(minutes=1), "recovered",
+        )
+        ledger["initial_fill"]["exhausted_target_ids"] = ["R000"]
+        ledger["targets"]["R000"].update(initial_fill_attempts=10, initial_fill_done=True)
         ledger["targets"]["R001"]["last_attempt_at"] = at(hours=-49)
         selection = select_targets(targets, PLANS, ledger, POLICY, NOW, fill_missing=True)
-        self.assertEqual(selection["targets"], [])
-        self.assertEqual(selection["ledger"]["initial_fill"]["exhausted_target_ids"], ["R000"])
+        self.assertEqual([item["target_id"] for item in selection["targets"]], ["R000", "R001"])
+        self.assertEqual(selection["ledger"]["initial_fill"]["exhausted_target_ids"], [])
 
 
 class MergeTests(unittest.TestCase):

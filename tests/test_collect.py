@@ -59,8 +59,9 @@ class CollectTests(unittest.TestCase):
             self.assertEqual(first['initial_fill_attempt_counts'], {'PH': 3})
             replay = collect([REGION], PLANS, [], temp, opener=lambda *_a, **_k: self.fail('must replay'), initial_fill=True, checkpoint_path=checkpoint)
             self.assertEqual(replay['initial_fill_attempt_counts'], {'PH': 3})
-            capped = collect([REGION], PLANS, [], temp, opener=lambda *_a, **_k: self.fail('ten attempts must stop'), initial_fill=True, initial_fill_counts={'PH': 10})
-            self.assertEqual(capped['summary']['attempted_request_count'], 0)
+            beyond_ten = collect([REGION], PLANS, [], temp, opener=blocked, initial_fill=True, initial_fill_counts={'PH': 12})
+            self.assertEqual(beyond_ten['summary']['attempted_request_count'], 1)
+            self.assertEqual(beyond_ten['initial_fill_attempt_counts'], {'PH': 13})
 
     def test_serial_retry_preserves_scheduler_order_instead_of_alphabetic_order(self):
         targets = [{**REGION, 'target_id': code, 'config_id': code, 'country_code': code} for code in ('ZW', 'US', 'AD')]

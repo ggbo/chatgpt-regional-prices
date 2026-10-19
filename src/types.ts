@@ -35,4 +35,5 @@ export interface DataBundle { manifest: Manifest; latest: LatestDocument; covera
 export type DataView = 'current' | 'all' | 'history' | 'missing'
 export type SortMode = 'price_asc' | 'price_desc' | 'name' | 'verified'
 export interface Filters { planId: PlanId; currency: 'CNY' | 'USD'; sort: SortMode; tax: 'all' | TaxStatus; view: DataView; search: string }
-export interface DisplayRow { region: Region; quote: Quote | null; cell: CoverageCell | null; freshness: 'fresh' | 'historical' | 'missing'; estimate: string | null; excludedTax: TaxStatus | null }
+export type SelectedPriceKind = 'display_price' | 'psp_override'
+export interface DisplayRow { region: Region; quote: Quote | null; cell: CoverageCell | null; selectedPrice: PriceVariant | null; selectedPriceKind: SelectedPriceKind | null; freshness: 'fresh' | 'historical' | 'missing'; estimate: string | null; excludedTax: TaxStatus | null }

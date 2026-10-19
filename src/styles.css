@@ -26,14 +26,18 @@ select { border:1px solid #d4d9d4; border-radius:8px; padding:10px 30px 10px 10p
 .segmented { display:flex; border:1px solid #d4d9d4; background:#f5f5f1; border-radius:9px; padding:3px; height:40px; }
 .segmented button { min-width:52px; border:0; background:transparent; color:#65706c; border-radius:6px; font-size:12px; font-weight:700; }
 .segmented button.active { background:white; color:var(--teal-dark); box-shadow:0 1px 4px #1b2d2920; }
-.summary-grid { padding:18px; display:grid; grid-template-columns:1fr 1fr 1fr 1.7fr; gap:10px; background:#faf9f5; }
+.summary-grid { padding:18px; display:grid; grid-template-columns:minmax(190px, .8fr) minmax(320px, 2fr); gap:10px; background:#faf9f5; }
 .summary-grid article { padding:16px; border:1px solid #e0e2dc; border-radius:10px; background:var(--paper); min-width:0; }
 .summary-grid span { display:block; color:#6d7773; font-size:12px; margin-bottom:7px; }
 .summary-grid strong { font-size:24px; letter-spacing:-.03em; }
-.summary-grid i { font-style:normal; color:#a7afac; }
 .summary-grid small { display:block; color:#89918e; font-size:11px; margin-top:7px; }
 .summary-grid .price-card { background:#eaf4ef; border-color:#cee1d8; }
 .summary-grid .price-card strong { font-size:17px; color:#125f56; }
+.lowest-price { display:flex; align-items:center; gap:18px; }
+.lowest-price > strong { min-width:max-content; font-size:24px !important; }
+.lowest-price > div { min-width:0; padding-left:18px; border-left:1px solid #c8ddd4; }
+.lowest-price b { display:block; color:#26332f; font-size:13px; }
+.lowest-price small { margin-top:4px; }
 .table-toolbar { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 18px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .view-switch { display:flex; background:#f1f1ed; border-radius:9px; padding:3px; }
 .view-switch button { padding:7px 13px; font-size:12px; }
@@ -92,7 +96,9 @@ details { margin-top:17px; } summary { cursor:pointer; font-size:11px; color:#63
 @media (max-width:700px) {
   .app-shell { padding:14px 10px 30px; }.masthead { padding:13px 5px 21px; }.brand-block p { font-size:12px; }.plan-bar { padding:9px; }.plan-note { display:none; }
   .controls { grid-template-columns:1fr 1fr; padding:12px; }.search-control { grid-column:1/-1; }.segmented { width:100%; }.segmented button { flex:1; }.controls label:not(.search-control) { min-width:0; }.controls select { width:100%; }
-  .summary-grid { padding:12px; gap:7px; }.summary-grid article { padding:12px; }.summary-grid strong { font-size:20px; }.summary-grid .price-card { grid-column:1/-1; }
+  .summary-grid { grid-template-columns:1fr; padding:12px; gap:7px; }.summary-grid article { padding:12px; }.summary-grid strong { font-size:20px; }.summary-grid .price-card { grid-column:1/-1; }
+  .lowest-price { align-items:flex-start; flex-direction:column; gap:8px; }
+  .lowest-price > div { padding-left:0; border-left:0; }
   .table-toolbar { align-items:flex-start; flex-direction:column; padding:11px 12px; }.actions { width:100%; overflow:auto; }.actions button { flex:1; white-space:nowrap; }
   .table-wrap { max-height:65vh; }.rank { display:none; }
   .price-table-wrap { padding:10px; background:#f3f2ed; }

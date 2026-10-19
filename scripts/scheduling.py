@@ -60,28 +60,15 @@ def _backfill_retry_state(entry, target_cells, plans):
         entry['all_five_success_at'] = entry.get('all_five_success_at') or entry.get('last_success_at')
 
 
-def _initial_fill_limit(policy):
-    return policy.get('initial_fill_max_attempts_per_target', 10)
-
-
 def _sync_initial_fill(ledger, policy):
     state = ledger.setdefault('initial_fill', {})
     cohort = set(state.get('cohort_target_ids', []))
-    limit = _initial_fill_limit(policy)
     pending = sorted(
         key for key in cohort
         if key in ledger['targets'] and ledger['targets'][key].get('retry_pending')
-        and (
-            not ledger['targets'][key].get('initial_fill_done')
-            or ledger['targets'][key].get('initial_fill_attempts', 0) >= limit
-        )
+        and not ledger['targets'][key].get('initial_fill_done')
     )
-    eligible = [
-        key for key in pending
-        if not ledger['targets'][key].get('initial_fill_done')
-        and ledger['targets'][key].get('initial_fill_attempts', 0) < limit
-    ]
-    exhausted = [key for key in pending if ledger['targets'][key].get('initial_fill_attempts', 0) >= limit]
+    eligible = list(pending)
     state.pop('consecutive_no_progress_runs', None)
     state.pop('blocked_no_progress', None)
     state['active'] = bool(eligible)
@@ -89,25 +76,39 @@ def _sync_initial_fill(ledger, policy):
     state['pending_count'] = len(pending)
     state['eligible_target_ids'] = eligible
     state['eligible_count'] = len(eligible)
-    state['exhausted_target_ids'] = exhausted
-    state['exhausted_count'] = len(exhausted)
+    state['exhausted_target_ids'] = []
+    state['exhausted_count'] = 0
     return state
 
 
-def _initialize_initial_fill(ledger, policy):
+def _initialize_initial_fill(ledger, policy, now):
     state = ledger.setdefault('initial_fill', {})
+    legacy_exhausted = set(state.get('exhausted_target_ids', []))
     if 'cohort_target_ids' not in state:
         state['cohort_target_ids'] = sorted(
             key for key, entry in ledger['targets'].items() if entry.get('retry_pending')
         )
     cohort = set(state['cohort_target_ids'])
-    limit = _initial_fill_limit(policy)
+    cutoff = parse_time(now) - timedelta(hours=policy.get('window_hours', 72))
     for key, entry in ledger['targets'].items():
         entry.setdefault('initial_fill_attempts', 0)
+        counted = entry.setdefault('initial_fill_observation_times', [])
+        if not isinstance(counted, list):
+            entry['initial_fill_observation_times'] = []
+        else:
+            entry['initial_fill_observation_times'] = list(dict.fromkeys(
+                value for value in counted
+                if isinstance(value, str) and parse_time(value) and parse_time(value) >= cutoff
+            ))
         entry.setdefault(
             'initial_fill_done',
-            key not in cohort or not entry.get('retry_pending') or entry['initial_fill_attempts'] >= limit,
+            key not in cohort or not entry.get('retry_pending'),
         )
+        if key in legacy_exhausted and entry.get('retry_pending'):
+            entry['initial_fill_done'] = False
+            entry.pop('initial_fill_done_reason', None)
+        elif entry.get('initial_fill_done') and entry.get('all_five_success_at'):
+            entry.setdefault('initial_fill_done_reason', 'success')
 
 
 def policy_ledger(regions, plans, previous, policy, now, previous_cells=None):
@@ -188,7 +189,7 @@ def policy_ledger(regions, plans, previous, policy, now, previous_cells=None):
         ledger['bootstrap']['completed_at'] = max(observed, key=parse_time) if observed else now
         if seed_from_coverage and observed:
             ledger['bootstrap']['started_at'] = min(observed, key=parse_time)
-    _initialize_initial_fill(ledger, policy)
+    _initialize_initial_fill(ledger, policy, now)
     _sync_initial_fill(ledger, policy)
     return ledger
 
@@ -223,14 +224,12 @@ def select_targets(
     elif bootstrap:
         selected = list(regions)  # same catalog signature lets an interrupted bootstrap restore its checkpoint
     elif fill_missing:
-        fill_limit = _initial_fill_limit(policy)
         pending_retry = sorted(
             (
                 r for r in regions
                 if r['target_id'] in set(ledger['initial_fill'].get('cohort_target_ids', []))
                 and ledger['targets'][r['target_id']].get('retry_pending')
                 and not ledger['targets'][r['target_id']].get('initial_fill_done')
-                and ledger['targets'][r['target_id']].get('initial_fill_attempts', 0) < fill_limit
             ),
             key=lambda r: (
                 ledger['targets'][r['target_id']].get('last_attempt_at') is not None,
@@ -277,7 +276,9 @@ def record_attempts(
     by_target = collections.defaultdict(list)
     for cell in cells:
         by_target[cell['target_id']].append(cell)
-    attempted, not_started, resumed = [], [], []
+    attempted, not_started, resumed, out_of_order = [], [], [], []
+    observations = {}
+    complete_observations = set()
     selected_pending_before = {
         region['target_id'] for region in selection['targets']
         if ledger['targets'][region['target_id']].get('retry_pending')
@@ -291,6 +292,7 @@ def record_attempts(
             continue
         entry = ledger['targets'][key]
         observed = max((c['last_attempt_at'] for c in real), key=parse_time)
+        observations[key] = observed
         if entry.get('last_attempt_at') == observed:
             resumed.append(key)
             continue
@@ -310,45 +312,59 @@ def record_attempts(
             and c.get('last_success_at')
         ]
         complete = len(outcomes) == ledger['plan_count'] and len(successful) == ledger['plan_count']
+        if complete:
+            complete_observations.add(key)
         attempt_statuses = {cell.get('attempt_status') for cell in real}
         representative = 'all_five_valid' if complete else next(iter(attempt_statuses)) if len(attempt_statuses) == 1 else 'incomplete_five_plan'
         http_statuses = {cell.get('http_status') for cell in real}
-        entry.update(
-            bootstrap_attempted=True, last_attempt_at=observed, last_attempt_status=representative,
-            last_http_status=next(iter(http_statuses)) if len(http_statuses) == 1 else None,
-            last_run_id=run_id, plan_outcomes=outcomes, retry_pending=not complete,
-            retry_due_at=None if complete else format_time(
-                parse_time(observed) + timedelta(minutes=policy.get('retry_interval_minutes', 30))
-            ),
-        )
+        is_newest = not entry.get('last_attempt_at') or parse_time(observed) > parse_time(entry['last_attempt_at'])
+        if is_newest:
+            entry.update(
+                bootstrap_attempted=True, last_attempt_at=observed, last_attempt_status=representative,
+                last_http_status=next(iter(http_statuses)) if len(http_statuses) == 1 else None,
+                last_run_id=run_id, plan_outcomes=outcomes, retry_pending=not complete,
+                retry_due_at=None if complete else format_time(
+                    parse_time(observed) + timedelta(minutes=policy.get('retry_interval_minutes', 30))
+                ),
+            )
+        else:
+            out_of_order.append(key)
         if complete:
             success_at = min((c['last_success_at'] for c in successful), key=parse_time)
-            entry['last_success_at'] = success_at
-            entry['all_five_success_at'] = success_at
+            for field in ('last_success_at', 'all_five_success_at'):
+                if not entry.get(field) or parse_time(success_at) > parse_time(entry[field]):
+                    entry[field] = success_at
     fill_counts = {} if observed_fill_counts is None else observed_fill_counts
     if not isinstance(fill_counts, dict):
         raise ValueError('observed_fill_counts must be an object')
     for key, count in fill_counts.items():
-        if isinstance(count, bool) or not isinstance(count, int) or not 0 <= count <= _initial_fill_limit(policy):
+        if isinstance(count, bool) or not isinstance(count, int) or count < 0:
             raise ValueError(f'invalid observed fill count for {key}')
     if selection['mode'] == 'fill':
-        limit = _initial_fill_limit(policy)
         cohort = set(ledger['initial_fill'].get('cohort_target_ids', []))
-        for key in attempted:
+        for key, observed in observations.items():
             entry = ledger['targets'][key]
             imported = fill_counts.get(key, 0)
             if imported > 0 and key not in cohort:
                 cohort.add(key)
                 entry['initial_fill_done'] = False
-            incremented = entry.get('initial_fill_attempts', 0) + 1
-            entry['initial_fill_attempts'] = min(limit, max(incremented, imported))
-            if not entry.get('retry_pending') or entry['initial_fill_attempts'] >= limit:
+                entry.pop('initial_fill_done_reason', None)
+            counted = entry.setdefault('initial_fill_observation_times', [])
+            already_current = entry.get('last_attempt_at') == observed and key in resumed
+            if observed not in counted:
+                if not already_current:
+                    entry['initial_fill_attempts'] = entry.get('initial_fill_attempts', 0) + 1
+                counted.append(observed)
+            entry['initial_fill_attempts'] = max(entry.get('initial_fill_attempts', 0), imported)
+            if not entry.get('retry_pending'):
                 entry['initial_fill_done'] = True
+                entry['initial_fill_done_reason'] = 'success'
         ledger['initial_fill']['cohort_target_ids'] = sorted(cohort)
     cohort = set(ledger['initial_fill'].get('cohort_target_ids', []))
     for key in attempted:
-        if key in cohort and not ledger['targets'][key].get('retry_pending'):
+        if key in cohort and (key in complete_observations or not ledger['targets'][key].get('retry_pending')):
             ledger['targets'][key]['initial_fill_done'] = True
+            ledger['targets'][key]['initial_fill_done_reason'] = 'success'
     progress = sum(not ledger['targets'][key].get('retry_pending') for key in selected_pending_before)
     initial_fill = _sync_initial_fill(ledger, policy)
     immediate_continuation = bool(selection['mode'] == 'fill' and initial_fill['eligible_count'])
@@ -361,6 +377,7 @@ def record_attempts(
            'mode': selection['mode'], 'started_at': started_at, 'completed_at': completed_at,
            'selected_target_ids': [r['target_id'] for r in selection['targets']],
            'attempted_target_ids': attempted, 'not_started_target_ids': not_started, 'resumed_target_ids': resumed,
+           'out_of_order_target_ids': out_of_order,
            'accepted_valid_cell_count': sum(c['status'] == 'valid_quote' for c in cells),
            'initial_fill_progress_count': progress,
            'initial_fill_pending_count': initial_fill['pending_count'],

@@ -385,7 +385,7 @@ def collect(
                 initial_fill_attempt_counts[key] = max(initial_fill_attempt_counts.get(key, 0), count) if type(count) is int else count
             expected_ids = {item['target_id'] for item in regions}
             if not isinstance(initial_fill_attempt_counts, dict) or any(
-                key not in expected_ids or type(value) is not int or not 0 <= value <= 10
+                key not in expected_ids or type(value) is not int or value < 0
                 for key, value in initial_fill_attempt_counts.items()
             ):
                 raise ValueError('invalid initial fill attempt accounting in checkpoint')
@@ -399,16 +399,11 @@ def collect(
                 })
 
     expected_ids = {item['target_id'] for item in regions}
-    if any(key not in expected_ids or type(count) is not int or not 0 <= count <= 10 for key, count in initial_fill_attempt_counts.items()):
+    if any(key not in expected_ids or type(count) is not int or count < 0 for key, count in initial_fill_attempt_counts.items()):
         raise ValueError('invalid initial fill attempt accounting')
-    if initial_fill:
-        for item in regions:
-            key = item['target_id']
-            if initial_fill_attempt_counts.get(key, 0) >= 10 and key not in attempts:
-                attempts[key] = {'kind': 'not_attempted', 'observed_at': None, 'reason': 'initial fill attempt limit reached'}
     pending = [
         item for item in regions
-        if (not initial_fill or initial_fill_attempt_counts.get(item['target_id'], 0) < 10) and (item["target_id"] not in attempts
+        if (item["target_id"] not in attempts
         or (
             attempts[item["target_id"]].get("kind") == "not_attempted"
             and attempts[item["target_id"]].get("observed_at") is None
@@ -425,7 +420,7 @@ def collect(
             attempt["evidence_sha256"] = _save_evidence(raw, evidence_path)
         if initial_fill and attempt.get('observed_at') and attempt['kind'] != 'not_attempted':
             key = target['target_id']
-            initial_fill_attempt_counts[key] = min(10, initial_fill_attempt_counts.get(key, 0) + 1)
+            initial_fill_attempt_counts[key] = initial_fill_attempt_counts.get(key, 0) + 1
         attempts[target["target_id"]] = attempt
         if checkpoint:
             _atomic_json(checkpoint, {
