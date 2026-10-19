@@ -24,9 +24,10 @@ export interface Manifest { schema_version: string; data_snapshot_id: string; ge
 export interface CollectionWindow {
   window_hours: number; target_count: number; attempted_within_window_count: number; successful_within_window_count: number
   overdue_target_count: number; bootstrap_remaining_count: number; bootstrap_completed_at: string | null
+  retry_pending_count?: number; retry_due_count?: number
   attempt_window_complete: boolean; successful_price_window_complete: boolean
 }
-export interface CollectionPolicy { policy_revision: string; window_hours: number; target_cycle_hours: number; schedule_interval_hours: number }
+export interface CollectionPolicy { policy_revision: string; window_hours: number; target_cycle_hours: number; schedule_interval_hours: number; retry_interval_minutes?: number }
 export interface RunStatus { schema_version: string; data_snapshot_id: string; result?: string; latest_refresh_failure?: { environment: string; run_url: string; completed_at: string; attempted_request_count: number; successful_response_count: number; reason: string }; collection_policy?: CollectionPolicy; collection_window?: CollectionWindow; [key: string]: unknown }
 export interface DataBundle { manifest: Manifest; latest: LatestDocument; coverage: CoverageDocument; fx: FxDocument; referenceComparison: ReferenceComparison; regions: RegionsDocument; plans: PlansDocument; runStatus?: RunStatus }
 
