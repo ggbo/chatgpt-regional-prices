@@ -1,0 +1,36 @@
+{
+  "environment": "GitHub Actions ubuntu-latest / Python3.13",
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39248950729",
+  "result": "refresh_rejected_existing_valid_observations_preserved",
+  "actual_requests": 252,
+  "official_config_successes": 0,
+  "http_403_requests": 252,
+  "source_status": {
+    "started_at": "2026-10-19T12:02:23.197261Z",
+    "completed_at": "2026-10-19T12:02:28.049593Z",
+    "all_source_failed": true,
+    "structural_failure": false,
+    "elapsed_seconds": 4.852
+  },
+  "coverage": {
+    "target_count": 252,
+    "country_target_count": 250,
+    "auxiliary_target_count": 2,
+    "expected_request_count": 252,
+    "attempted_request_count": 252,
+    "not_attempted_request_count": 0,
+    "successful_response_count": 0,
+    "expected_cell_count": 1260,
+    "status_counts": {
+      "access_blocked": 1225,
+      "stale_quote": 35
+    },
+    "current_quote_cell_count": 0,
+    "historical_quote_cell_count": 35,
+    "complete_five_plan_target_count": 0
+  },
+  "failures": [
+    "all_sources_failed: no current validated quote; existing deployment is preserved",
+    "coverage_drop: <70% of previously valid targets refreshed"
+  ]
+}

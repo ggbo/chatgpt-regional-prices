@@ -50,7 +50,7 @@ export async function loadBundle(): Promise<DataBundle> {
   }
   if (cellIds.size !== targets.size * plans.size) throw new Error('覆盖矩阵未包含完整地区与五档套餐')
   for (const quote of documents.latest.quotes) if (!targets.has(quote.target_id) || !plans.has(quote.plan_id)) throw new Error('报价引用了未知地区或套餐')
-  return { manifest, latest: documents.latest, coverage: documents.coverage, fx: documents.fx, referenceComparison: documents.reference_comparison, regions: documents.regions, plans: documents.plans }
+  return { manifest, latest: documents.latest, coverage: documents.coverage, fx: documents.fx, referenceComparison: documents.reference_comparison, regions: documents.regions, plans: documents.plans, runStatus: documents.status }
 }
 
 function planIdsMissing(plans: Set<string>): boolean {

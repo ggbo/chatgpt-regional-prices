@@ -95,6 +95,8 @@ export default function App() {
         <span className="plan-note">官网网页 · 月付</span>
       </section>
 
+      {bundle?.runStatus?.latest_refresh_failure && <SourceStatusBanner failure={bundle.runStatus.latest_refresh_failure} />}
+
       <section className="controls" aria-label="筛选与排序">
         <label className="search-control"><span className="search-icon">⌕</span><input value={filters.search} onChange={(event) => change('search', event.target.value)} placeholder="搜索中文、英文、地区或币种代码" aria-label="搜索地区" />{filters.search && <button onClick={() => change('search', '')} aria-label="清空搜索">×</button>}</label>
         <div className="segmented" aria-label="换算币种">{(['CNY', 'USD'] as const).map((value) => <button key={value} className={filters.currency === value ? 'active' : ''} onClick={() => change('currency', value)}>{value}</button>)}</div>
@@ -149,6 +151,10 @@ function CoverageStrip({ bundle }: { bundle: DataBundle }) {
   const count = (key: string) => typeof summary[key] === 'number' ? summary[key] : 0
   const referencePath = bundle.manifest.entrypoints.reference_comparison
   return <section className="coverage-strip" aria-label="全目录采集覆盖"><div><span>预期请求</span><strong>{count('expected_request_count')}</strong></div><div><span>已尝试</span><strong>{count('attempted_request_count')}</strong></div><div><span>未尝试</span><strong>{count('not_attempted_request_count')}</strong></div><div><span>响应成功</span><strong>{count('successful_response_count')}</strong></div><div><span>五档完整</span><strong>{count('complete_five_plan_target_count')}</strong></div><div><span>辅助配置</span><strong>{count('auxiliary_target_count')}</strong></div><a href={`${import.meta.env.BASE_URL}data/${referencePath}`} target="_blank" rel="noreferrer">查看参考覆盖差异 ↗</a></section>
+}
+
+function SourceStatusBanner({ failure }: { failure: NonNullable<NonNullable<DataBundle['runStatus']>['latest_refresh_failure']> }) {
+  return <aside className="source-status" role="status"><span className="source-status-icon">!</span><p><strong>GitHub 最新采集受限</strong>当前展示上一份已验证快照，价格核实时间保持原值。{failure.attempted_request_count} 个地区配置请求中成功 {failure.successful_response_count} 个；完成于 {formatTime(failure.completed_at)}。</p><a href={failure.run_url} target="_blank" rel="noreferrer">查看 Actions 运行 ↗</a></aside>
 }
 
 function Details({ row, bundle, currency, onClose }: { row: DisplayRow; bundle: DataBundle; currency: 'CNY' | 'USD'; onClose: () => void }) {

@@ -41,9 +41,15 @@ Frankfurter 实际请求于 `2026-10-19T11:57:07.480086Z` 成功，取得同一�
 - Python 静态语法检查、`git diff --check` 通过。
 - Vite 构建和真实本地 HTTP 项目路径检查通过：页面、查询分享链接、JSON、JS、CSS 均可加载；1,260 单元及证据散列校验通过。
 
-## 发布核验状态
+## GitHub runner 与发布核验
 
-GitHub runner 的首次采集和 Pages 部署尚待实际运行，此处不声明已上线。预期地址为 `https://ggbo.github.io/chatgpt-regional-prices/`。后续以 Actions 运行及线上 manifest 记录补充。
+[首次代码检查](https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39248950502)在 Ubuntu / Python 3.13 / Node 24 上通过。
+
+[首次采集运行](https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39248950729)实际尝试 252 个配置，全部返回 HTTP 403，成功数 0。保护规则拒绝候选，未替换有效快照，也未部署空站。失败 artifact 已下载核对，永久摘要见 `reports/github-runner-initial.json`。
+
+已将前述真实本机全量扫描、35 条报价及实际汇率快照初始化到独立 `data` 分支，并单独记录 runner 失败。它们保留原始核实时间。main 代码构建复用该有效版本，定时/手动采集仍执行正常刷新；没有放宽全源失败检查。网页显示采集受限横幅。
+
+Pages 正在执行首次静态快照部署，此处尚不声明成功。预期地址为 `https://ggbo.github.io/chatgpt-regional-prices/`，以最终部署结果和线上 manifest 核验为准。
 
 ## 未完成的核验与范围限制
 

@@ -21,7 +21,8 @@ export interface CoverageDocument { schema_version: string; data_snapshot_id: st
 export interface FxDocument { schema_version: string; fx_snapshot_id: string | null; generated_at: string; fetched_at: string | null; base: 'USD'; stale: boolean; source: unknown; rates: Array<{ quote: string; rate: string; rate_date: string; providers: unknown[] }> }
 export interface ReferenceComparison { schema_version?: string; data_snapshot_id?: string; [key: string]: unknown }
 export interface Manifest { schema_version: string; data_snapshot_id: string; generated_at: string; catalog_version: string; fx_snapshot_id: string | null; entrypoints: { latest: string; coverage: string; fx: string; reference_comparison: string; regions: string; plans: string; status?: string; [key: string]: string | undefined }; files: Array<{ path: string; sha256: string; bytes: number; media_type: string }> }
-export interface DataBundle { manifest: Manifest; latest: LatestDocument; coverage: CoverageDocument; fx: FxDocument; referenceComparison: ReferenceComparison; regions: RegionsDocument; plans: PlansDocument }
+export interface RunStatus { schema_version: string; data_snapshot_id: string; result?: string; latest_refresh_failure?: { environment: string; run_url: string; completed_at: string; attempted_request_count: number; successful_response_count: number; reason: string }; [key: string]: unknown }
+export interface DataBundle { manifest: Manifest; latest: LatestDocument; coverage: CoverageDocument; fx: FxDocument; referenceComparison: ReferenceComparison; regions: RegionsDocument; plans: PlansDocument; runStatus?: RunStatus }
 
 export type DataView = 'current' | 'all' | 'history' | 'missing'
 export type SortMode = 'price_asc' | 'price_desc' | 'name' | 'verified'

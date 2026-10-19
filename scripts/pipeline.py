@@ -434,6 +434,7 @@ def checkout_state(args):
         env = auth_environment(Path(temp) / 'askpass')
         remote = f'https://github.com/{repository}.git'
         git(target, 'init', '-b', 'data')
+        git(target, 'config', 'core.autocrlf', 'false')
         git(target, 'remote', 'add', 'origin', remote)
         refs = git(target, 'ls-remote', '--heads', 'origin', 'refs/heads/data', env=env)
         if refs:
