@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-20T18:06:12Z",
+  "generated_at": "2026-10-20T21:56:51Z",
   "catalog_version": "iso3166-2026-10-19",
   "baseline_id": "priceai-2026-10-13-extracted-2026-10-19",
   "baseline_status": "complete",
@@ -9,10 +9,10 @@
     "reference_web_identity_count": 386,
     "collector_cell_count": 1260,
     "comparison_counts": {
-      "both_have": 248,
+      "both_have": 249,
       "both_have_historical": 35,
-      "official_new_discovery": 502,
-      "reference_has_but_request_failed": 103
+      "official_new_discovery": 506,
+      "reference_has_but_request_failed": 102
     },
     "special_config_count": 12
   },
@@ -1527,9 +1527,9 @@
       "billing_interval": "month",
       "reference_status": "listed",
       "source_page_url": "https://priceai.cc/official-prices/chatgpt__go-monthly",
-      "comparison": "reference_has_but_request_failed",
+      "comparison": "both_have",
       "flags": [],
-      "collector_status": "access_blocked"
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": "NA:web:go:month",
@@ -3685,6 +3685,18 @@
     },
     {
       "reference_id": null,
+      "target_id": "MZ",
+      "plan_id": "plus",
+      "channel": "web",
+      "billing_interval": "month",
+      "reference_status": null,
+      "source_page_url": null,
+      "comparison": "official_new_discovery",
+      "flags": [],
+      "collector_status": "valid_quote"
+    },
+    {
+      "reference_id": null,
       "target_id": "NC",
       "plan_id": "plus",
       "channel": "web",
@@ -5740,6 +5752,18 @@
       "comparison": "reference_has_but_request_failed",
       "flags": [],
       "collector_status": "access_blocked"
+    },
+    {
+      "reference_id": null,
+      "target_id": "MZ",
+      "plan_id": "pro_100",
+      "channel": "web",
+      "billing_interval": "month",
+      "reference_status": null,
+      "source_page_url": null,
+      "comparison": "official_new_discovery",
+      "flags": [],
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": null,
@@ -7808,6 +7832,18 @@
       "comparison": "reference_has_but_request_failed",
       "flags": [],
       "collector_status": "access_blocked"
+    },
+    {
+      "reference_id": null,
+      "target_id": "MZ",
+      "plan_id": "pro_200",
+      "channel": "web",
+      "billing_interval": "month",
+      "reference_status": null,
+      "source_page_url": null,
+      "comparison": "official_new_discovery",
+      "flags": [],
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": null,
@@ -9888,6 +9924,18 @@
       "comparison": "reference_has_but_request_failed",
       "flags": [],
       "collector_status": "access_blocked"
+    },
+    {
+      "reference_id": null,
+      "target_id": "MZ",
+      "plan_id": "pro_500",
+      "channel": "web",
+      "billing_interval": "month",
+      "reference_status": null,
+      "source_page_url": null,
+      "comparison": "official_new_discovery",
+      "flags": [],
+      "collector_status": "valid_quote"
     },
     {
       "reference_id": null,
