@@ -1,11 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "39654471653",
+  "run_id": "39654652365",
   "policy_revision": "serial-72h-v5-priority",
   "mode": "fill",
-  "started_at": "2026-10-21T19:01:59Z",
-  "completed_at": "2026-10-21T19:02:33Z",
+  "started_at": "2026-10-21T19:03:01Z",
+  "completed_at": "2026-10-21T19:03:45Z",
   "selected_target_ids": [
+    "FM",
+    "FR",
+    "GA",
+    "GD",
+    "SO",
     "GS",
     "HK",
     "HM",
@@ -26,6 +31,11 @@
     "EH"
   ],
   "attempted_target_ids": [
+    "FM",
+    "FR",
+    "GA",
+    "GD",
+    "SO",
     "GS",
     "HK",
     "HM",
@@ -48,17 +58,20 @@
   "not_started_target_ids": [],
   "resumed_target_ids": [],
   "out_of_order_target_ids": [],
-  "accepted_valid_cell_count": 0,
+  "accepted_valid_cell_count": 5,
   "initial_fill_progress_count": 0,
   "initial_fill_pending_count": 18,
   "initial_fill_eligible_count": 18,
   "initial_fill_exhausted_count": 0,
   "initial_fill_exhausted_target_ids": [],
   "immediate_continuation": true,
-  "observation_started_at": "2026-10-21T19:01:59.144851Z",
-  "observation_completed_at": "2026-10-21T19:02:33.144981Z",
+  "observation_started_at": "2026-10-21T19:03:01.114702Z",
+  "observation_completed_at": "2026-10-21T19:03:45.114804Z",
   "status_counts": {
-    "access_blocked": 90
+    "stale_quote": 20,
+    "valid_quote": 5,
+    "access_blocked": 85,
+    "request_failed": 5
   },
   "window": {
     "window_hours": 72,
@@ -68,14 +81,14 @@
     "overdue_target_ids": [],
     "overdue_target_count": 0,
     "oldest_attempt_at": "2026-10-19T21:31:05.556875Z",
-    "oldest_attempt_age_hours": 45.52428975694444,
+    "oldest_attempt_age_hours": 45.544289756944444,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
-    "retry_pending_count": 111,
-    "retry_due_count": 4,
+    "retry_pending_count": 110,
+    "retry_due_count": 3,
     "attempt_window_complete": true,
     "successful_price_window_complete": false
   },
   "environment": "GitHub Actions",
-  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39654471653"
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39654652365"
 }
