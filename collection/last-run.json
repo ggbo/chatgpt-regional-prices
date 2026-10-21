@@ -1,11 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "39596305460",
+  "run_id": "39596435830",
   "policy_revision": "serial-72h-v5-priority",
   "mode": "fill",
-  "started_at": "2026-10-21T12:19:37Z",
-  "completed_at": "2026-10-21T12:20:11Z",
+  "started_at": "2026-10-21T12:20:38Z",
+  "completed_at": "2026-10-21T12:21:16Z",
   "selected_target_ids": [
+    "ST",
+    "SV",
     "GS",
     "HK",
     "HM",
@@ -26,6 +28,8 @@
     "EH"
   ],
   "attempted_target_ids": [
+    "ST",
+    "SV",
     "GS",
     "HK",
     "HM",
@@ -48,16 +52,18 @@
   "not_started_target_ids": [],
   "resumed_target_ids": [],
   "out_of_order_target_ids": [],
-  "accepted_valid_cell_count": 0,
+  "accepted_valid_cell_count": 5,
   "initial_fill_progress_count": 0,
   "initial_fill_pending_count": 18,
   "initial_fill_eligible_count": 18,
   "initial_fill_exhausted_count": 0,
   "initial_fill_exhausted_target_ids": [],
   "immediate_continuation": true,
-  "observation_started_at": "2026-10-21T12:19:37.602228Z",
-  "observation_completed_at": "2026-10-21T12:20:11.602394Z",
+  "observation_started_at": "2026-10-21T12:20:38.487163Z",
+  "observation_completed_at": "2026-10-21T12:21:16.487307Z",
   "status_counts": {
+    "valid_quote": 5,
+    "stale_quote": 5,
     "access_blocked": 90
   },
   "window": {
@@ -68,14 +74,14 @@
     "overdue_target_ids": [],
     "overdue_target_count": 0,
     "oldest_attempt_at": "2026-10-19T12:46:19.278038Z",
-    "oldest_attempt_age_hours": 47.56436721166667,
+    "oldest_attempt_age_hours": 47.582422767222226,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
-    "retry_pending_count": 35,
-    "retry_due_count": 2,
+    "retry_pending_count": 34,
+    "retry_due_count": 3,
     "attempt_window_complete": true,
     "successful_price_window_complete": false
   },
   "environment": "GitHub Actions",
-  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39596305460"
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39596435830"
 }
