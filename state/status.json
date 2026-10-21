@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "data_snapshot_id": "c17eff52194b32de766f7b5a",
+  "data_snapshot_id": "99251585dc123d33dfa6d0cd",
   "result": "validated",
-  "last_run_at": "2026-10-20T23:54:43Z",
+  "last_run_at": "2026-10-21T01:46:38Z",
   "source_status": {
-    "started_at": "2026-10-20T23:51:57.604692Z",
-    "completed_at": "2026-10-20T23:54:43.647976Z",
+    "started_at": "2026-10-21T01:43:52.722701Z",
+    "completed_at": "2026-10-21T01:46:38.759222Z",
     "all_source_failed": false,
     "structural_failure": false,
-    "elapsed_seconds": 166.043
+    "elapsed_seconds": 166.037
   },
   "coverage": {
     "target_count": 252,
@@ -17,16 +17,16 @@
     "expected_request_count": 252,
     "attempted_request_count": 252,
     "not_attempted_request_count": 0,
-    "successful_response_count": 148,
+    "successful_response_count": 149,
     "expected_cell_count": 1260,
     "status_counts": {
-      "valid_quote": 750,
-      "access_blocked": 400,
+      "valid_quote": 755,
+      "access_blocked": 395,
       "stale_quote": 110
     },
-    "current_quote_cell_count": 750,
+    "current_quote_cell_count": 755,
     "historical_quote_cell_count": 110,
-    "complete_five_plan_target_count": 150
+    "complete_five_plan_target_count": 151
   },
   "collection_policy": {
     "schema_version": "1.0.0",
@@ -58,26 +58,27 @@
     "window_hours": 72,
     "target_count": 252,
     "attempted_within_window_count": 252,
-    "successful_within_window_count": 169,
+    "successful_within_window_count": 170,
     "overdue_target_ids": [],
     "overdue_target_count": 0,
     "oldest_attempt_at": "2026-10-19T12:46:19.278038Z",
-    "oldest_attempt_age_hours": 35.139922767222224,
+    "oldest_attempt_age_hours": 37.005200545,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
-    "retry_pending_count": 105,
-    "retry_due_count": 0,
+    "retry_pending_count": 104,
+    "retry_due_count": 5,
     "attempt_window_complete": true,
     "successful_price_window_complete": false
   },
   "collection_run": {
     "schema_version": "1.0.0",
-    "run_id": "39513035945",
+    "run_id": "39524781669",
     "policy_revision": "serial-72h-v5-priority",
     "mode": "fill",
-    "started_at": "2026-10-20T23:51:57Z",
-    "completed_at": "2026-10-20T23:54:43Z",
+    "started_at": "2026-10-21T01:43:52Z",
+    "completed_at": "2026-10-21T01:46:38Z",
     "selected_target_ids": [
+      "LB",
       "GH",
       "GS",
       "GY",
@@ -89,7 +90,6 @@
       "IR",
       "JO",
       "KG",
-      "KI",
       "KP",
       "KY",
       "LV",
@@ -164,6 +164,7 @@
       "GG"
     ],
     "attempted_target_ids": [
+      "LB",
       "GH",
       "GS",
       "GY",
@@ -175,7 +176,6 @@
       "IR",
       "JO",
       "KG",
-      "KI",
       "KP",
       "KY",
       "LV",
@@ -254,36 +254,36 @@
     "out_of_order_target_ids": [],
     "accepted_valid_cell_count": 5,
     "initial_fill_progress_count": 1,
-    "initial_fill_pending_count": 83,
-    "initial_fill_eligible_count": 83,
+    "initial_fill_pending_count": 82,
+    "initial_fill_eligible_count": 82,
     "initial_fill_exhausted_count": 0,
     "initial_fill_exhausted_target_ids": [],
     "immediate_continuation": true,
-    "observation_started_at": "2026-10-20T23:51:57.605096Z",
-    "observation_completed_at": "2026-10-20T23:54:43.605217Z",
+    "observation_started_at": "2026-10-21T01:43:52.723050Z",
+    "observation_completed_at": "2026-10-21T01:46:38.723152Z",
     "status_counts": {
-      "access_blocked": 400,
-      "valid_quote": 5,
-      "stale_quote": 15
+      "stale_quote": 20,
+      "access_blocked": 395,
+      "valid_quote": 5
     },
     "window": {
       "window_hours": 72,
       "target_count": 252,
       "attempted_within_window_count": 252,
-      "successful_within_window_count": 169,
+      "successful_within_window_count": 170,
       "overdue_target_ids": [],
       "overdue_target_count": 0,
       "oldest_attempt_at": "2026-10-19T12:46:19.278038Z",
-      "oldest_attempt_age_hours": 35.139922767222224,
+      "oldest_attempt_age_hours": 37.005200545,
       "bootstrap_remaining_count": 0,
       "bootstrap_completed_at": "2026-10-19T13:16:35Z",
-      "retry_pending_count": 105,
-      "retry_due_count": 0,
+      "retry_pending_count": 104,
+      "retry_due_count": 5,
       "attempt_window_complete": true,
       "successful_price_window_complete": false
     },
     "environment": "GitHub Actions",
-    "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39513035945"
+    "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/39524781669"
   },
   "deployment": {
     "state": "not_deployed",
