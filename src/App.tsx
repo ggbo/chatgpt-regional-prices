@@ -4,6 +4,11 @@ import { loadBundle } from './data'
 import type { DataBundle, DisplayRow, Filters, PlanId, TaxStatus } from './types'
 
 const planIds: PlanId[] = ['go', 'plus', 'pro_100', 'pro_200', 'pro_500']
+const trafficBanner = `${import.meta.env.BASE_URL}assets/gpt-membership-banner.png`
+const trafficLinks = [
+  { label: '链动小铺 PLUS 购买', href: 'https://wzyp.cn/item/12ixe9' },
+  { label: '链动小铺 PRO 购买', href: 'https://wzyp.cn/shop/VQWR1XHD' },
+] as const
 const statusLabels: Record<string, string> = {
   valid_quote: '本轮有效', stale_quote: '历史报价', plan_field_missing: '字段缺失', request_failed: '请求失败', access_blocked: '访问受限', country_mismatch: '地区不匹配', amount_invalid: '金额异常', period_unverified: '周期待核验', unverified_range: '未核验区间', not_attempted: '尚未尝试', fresh: '新鲜', historical: '历史数据', missing: '暂缺数据',
 }
@@ -111,7 +116,19 @@ export default function App() {
       {bundle && <>
         <section className="summary-grid" aria-label="数据摘要">
           <article><span>{plan?.label ?? filters.planId} · 新鲜报价</span><strong>{freshCount}</strong><small>最近 72 小时成功核实</small></article>
-          <article className="price-card"><span>最低地区价</span>{lowest?.quote && lowest.selectedPrice ? <div className="lowest-price"><strong>{formatEstimate(lowest.estimate, filters.currency)}</strong><div><b>{lowest.region.name_zh} {lowest.region.country_code ?? lowest.region.config_id}</b><small>{formatOriginal(lowest.selectedPrice.amount, lowest.quote.currency)} · 官网直购</small></div></div> : <strong>暂无有效报价</strong>}<small>当前筛选范围 · 同一汇率快照</small></article>
+          <article className="price-card">
+            <div className="price-card-grid">
+              <div className="price-summary">
+                <span>最低地区价</span>{lowest?.quote && lowest.selectedPrice ? <div className="lowest-price"><strong>{formatEstimate(lowest.estimate, filters.currency)}</strong><div><b>{lowest.region.name_zh} {lowest.region.country_code ?? lowest.region.config_id}</b><small>{formatOriginal(lowest.selectedPrice.amount, lowest.quote.currency)} · 官网直购</small></div></div> : <strong>暂无有效报价</strong>}<small>当前筛选范围 · 同一汇率快照</small>
+              </div>
+              <aside className="traffic-card" aria-label="链动小铺购买入口">
+                <img src={trafficBanner} alt="微信支持开通 GPT Plus/Pro 会员" />
+                <div className="traffic-links">
+                  {trafficLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<span aria-hidden="true">↗</span></a>)}
+                </div>
+              </aside>
+            </div>
+          </article>
         </section>
 
         <div className="table-toolbar">
