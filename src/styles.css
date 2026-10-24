@@ -32,7 +32,8 @@ select { border:1px solid #d4d9d4; border-radius:8px; padding:10px 30px 10px 10p
 .summary-grid span { display:block; color:#6d7773; font-size:12px; margin-bottom:7px; }
 .summary-grid strong { font-size:24px; letter-spacing:-.03em; }
 .summary-grid small { display:block; color:#89918e; font-size:11px; margin-top:7px; }
-.summary-grid .lowest-card, .summary-grid .traffic-summary { background:#eaf4ef; border-color:#cee1d8; }
+.summary-grid .lowest-card { background:#eaf4ef; border-color:#cee1d8; }
+.summary-grid .traffic-summary { padding:0; border:0; background:transparent; }
 .summary-grid .lowest-card strong { font-size:17px; color:#125f56; }
 .price-summary { min-width:0; }
 .price-summary-head { display:flex; align-items:center; justify-content:space-between; gap:10px; }
@@ -41,7 +42,7 @@ select { border:1px solid #d4d9d4; border-radius:8px; padding:10px 30px 10px 10p
 .traffic-summary { display:flex; align-items:center; width:100%; }
 .traffic-summary .traffic-card { width:100%; padding-left:0; border-left:0; }
 .traffic-card { min-width:0; }
-.traffic-card img { display:block; width:100%; aspect-ratio:5 / 1; object-fit:cover; object-position:center; border-radius:8px; border:1px solid #c6e0d2; box-shadow:0 4px 12px #20533c18; }
+.traffic-card img { display:block; width:100%; height:auto; aspect-ratio:auto; object-fit:contain; object-position:center; border-radius:8px; border:1px solid #c6e0d2; box-shadow:0 4px 12px #20533c18; }
 .traffic-image-link { display:block; border-radius:8px; transition:transform .12s ease, filter .12s ease; }
 .traffic-image-link:hover, .traffic-image-link:focus-visible { transform:translateY(-1px); filter:saturate(1.08); outline:0; }
 .lowest-price { display:block; margin-top:7px; }
@@ -110,7 +111,6 @@ details { margin-top:17px; } summary { cursor:pointer; font-size:11px; color:#63
   .app-shell { padding:14px 10px 30px; }.masthead { padding:13px 5px 21px; }.brand-block p { font-size:12px; }.plan-bar { padding:9px; }.plan-note { display:none; }
   .controls { grid-template-columns:1fr 1fr; padding:12px; }.search-control { grid-column:1/-1; }.segmented { width:100%; }.segmented button { flex:1; }.controls label:not(.search-control) { min-width:0; }.controls select { width:100%; }
   .summary-grid { grid-template-columns:1fr; padding:12px; gap:7px; }.summary-grid article { padding:12px; }.summary-grid strong { font-size:20px; }
-  .traffic-card { padding-top:14px; border-top:1px solid #c8ddd4; }
   .lowest-details { flex-wrap:wrap; }
   .table-toolbar { align-items:flex-start; flex-direction:column; padding:11px 12px; }.actions { width:100%; overflow:auto; }.actions button { flex:1; white-space:nowrap; }
   .table-wrap { max-height:65vh; }.rank { display:none; }
