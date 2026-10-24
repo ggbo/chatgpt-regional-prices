@@ -32,14 +32,15 @@ select { border:1px solid #d4d9d4; border-radius:8px; padding:10px 30px 10px 10p
 .summary-grid span { display:block; color:#6d7773; font-size:12px; margin-bottom:7px; }
 .summary-grid strong { font-size:24px; letter-spacing:-.03em; }
 .summary-grid small { display:block; color:#89918e; font-size:11px; margin-top:7px; }
-.summary-grid .price-card { background:#eaf4ef; border-color:#cee1d8; }
-.summary-grid .price-card strong { font-size:17px; color:#125f56; }
-.price-card-grid { display:grid; grid-template-columns:minmax(250px, .9fr) minmax(290px, 1.1fr); gap:18px; align-items:center; }
+.summary-grid .lowest-card, .summary-grid .traffic-summary { background:#eaf4ef; border-color:#cee1d8; }
+.summary-grid .lowest-card strong { font-size:17px; color:#125f56; }
 .price-summary { min-width:0; }
 .price-summary-head { display:flex; align-items:center; justify-content:space-between; gap:10px; }
 .price-summary-head > span { margin-bottom:0; }
 .price-summary-head .source-badge { display:inline-flex; align-items:center; flex:0 0 auto; padding:4px 8px; border-radius:999px; background:#f1e9ff; color:#7442a4; font-size:10px; font-weight:700; white-space:nowrap; }
-.traffic-card { min-width:0; padding-left:18px; border-left:1px solid #c8ddd4; }
+.traffic-summary { display:flex; align-items:center; }
+.traffic-summary .traffic-card { width:100%; padding-left:0; border-left:0; }
+.traffic-card { min-width:0; }
 .traffic-card img { display:block; width:100%; aspect-ratio:3 / 1; object-fit:cover; object-position:center; border-radius:8px; border:1px solid #c6e0d2; box-shadow:0 4px 12px #20533c18; }
 .traffic-links { display:flex; gap:7px; margin-top:8px; }
 .traffic-links a { min-width:0; flex:1; display:flex; align-items:center; justify-content:space-between; gap:6px; padding:7px 9px; border:1px solid #a9cdbb; border-radius:7px; background:#fff; color:#145d4d; font-size:11px; font-weight:700; text-decoration:none; transition:background .12s ease, border-color .12s ease, transform .12s ease; }
@@ -53,8 +54,6 @@ select { border:1px solid #d4d9d4; border-radius:8px; padding:10px 30px 10px 10p
 .price-summary-foot { display:flex; justify-content:space-between; gap:10px; margin-top:9px; color:#89918e; font-size:10px; }
 .price-summary-foot span { display:inline; margin:0; color:inherit; font-size:inherit; }
 .table-toolbar { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 18px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.toolbar-left { display:flex; align-items:center; gap:10px; min-width:0; }
-.region-count { display:inline-flex; align-items:center; padding:7px 10px; border:1px solid #d9dfda; border-radius:8px; background:#fbfcfa; color:#66736e; font-size:12px; font-weight:650; white-space:nowrap; }
 .view-switch { display:flex; background:#f1f1ed; border-radius:9px; padding:3px; }
 .view-switch button { padding:7px 13px; font-size:12px; }
 .actions { display:flex; gap:7px; }
@@ -112,9 +111,8 @@ details { margin-top:17px; } summary { cursor:pointer; font-size:11px; color:#63
 @media (max-width:700px) {
   .app-shell { padding:14px 10px 30px; }.masthead { padding:13px 5px 21px; }.brand-block p { font-size:12px; }.plan-bar { padding:9px; }.plan-note { display:none; }
   .controls { grid-template-columns:1fr 1fr; padding:12px; }.search-control { grid-column:1/-1; }.segmented { width:100%; }.segmented button { flex:1; }.controls label:not(.search-control) { min-width:0; }.controls select { width:100%; }
-  .summary-grid { grid-template-columns:1fr; padding:12px; gap:7px; }.summary-grid article { padding:12px; }.summary-grid strong { font-size:20px; }.summary-grid .price-card { grid-column:1/-1; }
-  .price-card-grid { grid-template-columns:1fr; gap:14px; }.traffic-card { padding-left:0; padding-top:14px; border-left:0; border-top:1px solid #c8ddd4; }.traffic-links a { font-size:10px; }
-  .toolbar-left { width:100%; overflow:auto; }
+  .summary-grid { grid-template-columns:1fr; padding:12px; gap:7px; }.summary-grid article { padding:12px; }.summary-grid strong { font-size:20px; }
+  .traffic-card { padding-top:14px; border-top:1px solid #c8ddd4; }.traffic-links a { font-size:10px; }
   .lowest-details { flex-wrap:wrap; }
   .table-toolbar { align-items:flex-start; flex-direction:column; padding:11px 12px; }.actions { width:100%; overflow:auto; }.actions button { flex:1; white-space:nowrap; }
   .table-wrap { max-height:65vh; }.rank { display:none; }

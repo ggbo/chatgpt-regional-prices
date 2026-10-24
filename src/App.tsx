@@ -71,11 +71,8 @@ export default function App() {
   useEffect(() => { const timer = window.setInterval(() => setNow(Date.now()), 60_000); return () => window.clearInterval(timer) }, [])
 
   const rows = useMemo(() => bundle ? buildRows(bundle, filters, now) : [], [bundle, filters, now])
-  const allRows = useMemo(() => bundle ? buildRows(bundle, { ...filters, view: 'all' }, now) : [], [bundle, filters, now])
   const ranked = useMemo(() => sortRows(eligibleFreshRows(rows), 'price_asc'), [rows])
   const lowest = ranked[0] ?? null
-  const plan = bundle?.plans.plans.find((item) => item.plan_id === filters.planId)
-  const freshCount = useMemo(() => allRows.filter((row) => row.freshness === 'fresh').length, [allRows])
 
   const change = <K extends keyof Filters>(key: K, value: Filters[K]) => setFilters((current) => ({ ...current, [key]: value }))
   const share = async () => {
@@ -115,29 +112,28 @@ export default function App() {
 
       {bundle && <>
         <section className="summary-grid" aria-label="数据摘要">
-          <article><span>{plan?.label ?? filters.planId} · 新鲜报价</span><strong>{freshCount}</strong><small>最近 72 小时成功核实</small></article>
-          <article className="price-card">
-            <div className="price-card-grid">
-              <div className="price-summary">
-                <div className="price-summary-head"><span>最低地区价</span><span className="source-badge">◉ 官网直购</span></div>
-                {lowest?.quote && lowest.selectedPrice ? <>
-                  <div className="lowest-price"><strong>{formatEstimate(lowest.estimate, filters.currency)}</strong></div>
-                  <div className="lowest-details"><b>{lowest.region.name_zh} {lowest.region.country_code ?? lowest.region.config_id}</b><span>{formatOriginal(lowest.selectedPrice.amount, lowest.quote.currency)}</span></div>
-                  <div className="price-summary-foot"><span>当前筛选范围</span><span>同一汇率快照</span></div>
-                </> : <strong>暂无有效报价</strong>}
-              </div>
-              <aside className="traffic-card" aria-label="链动小铺购买入口">
-                <img src={trafficBanner} alt="微信支持开通 GPT Plus/Pro 会员" />
-                <div className="traffic-links">
-                  {trafficLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<span aria-hidden="true">↗</span></a>)}
-                </div>
-              </aside>
+          <article className="lowest-card">
+            <div className="price-summary">
+              <div className="price-summary-head"><span>最低地区价</span><span className="source-badge">◉ 官网直购</span></div>
+              {lowest?.quote && lowest.selectedPrice ? <>
+                <div className="lowest-price"><strong>{formatEstimate(lowest.estimate, filters.currency)}</strong></div>
+                <div className="lowest-details"><b>{lowest.region.name_zh} {lowest.region.country_code ?? lowest.region.config_id}</b><span>{formatOriginal(lowest.selectedPrice.amount, lowest.quote.currency)}</span></div>
+                <div className="price-summary-foot"><span>当前筛选范围</span><span>同一汇率快照</span></div>
+              </> : <strong>暂无有效报价</strong>}
             </div>
+          </article>
+          <article className="traffic-summary">
+            <aside className="traffic-card" aria-label="链动小铺购买入口">
+              <img src={trafficBanner} alt="微信支持开通 GPT Plus/Pro 会员" />
+              <div className="traffic-links">
+                {trafficLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<span aria-hidden="true">↗</span></a>)}
+              </div>
+            </aside>
           </article>
         </section>
 
         <div className="table-toolbar">
-          <div className="toolbar-left"><div className="view-switch"><button className={mode === 'list' ? 'active' : ''} onClick={() => setMode('list')}>价格排序表</button><button className={mode === 'matrix' ? 'active' : ''} onClick={() => setMode('matrix')}>全地区五档矩阵</button></div><span className="region-count">{rows.length}个地区</span></div>
+          <div className="view-switch"><button className={mode === 'list' ? 'active' : ''} onClick={() => setMode('list')}>价格排序表</button><button className={mode === 'matrix' ? 'active' : ''} onClick={() => setMode('matrix')}>全地区五档矩阵</button></div>
           <div className="actions"><button onClick={() => download(`chatgpt-${filters.planId}-${filters.currency}.csv`, rowsToCsv(rows, filters.currency))}>下载 CSV</button><button onClick={() => void share()}>分享筛选</button><button onClick={() => void refresh()} disabled={loading}>{loading ? '读取中…' : '读取最新快照'}</button></div>
         </div>
 
