@@ -6,8 +6,8 @@ import type { DataBundle, DisplayRow, Filters, PlanId, TaxStatus } from './types
 const planIds: PlanId[] = ['go', 'plus', 'pro_100', 'pro_200', 'pro_500']
 const trafficBanner = `${import.meta.env.BASE_URL}assets/gpt-membership-banner-v2.png`
 const trafficLinks = [
-  { label: '链动小铺 PLUS 购买', href: 'https://wzyp.cn/item/12ixe9' },
-  { label: '链动小铺 PRO 购买', href: 'https://wzyp.cn/shop/VQWR1XHD' },
+  { label: 'PLUS自助充值', href: 'https://wzyp.cn/item/12ixe9' },
+  { label: 'PRO自助充值', href: 'https://wzyp.cn/shop/VQWR1XHD' },
 ] as const
 const statusLabels: Record<string, string> = {
   valid_quote: '本轮有效', stale_quote: '历史报价', plan_field_missing: '字段缺失', request_failed: '请求失败', access_blocked: '访问受限', country_mismatch: '地区不匹配', amount_invalid: '金额异常', period_unverified: '周期待核验', unverified_range: '未核验区间', not_attempted: '尚未尝试', fresh: '新鲜', historical: '历史数据', missing: '暂缺数据',
