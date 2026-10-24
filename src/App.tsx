@@ -119,7 +119,12 @@ export default function App() {
           <article className="price-card">
             <div className="price-card-grid">
               <div className="price-summary">
-                <span>最低地区价</span>{lowest?.quote && lowest.selectedPrice ? <div className="lowest-price"><strong>{formatEstimate(lowest.estimate, filters.currency)}</strong><div><b>{lowest.region.name_zh} {lowest.region.country_code ?? lowest.region.config_id}</b><small>{formatOriginal(lowest.selectedPrice.amount, lowest.quote.currency)} · 官网直购</small></div></div> : <strong>暂无有效报价</strong>}<small>当前筛选范围 · 同一汇率快照</small>
+                <div className="price-summary-head"><span>最低地区价</span><span className="source-badge">◉ 官网直购</span></div>
+                {lowest?.quote && lowest.selectedPrice ? <>
+                  <div className="lowest-price"><strong>{formatEstimate(lowest.estimate, filters.currency)}</strong></div>
+                  <div className="lowest-details"><b>{lowest.region.name_zh} {lowest.region.country_code ?? lowest.region.config_id}</b><span>{formatOriginal(lowest.selectedPrice.amount, lowest.quote.currency)}</span></div>
+                  <div className="price-summary-foot"><span>当前筛选范围</span><span>同一汇率快照</span></div>
+                </> : <strong>暂无有效报价</strong>}
               </div>
               <aside className="traffic-card" aria-label="链动小铺购买入口">
                 <img src={trafficBanner} alt="微信支持开通 GPT Plus/Pro 会员" />
@@ -132,7 +137,7 @@ export default function App() {
         </section>
 
         <div className="table-toolbar">
-          <div className="view-switch"><button className={mode === 'list' ? 'active' : ''} onClick={() => setMode('list')}>价格排序表</button><button className={mode === 'matrix' ? 'active' : ''} onClick={() => setMode('matrix')}>全地区五档矩阵</button></div>
+          <div className="toolbar-left"><div className="view-switch"><button className={mode === 'list' ? 'active' : ''} onClick={() => setMode('list')}>价格排序表</button><button className={mode === 'matrix' ? 'active' : ''} onClick={() => setMode('matrix')}>全地区五档矩阵</button></div><span className="region-count">{rows.length}个地区</span></div>
           <div className="actions"><button onClick={() => download(`chatgpt-${filters.planId}-${filters.currency}.csv`, rowsToCsv(rows, filters.currency))}>下载 CSV</button><button onClick={() => void share()}>分享筛选</button><button onClick={() => void refresh()} disabled={loading}>{loading ? '读取中…' : '读取最新快照'}</button></div>
         </div>
 
