@@ -4,7 +4,7 @@ import { loadBundle } from './data'
 import type { DataBundle, DisplayRow, Filters, PlanId, TaxStatus } from './types'
 
 const planIds: PlanId[] = ['go', 'plus', 'pro_100', 'pro_200', 'pro_500']
-const trafficBanner = `${import.meta.env.BASE_URL}assets/gpt-membership-banner-v2.png`
+const trafficBanner = `${import.meta.env.BASE_URL}assets/gpt-membership-banner-v3.png`
 const trafficLinks = [
   { label: 'PLUS自助充值', href: 'https://wzyp.cn/item/12ixe9' },
   { label: 'PRO自助充值', href: 'https://wzyp.cn/shop/VQWR1XHD' },
