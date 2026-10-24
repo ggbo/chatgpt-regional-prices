@@ -5,10 +5,6 @@ import type { DataBundle, DisplayRow, Filters, PlanId, TaxStatus } from './types
 
 const planIds: PlanId[] = ['go', 'plus', 'pro_100', 'pro_200', 'pro_500']
 const trafficBanner = `${import.meta.env.BASE_URL}assets/gpt-membership-banner-v3.png`
-const trafficLinks = [
-  { label: 'PLUS自助充值', href: 'https://wzyp.cn/item/12ixe9' },
-  { label: 'PRO自助充值', href: 'https://wzyp.cn/shop/VQWR1XHD' },
-] as const
 const statusLabels: Record<string, string> = {
   valid_quote: '本轮有效', stale_quote: '历史报价', plan_field_missing: '字段缺失', request_failed: '请求失败', access_blocked: '访问受限', country_mismatch: '地区不匹配', amount_invalid: '金额异常', period_unverified: '周期待核验', unverified_range: '未核验区间', not_attempted: '尚未尝试', fresh: '新鲜', historical: '历史数据', missing: '暂缺数据',
 }
@@ -124,10 +120,9 @@ export default function App() {
           </article>
           <article className="traffic-summary">
             <aside className="traffic-card" aria-label="链动小铺购买入口">
-              <img src={trafficBanner} alt="微信支持开通 GPT Plus/Pro 会员" />
-              <div className="traffic-links">
-                {trafficLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<span aria-hidden="true">↗</span></a>)}
-              </div>
+              <a className="traffic-image-link" href="https://wzyp.cn/shop/VQWR1XHD" target="_blank" rel="noreferrer" aria-label="PRO自助充值">
+                <img src={trafficBanner} alt="微信支持开通 GPT Plus/Pro 会员，点击进入 PRO 自助充值" />
+              </a>
             </aside>
           </article>
         </section>
