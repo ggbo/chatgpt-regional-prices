@@ -1,15 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "40168959955",
+  "run_id": "40169037120",
   "policy_revision": "serial-72h-v5-priority",
   "mode": "fill",
-  "started_at": "2026-10-25T07:41:08Z",
-  "completed_at": "2026-10-25T07:41:50Z",
+  "started_at": "2026-10-25T07:42:20Z",
+  "completed_at": "2026-10-25T07:43:08Z",
   "selected_target_ids": [
-    "LC",
-    "LI",
-    "LK",
-    "LS",
+    "DO",
+    "MP",
+    "MT",
+    "MW",
+    "NO",
+    "PM",
+    "NR",
     "GS",
     "HK",
     "HM",
@@ -30,10 +33,13 @@
     "EH"
   ],
   "attempted_target_ids": [
-    "LC",
-    "LI",
-    "LK",
-    "LS",
+    "DO",
+    "MP",
+    "MT",
+    "MW",
+    "NO",
+    "PM",
+    "NR",
     "GS",
     "HK",
     "HM",
@@ -63,21 +69,21 @@
   "initial_fill_exhausted_count": 0,
   "initial_fill_exhausted_target_ids": [],
   "immediate_continuation": true,
-  "observation_started_at": "2026-10-25T07:41:08.575062Z",
-  "observation_completed_at": "2026-10-25T07:41:50.575188Z",
+  "observation_started_at": "2026-10-25T07:42:20.916631Z",
+  "observation_completed_at": "2026-10-25T07:43:08.916787Z",
   "status_counts": {
-    "stale_quote": 20,
+    "stale_quote": 35,
     "access_blocked": 90
   },
   "window": {
     "window_hours": 72,
     "target_count": 252,
     "attempted_within_window_count": 252,
-    "successful_within_window_count": 95,
+    "successful_within_window_count": 94,
     "overdue_target_ids": [],
     "overdue_target_count": 0,
     "oldest_attempt_at": "2026-10-24T04:49:39.945595Z",
-    "oldest_attempt_age_hours": 26.869459556944445,
+    "oldest_attempt_age_hours": 26.891126223611113,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
     "retry_pending_count": 186,
@@ -86,5 +92,5 @@
     "successful_price_window_complete": false
   },
   "environment": "GitHub Actions",
-  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/40168959955"
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/40169037120"
 }
