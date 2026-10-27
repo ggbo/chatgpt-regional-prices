@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "data_snapshot_id": "bb36942950fe9884d823b797",
-  "generated_at": "2026-10-27T19:52:28Z",
+  "data_snapshot_id": "61a874dc82870b2b937bc7ef",
+  "generated_at": "2026-10-27T23:36:03Z",
   "catalog_version": "iso3166-2026-10-19",
   "summary": {
     "target_count": 252,
@@ -10,16 +10,16 @@
     "expected_request_count": 252,
     "attempted_request_count": 252,
     "not_attempted_request_count": 0,
-    "successful_response_count": 184,
+    "successful_response_count": 177,
     "expected_cell_count": 1260,
     "status_counts": {
-      "valid_quote": 920,
-      "stale_quote": 250,
-      "request_failed": 90
+      "valid_quote": 885,
+      "stale_quote": 285,
+      "access_blocked": 90
     },
-    "current_quote_cell_count": 920,
-    "historical_quote_cell_count": 250,
-    "complete_five_plan_target_count": 184
+    "current_quote_cell_count": 885,
+    "historical_quote_cell_count": 285,
+    "complete_five_plan_target_count": 177
   },
   "cells": [
     {
@@ -3002,13 +3002,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:16.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:51.771383Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BV:web:plus:month:standard",
@@ -3020,13 +3020,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:16.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:51.771383Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BV:web:pro_100:month:standard",
@@ -3038,13 +3038,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:16.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:51.771383Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BV:web:pro_200:month:standard",
@@ -3056,13 +3056,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:16.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:51.771383Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BV:web:pro_500:month:standard",
@@ -3074,13 +3074,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:16.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:51.771383Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BW:web:go:month:standard",
@@ -3182,13 +3182,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:18.681942Z",
+      "last_attempt_at": "2026-10-27T23:35:53.771380Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BY:web:plus:month:standard",
@@ -3200,13 +3200,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:18.681942Z",
+      "last_attempt_at": "2026-10-27T23:35:53.771380Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BY:web:pro_100:month:standard",
@@ -3218,13 +3218,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:18.681942Z",
+      "last_attempt_at": "2026-10-27T23:35:53.771380Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BY:web:pro_200:month:standard",
@@ -3236,13 +3236,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:18.681942Z",
+      "last_attempt_at": "2026-10-27T23:35:53.771380Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BY:web:pro_500:month:standard",
@@ -3254,13 +3254,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:18.681942Z",
+      "last_attempt_at": "2026-10-27T23:35:53.771380Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "BZ:web:go:month:standard",
@@ -3452,13 +3452,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:20.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:55.771376Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CC:web:plus:month:standard",
@@ -3470,13 +3470,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:20.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:55.771376Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CC:web:pro_100:month:standard",
@@ -3488,13 +3488,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:20.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:55.771376Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CC:web:pro_200:month:standard",
@@ -3506,13 +3506,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:20.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:55.771376Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CC:web:pro_500:month:standard",
@@ -3524,13 +3524,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:20.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:55.771376Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CD:web:go:month:standard",
@@ -4262,13 +4262,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:22.681938Z",
+      "last_attempt_at": "2026-10-27T23:35:57.771373Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CN:web:plus:month:standard",
@@ -4280,13 +4280,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:22.681938Z",
+      "last_attempt_at": "2026-10-27T23:35:57.771373Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CN:web:pro_100:month:standard",
@@ -4298,13 +4298,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:22.681938Z",
+      "last_attempt_at": "2026-10-27T23:35:57.771373Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CN:web:pro_200:month:standard",
@@ -4316,13 +4316,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:22.681938Z",
+      "last_attempt_at": "2026-10-27T23:35:57.771373Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CN:web:pro_500:month:standard",
@@ -4334,13 +4334,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:22.681938Z",
+      "last_attempt_at": "2026-10-27T23:35:57.771373Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CO:web:go:month:standard",
@@ -4532,13 +4532,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:24.681948Z",
+      "last_attempt_at": "2026-10-27T23:35:59.771375Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CU:web:plus:month:standard",
@@ -4550,13 +4550,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:24.681948Z",
+      "last_attempt_at": "2026-10-27T23:35:59.771375Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CU:web:pro_100:month:standard",
@@ -4568,13 +4568,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:24.681948Z",
+      "last_attempt_at": "2026-10-27T23:35:59.771375Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CU:web:pro_200:month:standard",
@@ -4586,13 +4586,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:24.681948Z",
+      "last_attempt_at": "2026-10-27T23:35:59.771375Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CU:web:pro_500:month:standard",
@@ -4604,13 +4604,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:24.681948Z",
+      "last_attempt_at": "2026-10-27T23:35:59.771375Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CV:web:go:month:standard",
@@ -4802,13 +4802,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:26.681952Z",
+      "last_attempt_at": "2026-10-27T23:36:01.771372Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CX:web:plus:month:standard",
@@ -4820,13 +4820,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:26.681952Z",
+      "last_attempt_at": "2026-10-27T23:36:01.771372Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CX:web:pro_100:month:standard",
@@ -4838,13 +4838,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:26.681952Z",
+      "last_attempt_at": "2026-10-27T23:36:01.771372Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CX:web:pro_200:month:standard",
@@ -4856,13 +4856,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:26.681952Z",
+      "last_attempt_at": "2026-10-27T23:36:01.771372Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CX:web:pro_500:month:standard",
@@ -4874,13 +4874,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:26.681952Z",
+      "last_attempt_at": "2026-10-27T23:36:01.771372Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "CY:web:go:month:standard",
@@ -5162,13 +5162,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "DJ:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:59.945703Z",
+      "last_attempt_at": "2026-10-27T23:35:23.771377Z",
       "last_success_at": "2026-10-24T04:49:59.945703Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "DJ:web:plus:month:standard",
@@ -5180,13 +5180,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "DJ:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:59.945703Z",
+      "last_attempt_at": "2026-10-27T23:35:23.771377Z",
       "last_success_at": "2026-10-24T04:49:59.945703Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "DJ:web:pro_100:month:standard",
@@ -5198,13 +5198,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "DJ:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:59.945703Z",
+      "last_attempt_at": "2026-10-27T23:35:23.771377Z",
       "last_success_at": "2026-10-24T04:49:59.945703Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "DJ:web:pro_200:month:standard",
@@ -5216,13 +5216,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "DJ:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:59.945703Z",
+      "last_attempt_at": "2026-10-27T23:35:23.771377Z",
       "last_success_at": "2026-10-24T04:49:59.945703Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "DJ:web:pro_500:month:standard",
@@ -5234,13 +5234,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "DJ:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:59.945703Z",
+      "last_attempt_at": "2026-10-27T23:35:23.771377Z",
       "last_success_at": "2026-10-24T04:49:59.945703Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "DK:web:go:month:standard",
@@ -5882,13 +5882,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:28.681944Z",
+      "last_attempt_at": "2026-10-27T23:36:03.771385Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "EH:web:plus:month:standard",
@@ -5900,13 +5900,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:28.681944Z",
+      "last_attempt_at": "2026-10-27T23:36:03.771385Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "EH:web:pro_100:month:standard",
@@ -5918,13 +5918,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:28.681944Z",
+      "last_attempt_at": "2026-10-27T23:36:03.771385Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "EH:web:pro_200:month:standard",
@@ -5936,13 +5936,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:28.681944Z",
+      "last_attempt_at": "2026-10-27T23:36:03.771385Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "EH:web:pro_500:month:standard",
@@ -5954,13 +5954,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:28.681944Z",
+      "last_attempt_at": "2026-10-27T23:36:03.771385Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ER:web:go:month:standard",
@@ -7235,8 +7235,8 @@
       "status": "valid_quote",
       "attempt_status": "valid_quote",
       "quote_record_id": "GF:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:53.945691Z",
-      "last_success_at": "2026-10-24T04:49:53.945691Z",
+      "last_attempt_at": "2026-10-27T23:35:17.771381Z",
+      "last_success_at": "2026-10-27T23:35:17.771381Z",
       "http_status": 200,
       "reason": null
     },
@@ -7253,8 +7253,8 @@
       "status": "valid_quote",
       "attempt_status": "valid_quote",
       "quote_record_id": "GF:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:53.945691Z",
-      "last_success_at": "2026-10-24T04:49:53.945691Z",
+      "last_attempt_at": "2026-10-27T23:35:17.771381Z",
+      "last_success_at": "2026-10-27T23:35:17.771381Z",
       "http_status": 200,
       "reason": null
     },
@@ -7271,8 +7271,8 @@
       "status": "valid_quote",
       "attempt_status": "valid_quote",
       "quote_record_id": "GF:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:53.945691Z",
-      "last_success_at": "2026-10-24T04:49:53.945691Z",
+      "last_attempt_at": "2026-10-27T23:35:17.771381Z",
+      "last_success_at": "2026-10-27T23:35:17.771381Z",
       "http_status": 200,
       "reason": null
     },
@@ -7289,8 +7289,8 @@
       "status": "valid_quote",
       "attempt_status": "valid_quote",
       "quote_record_id": "GF:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:53.945691Z",
-      "last_success_at": "2026-10-24T04:49:53.945691Z",
+      "last_attempt_at": "2026-10-27T23:35:17.771381Z",
+      "last_success_at": "2026-10-27T23:35:17.771381Z",
       "http_status": 200,
       "reason": null
     },
@@ -7307,8 +7307,8 @@
       "status": "valid_quote",
       "attempt_status": "valid_quote",
       "quote_record_id": "GF:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:53.945691Z",
-      "last_success_at": "2026-10-24T04:49:53.945691Z",
+      "last_attempt_at": "2026-10-27T23:35:17.771381Z",
+      "last_success_at": "2026-10-27T23:35:17.771381Z",
       "http_status": 200,
       "reason": null
     },
@@ -7322,13 +7322,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "GG:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:55.945781Z",
+      "last_attempt_at": "2026-10-27T23:35:19.771387Z",
       "last_success_at": "2026-10-24T04:49:55.945781Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GG:web:plus:month:standard",
@@ -7340,13 +7340,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "GG:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:55.945781Z",
+      "last_attempt_at": "2026-10-27T23:35:19.771387Z",
       "last_success_at": "2026-10-24T04:49:55.945781Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GG:web:pro_100:month:standard",
@@ -7358,13 +7358,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "GG:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:55.945781Z",
+      "last_attempt_at": "2026-10-27T23:35:19.771387Z",
       "last_success_at": "2026-10-24T04:49:55.945781Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GG:web:pro_200:month:standard",
@@ -7376,13 +7376,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "GG:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:55.945781Z",
+      "last_attempt_at": "2026-10-27T23:35:19.771387Z",
       "last_success_at": "2026-10-24T04:49:55.945781Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GG:web:pro_500:month:standard",
@@ -7394,13 +7394,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "GG:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:55.945781Z",
+      "last_attempt_at": "2026-10-27T23:35:19.771387Z",
       "last_success_at": "2026-10-24T04:49:55.945781Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GH:web:go:month:standard",
@@ -8132,13 +8132,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:54.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:29.771387Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GS:web:plus:month:standard",
@@ -8150,13 +8150,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:54.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:29.771387Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GS:web:pro_100:month:standard",
@@ -8168,13 +8168,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:54.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:29.771387Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GS:web:pro_200:month:standard",
@@ -8186,13 +8186,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:54.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:29.771387Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GS:web:pro_500:month:standard",
@@ -8204,13 +8204,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:54.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:29.771387Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "GT:web:go:month:standard",
@@ -8582,13 +8582,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:56.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:31.771360Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HK:web:plus:month:standard",
@@ -8600,13 +8600,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:56.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:31.771360Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HK:web:pro_100:month:standard",
@@ -8618,13 +8618,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:56.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:31.771360Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HK:web:pro_200:month:standard",
@@ -8636,13 +8636,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:56.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:31.771360Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HK:web:pro_500:month:standard",
@@ -8654,13 +8654,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:56.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:31.771360Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HM:web:go:month:standard",
@@ -8672,13 +8672,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:58.681952Z",
+      "last_attempt_at": "2026-10-27T23:35:33.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HM:web:plus:month:standard",
@@ -8690,13 +8690,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:58.681952Z",
+      "last_attempt_at": "2026-10-27T23:35:33.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HM:web:pro_100:month:standard",
@@ -8708,13 +8708,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:58.681952Z",
+      "last_attempt_at": "2026-10-27T23:35:33.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HM:web:pro_200:month:standard",
@@ -8726,13 +8726,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:58.681952Z",
+      "last_attempt_at": "2026-10-27T23:35:33.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HM:web:pro_500:month:standard",
@@ -8744,13 +8744,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:51:58.681952Z",
+      "last_attempt_at": "2026-10-27T23:35:33.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HN:web:go:month:standard",
@@ -9032,13 +9032,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "HU:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:57.386217Z",
+      "last_attempt_at": "2026-10-27T23:35:13.771265Z",
       "last_success_at": "2026-10-24T09:59:57.386217Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HU:web:plus:month:standard",
@@ -9050,13 +9050,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "HU:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:57.386217Z",
+      "last_attempt_at": "2026-10-27T23:35:13.771265Z",
       "last_success_at": "2026-10-24T09:59:57.386217Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HU:web:pro_100:month:standard",
@@ -9068,13 +9068,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "HU:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:57.386217Z",
+      "last_attempt_at": "2026-10-27T23:35:13.771265Z",
       "last_success_at": "2026-10-24T09:59:57.386217Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HU:web:pro_200:month:standard",
@@ -9086,13 +9086,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "HU:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:57.386217Z",
+      "last_attempt_at": "2026-10-27T23:35:13.771265Z",
       "last_success_at": "2026-10-24T09:59:57.386217Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "HU:web:pro_500:month:standard",
@@ -9104,13 +9104,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "HU:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:57.386217Z",
+      "last_attempt_at": "2026-10-27T23:35:13.771265Z",
       "last_success_at": "2026-10-24T09:59:57.386217Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ID:web:go:month:standard",
@@ -9122,13 +9122,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ID:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:59.386216Z",
+      "last_attempt_at": "2026-10-27T23:35:15.771385Z",
       "last_success_at": "2026-10-24T09:59:59.386216Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ID:web:plus:month:standard",
@@ -9140,13 +9140,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ID:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:59.386216Z",
+      "last_attempt_at": "2026-10-27T23:35:15.771385Z",
       "last_success_at": "2026-10-24T09:59:59.386216Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ID:web:pro_100:month:standard",
@@ -9158,13 +9158,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ID:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:59.386216Z",
+      "last_attempt_at": "2026-10-27T23:35:15.771385Z",
       "last_success_at": "2026-10-24T09:59:59.386216Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ID:web:pro_200:month:standard",
@@ -9176,13 +9176,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ID:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:59.386216Z",
+      "last_attempt_at": "2026-10-27T23:35:15.771385Z",
       "last_success_at": "2026-10-24T09:59:59.386216Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ID:web:pro_500:month:standard",
@@ -9194,13 +9194,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ID:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T09:59:59.386216Z",
+      "last_attempt_at": "2026-10-27T23:35:15.771385Z",
       "last_success_at": "2026-10-24T09:59:59.386216Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IE:web:go:month:standard",
@@ -9572,13 +9572,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:00.681947Z",
+      "last_attempt_at": "2026-10-27T23:35:35.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IO:web:plus:month:standard",
@@ -9590,13 +9590,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:00.681947Z",
+      "last_attempt_at": "2026-10-27T23:35:35.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IO:web:pro_100:month:standard",
@@ -9608,13 +9608,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:00.681947Z",
+      "last_attempt_at": "2026-10-27T23:35:35.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IO:web:pro_200:month:standard",
@@ -9626,13 +9626,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:00.681947Z",
+      "last_attempt_at": "2026-10-27T23:35:35.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IO:web:pro_500:month:standard",
@@ -9644,13 +9644,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:00.681947Z",
+      "last_attempt_at": "2026-10-27T23:35:35.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IQ:web:go:month:standard",
@@ -9752,13 +9752,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:02.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:37.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IR:web:plus:month:standard",
@@ -9770,13 +9770,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:02.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:37.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IR:web:pro_100:month:standard",
@@ -9788,13 +9788,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:02.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:37.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IR:web:pro_200:month:standard",
@@ -9806,13 +9806,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:02.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:37.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IR:web:pro_500:month:standard",
@@ -9824,13 +9824,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:02.681951Z",
+      "last_attempt_at": "2026-10-27T23:35:37.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "IS:web:go:month:standard",
@@ -10922,13 +10922,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:04.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:39.771420Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "KP:web:plus:month:standard",
@@ -10940,13 +10940,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:04.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:39.771420Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "KP:web:pro_100:month:standard",
@@ -10958,13 +10958,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:04.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:39.771420Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "KP:web:pro_200:month:standard",
@@ -10976,13 +10976,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:04.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:39.771420Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "KP:web:pro_500:month:standard",
@@ -10994,13 +10994,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:04.681961Z",
+      "last_attempt_at": "2026-10-27T23:35:39.771420Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "KR:web:go:month:standard",
@@ -13352,13 +13352,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:06.681939Z",
+      "last_attempt_at": "2026-10-27T23:35:41.771391Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "MO:web:plus:month:standard",
@@ -13370,13 +13370,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:06.681939Z",
+      "last_attempt_at": "2026-10-27T23:35:41.771391Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "MO:web:pro_100:month:standard",
@@ -13388,13 +13388,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:06.681939Z",
+      "last_attempt_at": "2026-10-27T23:35:41.771391Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "MO:web:pro_200:month:standard",
@@ -13406,13 +13406,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:06.681939Z",
+      "last_attempt_at": "2026-10-27T23:35:41.771391Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "MO:web:pro_500:month:standard",
@@ -13424,13 +13424,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:06.681939Z",
+      "last_attempt_at": "2026-10-27T23:35:41.771391Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "MP:web:go:month:standard",
@@ -15512,13 +15512,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "OM:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:57.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:21.771404Z",
       "last_success_at": "2026-10-24T04:49:57.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "OM:web:plus:month:standard",
@@ -15530,13 +15530,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "OM:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:57.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:21.771404Z",
       "last_success_at": "2026-10-24T04:49:57.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "OM:web:pro_100:month:standard",
@@ -15548,13 +15548,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "OM:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:57.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:21.771404Z",
       "last_success_at": "2026-10-24T04:49:57.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "OM:web:pro_200:month:standard",
@@ -15566,13 +15566,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "OM:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:57.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:21.771404Z",
       "last_success_at": "2026-10-24T04:49:57.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "OM:web:pro_500:month:standard",
@@ -15584,13 +15584,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "OM:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T04:49:57.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:21.771404Z",
       "last_success_at": "2026-10-24T04:49:57.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "PA:web:go:month:standard",
@@ -17222,13 +17222,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:08.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:43.771389Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "RU:web:plus:month:standard",
@@ -17240,13 +17240,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:08.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:43.771389Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "RU:web:pro_100:month:standard",
@@ -17258,13 +17258,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:08.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:43.771389Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "RU:web:pro_200:month:standard",
@@ -17276,13 +17276,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:08.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:43.771389Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "RU:web:pro_500:month:standard",
@@ -17294,13 +17294,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:08.681944Z",
+      "last_attempt_at": "2026-10-27T23:35:43.771389Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "RW:web:go:month:standard",
@@ -18842,13 +18842,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ST:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:01.945778Z",
+      "last_attempt_at": "2026-10-27T23:35:25.771381Z",
       "last_success_at": "2026-10-24T04:50:01.945778Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ST:web:plus:month:standard",
@@ -18860,13 +18860,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ST:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:01.945778Z",
+      "last_attempt_at": "2026-10-27T23:35:25.771381Z",
       "last_success_at": "2026-10-24T04:50:01.945778Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ST:web:pro_100:month:standard",
@@ -18878,13 +18878,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ST:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:01.945778Z",
+      "last_attempt_at": "2026-10-27T23:35:25.771381Z",
       "last_success_at": "2026-10-24T04:50:01.945778Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ST:web:pro_200:month:standard",
@@ -18896,13 +18896,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ST:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:01.945778Z",
+      "last_attempt_at": "2026-10-27T23:35:25.771381Z",
       "last_success_at": "2026-10-24T04:50:01.945778Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "ST:web:pro_500:month:standard",
@@ -18914,13 +18914,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "ST:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:01.945778Z",
+      "last_attempt_at": "2026-10-27T23:35:25.771381Z",
       "last_success_at": "2026-10-24T04:50:01.945778Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "SV:web:go:month:standard",
@@ -19112,13 +19112,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:10.681945Z",
+      "last_attempt_at": "2026-10-27T23:35:45.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "SY:web:plus:month:standard",
@@ -19130,13 +19130,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:10.681945Z",
+      "last_attempt_at": "2026-10-27T23:35:45.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "SY:web:pro_100:month:standard",
@@ -19148,13 +19148,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:10.681945Z",
+      "last_attempt_at": "2026-10-27T23:35:45.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "SY:web:pro_200:month:standard",
@@ -19166,13 +19166,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:10.681945Z",
+      "last_attempt_at": "2026-10-27T23:35:45.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "SY:web:pro_500:month:standard",
@@ -19184,13 +19184,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:10.681945Z",
+      "last_attempt_at": "2026-10-27T23:35:45.771377Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "SZ:web:go:month:standard",
@@ -19382,13 +19382,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "TD:web:go:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:03.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:27.771377Z",
       "last_success_at": "2026-10-24T04:50:03.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "TD:web:plus:month:standard",
@@ -19400,13 +19400,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "TD:web:plus:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:03.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:27.771377Z",
       "last_success_at": "2026-10-24T04:50:03.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "TD:web:pro_100:month:standard",
@@ -19418,13 +19418,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "TD:web:pro_100:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:03.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:27.771377Z",
       "last_success_at": "2026-10-24T04:50:03.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "TD:web:pro_200:month:standard",
@@ -19436,13 +19436,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "TD:web:pro_200:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:03.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:27.771377Z",
       "last_success_at": "2026-10-24T04:50:03.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "TD:web:pro_500:month:standard",
@@ -19454,13 +19454,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "valid_quote",
-      "attempt_status": "valid_quote",
+      "status": "stale_quote",
+      "attempt_status": "access_blocked",
       "quote_record_id": "TD:web:pro_500:month:standard",
-      "last_attempt_at": "2026-10-24T04:50:03.945719Z",
+      "last_attempt_at": "2026-10-27T23:35:27.771377Z",
       "last_success_at": "2026-10-24T04:50:03.945719Z",
-      "http_status": 200,
-      "reason": null
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "TF:web:go:month:standard",
@@ -20912,13 +20912,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:12.681955Z",
+      "last_attempt_at": "2026-10-27T23:35:47.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "UM:web:plus:month:standard",
@@ -20930,13 +20930,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:12.681955Z",
+      "last_attempt_at": "2026-10-27T23:35:47.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "UM:web:pro_100:month:standard",
@@ -20948,13 +20948,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:12.681955Z",
+      "last_attempt_at": "2026-10-27T23:35:47.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "UM:web:pro_200:month:standard",
@@ -20966,13 +20966,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:12.681955Z",
+      "last_attempt_at": "2026-10-27T23:35:47.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "UM:web:pro_500:month:standard",
@@ -20984,13 +20984,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:12.681955Z",
+      "last_attempt_at": "2026-10-27T23:35:47.771374Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "US2:web:go:month:standard",
@@ -21542,13 +21542,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:14.681940Z",
+      "last_attempt_at": "2026-10-27T23:35:49.771378Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "VE:web:plus:month:standard",
@@ -21560,13 +21560,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:14.681940Z",
+      "last_attempt_at": "2026-10-27T23:35:49.771378Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "VE:web:pro_100:month:standard",
@@ -21578,13 +21578,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:14.681940Z",
+      "last_attempt_at": "2026-10-27T23:35:49.771378Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "VE:web:pro_200:month:standard",
@@ -21596,13 +21596,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:14.681940Z",
+      "last_attempt_at": "2026-10-27T23:35:49.771378Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "VE:web:pro_500:month:standard",
@@ -21614,13 +21614,13 @@
       "channel": "web",
       "billing_interval": "month",
       "offer_type": "standard",
-      "status": "request_failed",
-      "attempt_status": "request_failed",
+      "status": "access_blocked",
+      "attempt_status": "access_blocked",
       "quote_record_id": null,
-      "last_attempt_at": "2026-10-27T19:52:14.681940Z",
+      "last_attempt_at": "2026-10-27T23:35:49.771378Z",
       "last_success_at": null,
-      "http_status": 404,
-      "reason": "configuration not found"
+      "http_status": 403,
+      "reason": "HTTP 403"
     },
     {
       "cell_id": "VG:web:go:month:standard",
