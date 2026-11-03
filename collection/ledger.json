@@ -938,56 +938,56 @@
     "BA": {
       "config_id": "BA",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:23.724241Z",
-      "last_success_at": "2026-10-25T01:53:54.128364Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:51.890812Z",
+      "last_success_at": "2026-11-03T16:52:51.890812Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:23.724241Z",
-          "last_success_at": "2026-10-25T01:53:54.128364Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:51.890812Z",
+          "last_success_at": "2026-11-03T16:52:51.890812Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:23.724241Z",
-          "last_success_at": "2026-10-25T01:53:54.128364Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:51.890812Z",
+          "last_success_at": "2026-11-03T16:52:51.890812Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:23.724241Z",
-          "last_success_at": "2026-10-25T01:53:54.128364Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:51.890812Z",
+          "last_success_at": "2026-11-03T16:52:51.890812Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:23.724241Z",
-          "last_success_at": "2026-10-25T01:53:54.128364Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:51.890812Z",
+          "last_success_at": "2026-11-03T16:52:51.890812Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:23.724241Z",
-          "last_success_at": "2026-10-25T01:53:54.128364Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:51.890812Z",
+          "last_success_at": "2026-11-03T16:52:51.890812Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-25T01:53:54.128364Z",
-      "retry_due_at": "2026-11-03T16:52:23.724241Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:51.890812Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 627,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -1924,61 +1924,59 @@
     "BV": {
       "config_id": "BV",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:05.763670Z",
+      "last_attempt_at": "2026-11-03T16:53:33.890828Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:05.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:33.890828Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:05.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:33.890828Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:05.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:33.890828Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:05.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:33.890828Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:05.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:33.890828Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:05.763670Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:33.890828Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:29.540268Z",
-        "2026-10-31T16:52:43.162780Z",
         "2026-10-31T16:54:06.057026Z",
         "2026-10-31T16:55:05.475654Z",
         "2026-10-31T16:56:20.304294Z",
@@ -5236,7 +5234,8 @@
         "2026-11-03T16:47:30.030622Z",
         "2026-11-03T16:49:02.173437Z",
         "2026-11-03T16:50:33.343314Z",
-        "2026-11-03T16:52:05.763670Z"
+        "2026-11-03T16:52:05.763670Z",
+        "2026-11-03T16:53:33.890828Z"
       ]
     },
     "BW": {
@@ -5300,60 +5299,59 @@
     "BY": {
       "config_id": "BY",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:07.763686Z",
+      "last_attempt_at": "2026-11-03T16:53:35.890810Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:07.763686Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:35.890810Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:07.763686Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:35.890810Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:07.763686Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:35.890810Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:07.763686Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:35.890810Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:07.763686Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:35.890810Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:07.763686Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:35.890810Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:31.540193Z",
         "2026-10-31T16:52:45.162825Z",
         "2026-10-31T16:54:08.057042Z",
         "2026-10-31T16:55:07.475637Z",
@@ -8612,7 +8610,8 @@
         "2026-11-03T16:47:32.030626Z",
         "2026-11-03T16:49:04.173431Z",
         "2026-11-03T16:50:35.343308Z",
-        "2026-11-03T16:52:07.763686Z"
+        "2026-11-03T16:52:07.763686Z",
+        "2026-11-03T16:53:35.890810Z"
       ]
     },
     "BZ": {
@@ -8734,60 +8733,59 @@
     "CC": {
       "config_id": "CC",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:09.763676Z",
+      "last_attempt_at": "2026-11-03T16:53:37.890776Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:09.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:37.890776Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:09.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:37.890776Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:09.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:37.890776Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:09.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:37.890776Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:09.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:37.890776Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:09.763676Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:37.890776Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:33.540304Z",
         "2026-10-31T16:52:47.162822Z",
         "2026-10-31T16:54:10.057041Z",
         "2026-10-31T16:55:09.475650Z",
@@ -12046,7 +12044,8 @@
         "2026-11-03T16:47:34.030618Z",
         "2026-11-03T16:49:06.173428Z",
         "2026-11-03T16:50:37.343308Z",
-        "2026-11-03T16:52:09.763676Z"
+        "2026-11-03T16:52:09.763676Z",
+        "2026-11-03T16:53:37.890776Z"
       ]
     },
     "CD": {
@@ -12284,56 +12283,56 @@
     "CI": {
       "config_id": "CI",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:33.724238Z",
-      "last_success_at": "2026-10-31T17:40:28.673023Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:53:01.890820Z",
+      "last_success_at": "2026-11-03T16:53:01.890820Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:33.724238Z",
-          "last_success_at": "2026-10-31T17:40:28.673023Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:01.890820Z",
+          "last_success_at": "2026-11-03T16:53:01.890820Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:33.724238Z",
-          "last_success_at": "2026-10-31T17:40:28.673023Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:01.890820Z",
+          "last_success_at": "2026-11-03T16:53:01.890820Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:33.724238Z",
-          "last_success_at": "2026-10-31T17:40:28.673023Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:01.890820Z",
+          "last_success_at": "2026-11-03T16:53:01.890820Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:33.724238Z",
-          "last_success_at": "2026-10-31T17:40:28.673023Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:01.890820Z",
+          "last_success_at": "2026-11-03T16:53:01.890820Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:33.724238Z",
-          "last_success_at": "2026-10-31T17:40:28.673023Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:01.890820Z",
+          "last_success_at": "2026-11-03T16:53:01.890820Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-31T17:40:28.673023Z",
-      "retry_due_at": "2026-11-03T16:52:33.724238Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:53:01.890820Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 30,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -12400,56 +12399,56 @@
     "CL": {
       "config_id": "CL",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:19.724310Z",
-      "last_success_at": "2026-10-28T02:43:49.063026Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:47.890816Z",
+      "last_success_at": "2026-11-03T16:52:47.890816Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:19.724310Z",
-          "last_success_at": "2026-10-28T02:43:49.063026Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:47.890816Z",
+          "last_success_at": "2026-11-03T16:52:47.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:19.724310Z",
-          "last_success_at": "2026-10-28T02:43:49.063026Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:47.890816Z",
+          "last_success_at": "2026-11-03T16:52:47.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:19.724310Z",
-          "last_success_at": "2026-10-28T02:43:49.063026Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:47.890816Z",
+          "last_success_at": "2026-11-03T16:52:47.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:19.724310Z",
-          "last_success_at": "2026-10-28T02:43:49.063026Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:47.890816Z",
+          "last_success_at": "2026-11-03T16:52:47.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:19.724310Z",
-          "last_success_at": "2026-10-28T02:43:49.063026Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:47.890816Z",
+          "last_success_at": "2026-11-03T16:52:47.890816Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-28T02:43:49.063026Z",
-      "retry_due_at": "2026-11-03T16:52:19.724310Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:47.890816Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 1,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -12516,60 +12515,59 @@
     "CN": {
       "config_id": "CN",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:11.763656Z",
+      "last_attempt_at": "2026-11-03T16:53:39.890801Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:11.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:39.890801Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:11.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:39.890801Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:11.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:39.890801Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:11.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:39.890801Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:11.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:39.890801Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:11.763656Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:39.890801Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:35.540304Z",
         "2026-10-31T16:52:49.162820Z",
         "2026-10-31T16:54:12.057034Z",
         "2026-10-31T16:55:11.475654Z",
@@ -15828,7 +15826,8 @@
         "2026-11-03T16:47:36.030665Z",
         "2026-11-03T16:49:08.173433Z",
         "2026-11-03T16:50:39.343307Z",
-        "2026-11-03T16:52:11.763656Z"
+        "2026-11-03T16:52:11.763656Z",
+        "2026-11-03T16:53:39.890801Z"
       ]
     },
     "CO": {
@@ -15950,60 +15949,59 @@
     "CU": {
       "config_id": "CU",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:13.763676Z",
+      "last_attempt_at": "2026-11-03T16:53:41.890807Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:13.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:41.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:13.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:41.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:13.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:41.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:13.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:41.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:13.763676Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:41.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:13.763676Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:41.890807Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:37.540259Z",
         "2026-10-31T16:52:51.162814Z",
         "2026-10-31T16:54:14.057022Z",
         "2026-10-31T16:55:13.475656Z",
@@ -19262,7 +19260,8 @@
         "2026-11-03T16:47:38.030624Z",
         "2026-11-03T16:49:10.173415Z",
         "2026-11-03T16:50:41.343307Z",
-        "2026-11-03T16:52:13.763676Z"
+        "2026-11-03T16:52:13.763676Z",
+        "2026-11-03T16:53:41.890807Z"
       ]
     },
     "CV": {
@@ -19384,60 +19383,59 @@
     "CX": {
       "config_id": "CX",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:15.763593Z",
+      "last_attempt_at": "2026-11-03T16:53:43.890811Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:15.763593Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:43.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:15.763593Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:43.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:15.763593Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:43.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:15.763593Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:43.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:15.763593Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:43.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:15.763593Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:43.890811Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:39.540264Z",
         "2026-10-31T16:52:53.162769Z",
         "2026-10-31T16:54:16.056978Z",
         "2026-10-31T16:55:15.475651Z",
@@ -22696,7 +22694,8 @@
         "2026-11-03T16:47:40.030629Z",
         "2026-11-03T16:49:12.173439Z",
         "2026-11-03T16:50:43.343312Z",
-        "2026-11-03T16:52:15.763593Z"
+        "2026-11-03T16:52:15.763593Z",
+        "2026-11-03T16:53:43.890811Z"
       ]
     },
     "CY": {
@@ -23282,56 +23281,56 @@
     "EG": {
       "config_id": "EG",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:21.724230Z",
-      "last_success_at": "2026-10-31T19:49:02.216016Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:49.890813Z",
+      "last_success_at": "2026-11-03T16:52:49.890813Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:21.724230Z",
-          "last_success_at": "2026-10-31T19:49:02.216016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:49.890813Z",
+          "last_success_at": "2026-11-03T16:52:49.890813Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:21.724230Z",
-          "last_success_at": "2026-10-31T19:49:02.216016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:49.890813Z",
+          "last_success_at": "2026-11-03T16:52:49.890813Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:21.724230Z",
-          "last_success_at": "2026-10-31T19:49:02.216016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:49.890813Z",
+          "last_success_at": "2026-11-03T16:52:49.890813Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:21.724230Z",
-          "last_success_at": "2026-10-31T19:49:02.216016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:49.890813Z",
+          "last_success_at": "2026-11-03T16:52:49.890813Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:21.724230Z",
-          "last_success_at": "2026-10-31T19:49:02.216016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:49.890813Z",
+          "last_success_at": "2026-11-03T16:52:49.890813Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-31T19:49:02.216016Z",
-      "retry_due_at": "2026-11-03T16:52:21.724230Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:49.890813Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 1,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -23340,60 +23339,59 @@
     "EH": {
       "config_id": "EH",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:17.763656Z",
+      "last_attempt_at": "2026-11-03T16:53:45.890817Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:17.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:45.890817Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:17.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:45.890817Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:17.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:45.890817Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:17.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:45.890817Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:17.763656Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:45.890817Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:17.763656Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:45.890817Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:41.540301Z",
         "2026-10-31T16:52:55.162771Z",
         "2026-10-31T16:54:18.056998Z",
         "2026-10-31T16:55:17.475655Z",
@@ -26652,7 +26650,8 @@
         "2026-11-03T16:47:42.030620Z",
         "2026-11-03T16:49:14.173445Z",
         "2026-11-03T16:50:45.343337Z",
-        "2026-11-03T16:52:17.763656Z"
+        "2026-11-03T16:52:17.763656Z",
+        "2026-11-03T16:53:45.890817Z"
       ]
     },
     "ER": {
@@ -27586,56 +27585,56 @@
     "GI": {
       "config_id": "GI",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:25.724279Z",
-      "last_success_at": "2026-10-26T20:35:54.724603Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:53.890815Z",
+      "last_success_at": "2026-11-03T16:52:53.890815Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:25.724279Z",
-          "last_success_at": "2026-10-26T20:35:54.724603Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:53.890815Z",
+          "last_success_at": "2026-11-03T16:52:53.890815Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:25.724279Z",
-          "last_success_at": "2026-10-26T20:35:54.724603Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:53.890815Z",
+          "last_success_at": "2026-11-03T16:52:53.890815Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:25.724279Z",
-          "last_success_at": "2026-10-26T20:35:54.724603Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:53.890815Z",
+          "last_success_at": "2026-11-03T16:52:53.890815Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:25.724279Z",
-          "last_success_at": "2026-10-26T20:35:54.724603Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:53.890815Z",
+          "last_success_at": "2026-11-03T16:52:53.890815Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:25.724279Z",
-          "last_success_at": "2026-10-26T20:35:54.724603Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:53.890815Z",
+          "last_success_at": "2026-11-03T16:52:53.890815Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-26T20:35:54.724603Z",
-      "retry_due_at": "2026-11-03T16:52:25.724279Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:53.890815Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 109,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -27992,60 +27991,59 @@
     "GS": {
       "config_id": "GS",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:43.763685Z",
+      "last_attempt_at": "2026-11-03T16:53:11.890818Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:43.763685Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:11.890818Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:43.763685Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:11.890818Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:43.763685Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:11.890818Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:43.763685Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:11.890818Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:43.763685Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:11.890818Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:43.763685Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:11.890818Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:52:21.162783Z",
         "2026-10-31T16:53:44.056999Z",
         "2026-10-31T16:54:43.475656Z",
         "2026-10-31T16:55:58.304301Z",
@@ -31303,7 +31301,8 @@
         "2026-11-03T16:47:08.030686Z",
         "2026-11-03T16:48:40.173398Z",
         "2026-11-03T16:50:11.343322Z",
-        "2026-11-03T16:51:43.763685Z"
+        "2026-11-03T16:51:43.763685Z",
+        "2026-11-03T16:53:11.890818Z"
       ]
     },
     "GT": {
@@ -31541,60 +31540,59 @@
     "HK": {
       "config_id": "HK",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:45.763697Z",
+      "last_attempt_at": "2026-11-03T16:53:13.890814Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:45.763697Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:13.890814Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:45.763697Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:13.890814Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:45.763697Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:13.890814Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:45.763697Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:13.890814Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:45.763697Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:13.890814Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:45.763697Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:13.890814Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:52:23.162814Z",
         "2026-10-31T16:53:46.057033Z",
         "2026-10-31T16:54:45.475653Z",
         "2026-10-31T16:56:00.304283Z",
@@ -34852,66 +34850,66 @@
         "2026-11-03T16:47:10.030627Z",
         "2026-11-03T16:48:42.173440Z",
         "2026-11-03T16:50:13.343305Z",
-        "2026-11-03T16:51:45.763697Z"
+        "2026-11-03T16:51:45.763697Z",
+        "2026-11-03T16:53:13.890814Z"
       ]
     },
     "HM": {
       "config_id": "HM",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:47.763670Z",
+      "last_attempt_at": "2026-11-03T16:53:15.890773Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:47.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:15.890773Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:47.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:15.890773Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:47.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:15.890773Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:47.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:15.890773Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:47.763670Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:15.890773Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:47.763670Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:15.890773Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:52:25.162811Z",
         "2026-10-31T16:53:48.057026Z",
         "2026-10-31T16:54:47.475653Z",
         "2026-10-31T16:56:02.304311Z",
@@ -38169,7 +38167,8 @@
         "2026-11-03T16:47:12.030633Z",
         "2026-11-03T16:48:44.173401Z",
         "2026-11-03T16:50:15.343308Z",
-        "2026-11-03T16:51:47.763670Z"
+        "2026-11-03T16:51:47.763670Z",
+        "2026-11-03T16:53:15.890773Z"
       ]
     },
     "HN": {
@@ -38697,60 +38696,59 @@
     "IO": {
       "config_id": "IO",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:49.763652Z",
+      "last_attempt_at": "2026-11-03T16:53:17.890807Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:49.763652Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:17.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:49.763652Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:17.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:49.763652Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:17.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:49.763652Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:17.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:49.763652Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:17.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:49.763652Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:17.890807Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:52:27.162789Z",
         "2026-10-31T16:53:50.056997Z",
         "2026-10-31T16:54:49.475656Z",
         "2026-10-31T16:56:04.304296Z",
@@ -42008,62 +42006,63 @@
         "2026-11-03T16:47:14.030620Z",
         "2026-11-03T16:48:46.173420Z",
         "2026-11-03T16:50:17.343306Z",
-        "2026-11-03T16:51:49.763652Z"
+        "2026-11-03T16:51:49.763652Z",
+        "2026-11-03T16:53:17.890807Z"
       ]
     },
     "IQ": {
       "config_id": "IQ",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:29.724262Z",
-      "last_success_at": "2026-10-26T20:36:04.724757Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:57.890814Z",
+      "last_success_at": "2026-11-03T16:52:57.890814Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:29.724262Z",
-          "last_success_at": "2026-10-26T20:36:04.724757Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:57.890814Z",
+          "last_success_at": "2026-11-03T16:52:57.890814Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:29.724262Z",
-          "last_success_at": "2026-10-26T20:36:04.724757Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:57.890814Z",
+          "last_success_at": "2026-11-03T16:52:57.890814Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:29.724262Z",
-          "last_success_at": "2026-10-26T20:36:04.724757Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:57.890814Z",
+          "last_success_at": "2026-11-03T16:52:57.890814Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:29.724262Z",
-          "last_success_at": "2026-10-26T20:36:04.724757Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:57.890814Z",
+          "last_success_at": "2026-11-03T16:52:57.890814Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:29.724262Z",
-          "last_success_at": "2026-10-26T20:36:04.724757Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:57.890814Z",
+          "last_success_at": "2026-11-03T16:52:57.890814Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-26T20:36:04.724757Z",
-      "retry_due_at": "2026-11-03T16:52:29.724262Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:57.890814Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 0,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -42072,61 +42071,59 @@
     "IR": {
       "config_id": "IR",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:51.763669Z",
+      "last_attempt_at": "2026-11-03T16:53:19.890813Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:51.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:19.890813Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:51.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:19.890813Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:51.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:19.890813Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:51.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:19.890813Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:51.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:19.890813Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:51.763669Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:19.890813Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:15.540185Z",
-        "2026-10-31T16:52:29.162830Z",
         "2026-10-31T16:53:52.057038Z",
         "2026-10-31T16:54:51.475654Z",
         "2026-10-31T16:56:06.304293Z",
@@ -45384,7 +45381,8 @@
         "2026-11-03T16:47:16.030666Z",
         "2026-11-03T16:48:48.173440Z",
         "2026-11-03T16:50:19.343325Z",
-        "2026-11-03T16:51:51.763669Z"
+        "2026-11-03T16:51:51.763669Z",
+        "2026-11-03T16:53:19.890813Z"
       ]
     },
     "IS": {
@@ -45854,56 +45852,56 @@
     "KH": {
       "config_id": "KH",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:41.724244Z",
-      "last_success_at": "2026-10-31T17:40:38.673025Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:53:09.890810Z",
+      "last_success_at": "2026-11-03T16:53:09.890810Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:41.724244Z",
-          "last_success_at": "2026-10-31T17:40:38.673025Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:09.890810Z",
+          "last_success_at": "2026-11-03T16:53:09.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:41.724244Z",
-          "last_success_at": "2026-10-31T17:40:38.673025Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:09.890810Z",
+          "last_success_at": "2026-11-03T16:53:09.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:41.724244Z",
-          "last_success_at": "2026-10-31T17:40:38.673025Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:09.890810Z",
+          "last_success_at": "2026-11-03T16:53:09.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:41.724244Z",
-          "last_success_at": "2026-10-31T17:40:38.673025Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:09.890810Z",
+          "last_success_at": "2026-11-03T16:53:09.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:41.724244Z",
-          "last_success_at": "2026-10-31T17:40:38.673025Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:09.890810Z",
+          "last_success_at": "2026-11-03T16:53:09.890810Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-31T17:40:38.673025Z",
-      "retry_due_at": "2026-11-03T16:52:41.724244Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:53:09.890810Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 0,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -46086,61 +46084,59 @@
     "KP": {
       "config_id": "KP",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:53.763692Z",
+      "last_attempt_at": "2026-11-03T16:53:21.890809Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:53.763692Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:21.890809Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:53.763692Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:21.890809Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:53.763692Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:21.890809Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:53.763692Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:21.890809Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:53.763692Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:21.890809Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:53.763692Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:21.890809Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:17.540271Z",
-        "2026-10-31T16:52:31.162825Z",
         "2026-10-31T16:53:54.057041Z",
         "2026-10-31T16:54:53.475660Z",
         "2026-10-31T16:56:08.304289Z",
@@ -49398,7 +49394,8 @@
         "2026-11-03T16:47:18.030626Z",
         "2026-11-03T16:48:50.173437Z",
         "2026-11-03T16:50:21.343306Z",
-        "2026-11-03T16:51:53.763692Z"
+        "2026-11-03T16:51:53.763692Z",
+        "2026-11-03T16:53:21.890809Z"
       ]
     },
     "KR": {
@@ -49694,56 +49691,56 @@
     "LB": {
       "config_id": "LB",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:31.724253Z",
-      "last_success_at": "2026-10-31T17:40:26.673018Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:59.890816Z",
+      "last_success_at": "2026-11-03T16:52:59.890816Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:31.724253Z",
-          "last_success_at": "2026-10-31T17:40:26.673018Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:59.890816Z",
+          "last_success_at": "2026-11-03T16:52:59.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:31.724253Z",
-          "last_success_at": "2026-10-31T17:40:26.673018Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:59.890816Z",
+          "last_success_at": "2026-11-03T16:52:59.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:31.724253Z",
-          "last_success_at": "2026-10-31T17:40:26.673018Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:59.890816Z",
+          "last_success_at": "2026-11-03T16:52:59.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:31.724253Z",
-          "last_success_at": "2026-10-31T17:40:26.673018Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:59.890816Z",
+          "last_success_at": "2026-11-03T16:52:59.890816Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:31.724253Z",
-          "last_success_at": "2026-10-31T17:40:26.673018Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:59.890816Z",
+          "last_success_at": "2026-11-03T16:52:59.890816Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-31T17:40:26.673018Z",
-      "retry_due_at": "2026-11-03T16:52:31.724253Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:59.890816Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 16,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -50912,61 +50909,59 @@
     "MO": {
       "config_id": "MO",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:55.763669Z",
+      "last_attempt_at": "2026-11-03T16:53:23.890807Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:55.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:23.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:55.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:23.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:55.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:23.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:55.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:23.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:55.763669Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:23.890807Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:55.763669Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:23.890807Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:19.540279Z",
-        "2026-10-31T16:52:33.162790Z",
         "2026-10-31T16:53:56.057046Z",
         "2026-10-31T16:54:55.475652Z",
         "2026-10-31T16:56:10.304296Z",
@@ -54224,7 +54219,8 @@
         "2026-11-03T16:47:20.030699Z",
         "2026-11-03T16:48:52.173441Z",
         "2026-11-03T16:50:23.343306Z",
-        "2026-11-03T16:51:55.763669Z"
+        "2026-11-03T16:51:55.763669Z",
+        "2026-11-03T16:53:23.890807Z"
       ]
     },
     "MP": {
@@ -54926,56 +54922,56 @@
     "NC": {
       "config_id": "NC",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:37.724226Z",
-      "last_success_at": "2026-10-31T17:40:34.673029Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:53:05.890809Z",
+      "last_success_at": "2026-11-03T16:53:05.890809Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:37.724226Z",
-          "last_success_at": "2026-10-31T17:40:34.673029Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:05.890809Z",
+          "last_success_at": "2026-11-03T16:53:05.890809Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:37.724226Z",
-          "last_success_at": "2026-10-31T17:40:34.673029Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:05.890809Z",
+          "last_success_at": "2026-11-03T16:53:05.890809Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:37.724226Z",
-          "last_success_at": "2026-10-31T17:40:34.673029Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:05.890809Z",
+          "last_success_at": "2026-11-03T16:53:05.890809Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:37.724226Z",
-          "last_success_at": "2026-10-31T17:40:34.673029Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:05.890809Z",
+          "last_success_at": "2026-11-03T16:53:05.890809Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:37.724226Z",
-          "last_success_at": "2026-10-31T17:40:34.673029Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:05.890809Z",
+          "last_success_at": "2026-11-03T16:53:05.890809Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-31T17:40:34.673029Z",
-      "retry_due_at": "2026-11-03T16:52:37.724226Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:53:05.890809Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 627,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -55854,56 +55850,56 @@
     "PH": {
       "config_id": "PH",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:17.724127Z",
-      "last_success_at": "2026-10-28T02:43:47.062907Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:45.890678Z",
+      "last_success_at": "2026-11-03T16:52:45.890678Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:17.724127Z",
-          "last_success_at": "2026-10-28T02:43:47.062907Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:45.890678Z",
+          "last_success_at": "2026-11-03T16:52:45.890678Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:17.724127Z",
-          "last_success_at": "2026-10-28T02:43:47.062907Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:45.890678Z",
+          "last_success_at": "2026-11-03T16:52:45.890678Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:17.724127Z",
-          "last_success_at": "2026-10-28T02:43:47.062907Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:45.890678Z",
+          "last_success_at": "2026-11-03T16:52:45.890678Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:17.724127Z",
-          "last_success_at": "2026-10-28T02:43:47.062907Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:45.890678Z",
+          "last_success_at": "2026-11-03T16:52:45.890678Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:17.724127Z",
-          "last_success_at": "2026-10-28T02:43:47.062907Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:45.890678Z",
+          "last_success_at": "2026-11-03T16:52:45.890678Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-28T02:43:47.062907Z",
-      "retry_due_at": "2026-11-03T16:52:17.724127Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:45.890678Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 18,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -56666,61 +56662,59 @@
     "RU": {
       "config_id": "RU",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:57.763691Z",
+      "last_attempt_at": "2026-11-03T16:53:25.890795Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:57.763691Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:25.890795Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:57.763691Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:25.890795Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:57.763691Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:25.890795Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:57.763691Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:25.890795Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:57.763691Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:25.890795Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:57.763691Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:25.890795Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:21.540262Z",
-        "2026-10-31T16:52:35.162787Z",
         "2026-10-31T16:53:58.057025Z",
         "2026-10-31T16:54:57.475655Z",
         "2026-10-31T16:56:12.304305Z",
@@ -59978,7 +59972,8 @@
         "2026-11-03T16:47:22.030622Z",
         "2026-11-03T16:48:54.173421Z",
         "2026-11-03T16:50:25.343270Z",
-        "2026-11-03T16:51:57.763691Z"
+        "2026-11-03T16:51:57.763691Z",
+        "2026-11-03T16:53:25.890795Z"
       ]
     },
     "RW": {
@@ -60216,56 +60211,56 @@
     "SD": {
       "config_id": "SD",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:39.724237Z",
-      "last_success_at": "2026-10-31T17:40:36.672995Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:53:07.890808Z",
+      "last_success_at": "2026-11-03T16:53:07.890808Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:39.724237Z",
-          "last_success_at": "2026-10-31T17:40:36.672995Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:07.890808Z",
+          "last_success_at": "2026-11-03T16:53:07.890808Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:39.724237Z",
-          "last_success_at": "2026-10-31T17:40:36.672995Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:07.890808Z",
+          "last_success_at": "2026-11-03T16:53:07.890808Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:39.724237Z",
-          "last_success_at": "2026-10-31T17:40:36.672995Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:07.890808Z",
+          "last_success_at": "2026-11-03T16:53:07.890808Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:39.724237Z",
-          "last_success_at": "2026-10-31T17:40:36.672995Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:07.890808Z",
+          "last_success_at": "2026-11-03T16:53:07.890808Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:39.724237Z",
-          "last_success_at": "2026-10-31T17:40:36.672995Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:07.890808Z",
+          "last_success_at": "2026-11-03T16:53:07.890808Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-31T17:40:36.672995Z",
-      "retry_due_at": "2026-11-03T16:52:39.724237Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:53:07.890808Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 0,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -60680,56 +60675,56 @@
     "SM": {
       "config_id": "SM",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:35.724224Z",
-      "last_success_at": "2026-10-31T17:40:30.673016Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:53:03.890810Z",
+      "last_success_at": "2026-11-03T16:53:03.890810Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:35.724224Z",
-          "last_success_at": "2026-10-31T17:40:30.673016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:03.890810Z",
+          "last_success_at": "2026-11-03T16:53:03.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:35.724224Z",
-          "last_success_at": "2026-10-31T17:40:30.673016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:03.890810Z",
+          "last_success_at": "2026-11-03T16:53:03.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:35.724224Z",
-          "last_success_at": "2026-10-31T17:40:30.673016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:03.890810Z",
+          "last_success_at": "2026-11-03T16:53:03.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:35.724224Z",
-          "last_success_at": "2026-10-31T17:40:30.673016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:03.890810Z",
+          "last_success_at": "2026-11-03T16:53:03.890810Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:35.724224Z",
-          "last_success_at": "2026-10-31T17:40:30.673016Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:53:03.890810Z",
+          "last_success_at": "2026-11-03T16:53:03.890810Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-10-31T17:40:30.673016Z",
-      "retry_due_at": "2026-11-03T16:52:35.724224Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:53:03.890810Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 297,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -61144,61 +61139,59 @@
     "SY": {
       "config_id": "SY",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:51:59.763698Z",
+      "last_attempt_at": "2026-11-03T16:53:27.890808Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:59.763698Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:27.890808Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:59.763698Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:27.890808Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:59.763698Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:27.890808Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:59.763698Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:27.890808Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:51:59.763698Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:27.890808Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:21:59.763698Z",
-      "initial_fill_attempts": 15229,
+      "retry_due_at": "2026-11-03T17:23:27.890808Z",
+      "initial_fill_attempts": 15230,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:23.540262Z",
-        "2026-10-31T16:52:37.162790Z",
         "2026-10-31T16:54:00.057033Z",
         "2026-10-31T16:54:59.475653Z",
         "2026-10-31T16:56:14.304284Z",
@@ -64456,7 +64449,8 @@
         "2026-11-03T16:47:24.030636Z",
         "2026-11-03T16:48:56.173428Z",
         "2026-11-03T16:50:27.343306Z",
-        "2026-11-03T16:51:59.763698Z"
+        "2026-11-03T16:51:59.763698Z",
+        "2026-11-03T16:53:27.890808Z"
       ]
     },
     "SZ": {
@@ -65564,61 +65558,59 @@
     "UM": {
       "config_id": "UM",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:01.763694Z",
+      "last_attempt_at": "2026-11-03T16:53:29.890811Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:01.763694Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:29.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:01.763694Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:29.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:01.763694Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:29.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:01.763694Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:29.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:01.763694Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:29.890811Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:01.763694Z",
-      "initial_fill_attempts": 15228,
+      "retry_due_at": "2026-11-03T17:23:29.890811Z",
+      "initial_fill_attempts": 15229,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:25.540285Z",
-        "2026-10-31T16:52:39.162785Z",
         "2026-10-31T16:54:02.057045Z",
         "2026-10-31T16:55:01.475655Z",
         "2026-10-31T16:56:16.304264Z",
@@ -68876,7 +68868,8 @@
         "2026-11-03T16:47:26.030623Z",
         "2026-11-03T16:48:58.173431Z",
         "2026-11-03T16:50:29.343308Z",
-        "2026-11-03T16:52:01.763694Z"
+        "2026-11-03T16:52:01.763694Z",
+        "2026-11-03T16:53:29.890811Z"
       ]
     },
     "US": {
@@ -68940,56 +68933,56 @@
     "UY": {
       "config_id": "UY",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:22:27.724256Z",
-      "last_success_at": "2026-11-01T11:42:41.248505Z",
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41648966042",
+      "last_attempt_at": "2026-11-03T16:52:55.890774Z",
+      "last_success_at": "2026-11-03T16:52:55.890774Z",
+      "last_attempt_status": "all_five_valid",
+      "last_http_status": 200,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:27.724256Z",
-          "last_success_at": "2026-11-01T11:42:41.248505Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:55.890774Z",
+          "last_success_at": "2026-11-03T16:52:55.890774Z",
+          "http_status": 200,
+          "reason": null
         },
         "plus": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:27.724256Z",
-          "last_success_at": "2026-11-01T11:42:41.248505Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:55.890774Z",
+          "last_success_at": "2026-11-03T16:52:55.890774Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_100": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:27.724256Z",
-          "last_success_at": "2026-11-01T11:42:41.248505Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:55.890774Z",
+          "last_success_at": "2026-11-03T16:52:55.890774Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_200": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:27.724256Z",
-          "last_success_at": "2026-11-01T11:42:41.248505Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:55.890774Z",
+          "last_success_at": "2026-11-03T16:52:55.890774Z",
+          "http_status": 200,
+          "reason": null
         },
         "pro_500": {
-          "status": "stale_quote",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:22:27.724256Z",
-          "last_success_at": "2026-11-01T11:42:41.248505Z",
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "status": "valid_quote",
+          "attempt_status": "valid_quote",
+          "last_attempt_at": "2026-11-03T16:52:55.890774Z",
+          "last_success_at": "2026-11-03T16:52:55.890774Z",
+          "http_status": 200,
+          "reason": null
         }
       },
-      "retry_pending": true,
-      "all_five_success_at": "2026-11-01T11:42:41.248505Z",
-      "retry_due_at": "2026-11-03T16:52:27.724256Z",
+      "retry_pending": false,
+      "all_five_success_at": "2026-11-03T16:52:55.890774Z",
+      "retry_due_at": null,
       "initial_fill_attempts": 626,
       "initial_fill_done": true,
       "initial_fill_observation_times": [],
@@ -69172,61 +69165,59 @@
     "VE": {
       "config_id": "VE",
       "bootstrap_attempted": true,
-      "last_attempt_at": "2026-11-03T16:52:03.763664Z",
+      "last_attempt_at": "2026-11-03T16:53:31.890832Z",
       "last_success_at": null,
-      "last_attempt_status": "access_blocked",
-      "last_http_status": 403,
-      "last_run_id": "41652877824",
+      "last_attempt_status": "request_failed",
+      "last_http_status": 404,
+      "last_run_id": "41653094709",
       "plan_outcomes": {
         "go": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:03.763664Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:31.890832Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "plus": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:03.763664Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:31.890832Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_100": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:03.763664Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:31.890832Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_200": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:03.763664Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:31.890832Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         },
         "pro_500": {
-          "status": "access_blocked",
-          "attempt_status": "access_blocked",
-          "last_attempt_at": "2026-11-03T16:52:03.763664Z",
+          "status": "request_failed",
+          "attempt_status": "request_failed",
+          "last_attempt_at": "2026-11-03T16:53:31.890832Z",
           "last_success_at": null,
-          "http_status": 403,
-          "reason": "HTTP 403"
+          "http_status": 404,
+          "reason": "configuration not found"
         }
       },
       "retry_pending": true,
       "all_five_success_at": null,
-      "retry_due_at": "2026-11-03T17:22:03.763664Z",
-      "initial_fill_attempts": 15228,
+      "retry_due_at": "2026-11-03T17:23:31.890832Z",
+      "initial_fill_attempts": 15229,
       "initial_fill_done": false,
       "initial_fill_observation_times": [
-        "2026-10-31T16:51:27.540235Z",
-        "2026-10-31T16:52:41.162787Z",
         "2026-10-31T16:54:04.057009Z",
         "2026-10-31T16:55:03.475656Z",
         "2026-10-31T16:56:18.304289Z",
@@ -72484,7 +72475,8 @@
         "2026-11-03T16:47:28.030633Z",
         "2026-11-03T16:49:00.173425Z",
         "2026-11-03T16:50:31.343312Z",
-        "2026-11-03T16:52:03.763664Z"
+        "2026-11-03T16:52:03.763664Z",
+        "2026-11-03T16:53:31.890832Z"
       ]
     },
     "VG": {
@@ -73301,7 +73293,7 @@
     }
   },
   "catalog_version": "iso3166-2026-10-19",
-  "updated_at": "2026-11-03T16:52:17Z",
+  "updated_at": "2026-11-03T16:53:46Z",
   "target_count": 252,
   "plan_count": 5,
   "migrated_from_policy_revision": "serial-72h-v4-fill-unbounded",
