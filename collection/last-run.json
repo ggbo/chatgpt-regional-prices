@@ -1,11 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "41731798299",
+  "run_id": "41731961142",
   "policy_revision": "serial-72h-v5-priority",
   "mode": "fill",
-  "started_at": "2026-11-04T00:38:58Z",
-  "completed_at": "2026-11-04T00:39:33Z",
+  "started_at": "2026-11-04T00:39:58Z",
+  "completed_at": "2026-11-04T00:40:42Z",
   "selected_target_ids": [
+    "IS",
+    "IT",
+    "IM",
+    "KM",
+    "BB",
     "GS",
     "HK",
     "HM",
@@ -26,6 +31,11 @@
     "EH"
   ],
   "attempted_target_ids": [
+    "IS",
+    "IT",
+    "IM",
+    "KM",
+    "BB",
     "GS",
     "HK",
     "HM",
@@ -55,9 +65,10 @@
   "initial_fill_exhausted_count": 0,
   "initial_fill_exhausted_target_ids": [],
   "immediate_continuation": true,
-  "observation_started_at": "2026-11-04T00:38:59.060692Z",
-  "observation_completed_at": "2026-11-04T00:39:33.060829Z",
+  "observation_started_at": "2026-11-04T00:39:58.121476Z",
+  "observation_completed_at": "2026-11-04T00:40:42.121593Z",
   "status_counts": {
+    "stale_quote": 25,
     "access_blocked": 90
   },
   "window": {
@@ -68,7 +79,7 @@
     "overdue_target_ids": [],
     "overdue_target_count": 0,
     "oldest_attempt_at": "2026-11-02T07:25:19.925177Z",
-    "oldest_attempt_age_hours": 41.23696522861111,
+    "oldest_attempt_age_hours": 41.256131895277775,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
     "retry_pending_count": 170,
@@ -77,5 +88,5 @@
     "successful_price_window_complete": false
   },
   "environment": "GitHub Actions",
-  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/41731798299"
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/41731961142"
 }
