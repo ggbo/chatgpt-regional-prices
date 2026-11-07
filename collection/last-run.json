@@ -1,11 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "42402266800",
+  "run_id": "42402343261",
   "policy_revision": "serial-72h-v5-priority",
   "mode": "fill",
-  "started_at": "2026-11-07T19:59:14Z",
-  "completed_at": "2026-11-07T19:59:48Z",
+  "started_at": "2026-11-07T20:00:12Z",
+  "completed_at": "2026-11-07T20:00:53Z",
   "selected_target_ids": [
+    "JP",
+    "CZ",
+    "CR",
     "GS",
     "HK",
     "HM",
@@ -26,6 +29,9 @@
     "EH"
   ],
   "attempted_target_ids": [
+    "JP",
+    "CZ",
+    "CR",
     "GS",
     "HK",
     "HM",
@@ -48,16 +54,17 @@
   "not_started_target_ids": [],
   "resumed_target_ids": [],
   "out_of_order_target_ids": [],
-  "accepted_valid_cell_count": 0,
+  "accepted_valid_cell_count": 15,
   "initial_fill_progress_count": 0,
   "initial_fill_pending_count": 18,
   "initial_fill_eligible_count": 18,
   "initial_fill_exhausted_count": 0,
   "initial_fill_exhausted_target_ids": [],
   "immediate_continuation": true,
-  "observation_started_at": "2026-11-07T19:59:14.184375Z",
-  "observation_completed_at": "2026-11-07T19:59:48.184491Z",
+  "observation_started_at": "2026-11-07T20:00:12.438575Z",
+  "observation_completed_at": "2026-11-07T20:00:53.539839Z",
   "status_counts": {
+    "valid_quote": 15,
     "request_failed": 90
   },
   "window": {
@@ -67,8 +74,8 @@
     "successful_within_window_count": 234,
     "overdue_target_ids": [],
     "overdue_target_count": 0,
-    "oldest_attempt_at": "2026-11-05T19:59:42.302089Z",
-    "oldest_attempt_age_hours": 48.00158275305555,
+    "oldest_attempt_at": "2026-11-05T20:01:12.451498Z",
+    "oldest_attempt_age_hours": 47.99459680611111,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
     "retry_pending_count": 18,
@@ -77,5 +84,5 @@
     "successful_price_window_complete": false
   },
   "environment": "GitHub Actions",
-  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/42402266800"
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/42402343261"
 }
