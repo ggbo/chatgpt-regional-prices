@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "data_snapshot_id": "cdd113a848195d1060f33330",
+  "data_snapshot_id": "1bcb18c7700977dc92c1402a",
   "result": "validated",
-  "last_run_at": "2026-11-09T03:28:12Z",
+  "last_run_at": "2026-11-09T03:29:37Z",
   "source_status": {
-    "started_at": "2026-11-09T03:27:18.214459Z",
-    "completed_at": "2026-11-09T03:28:12.383372Z",
+    "started_at": "2026-11-09T03:29:00.869568Z",
+    "completed_at": "2026-11-09T03:29:37.069067Z",
     "all_source_failed": false,
     "structural_failure": false,
-    "elapsed_seconds": 54.169
+    "elapsed_seconds": 36.199
   },
   "coverage": {
     "target_count": 252,
@@ -60,8 +60,8 @@
     "successful_within_window_count": 234,
     "overdue_target_ids": [],
     "overdue_target_count": 0,
-    "oldest_attempt_at": "2026-11-07T03:28:26.021671Z",
-    "oldest_attempt_age_hours": 47.99610509138889,
+    "oldest_attempt_at": "2026-11-07T10:50:32.292973Z",
+    "oldest_attempt_age_hours": 40.6513075075,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
     "retry_pending_count": 18,
@@ -71,22 +71,13 @@
   },
   "collection_run": {
     "schema_version": "1.0.0",
-    "run_id": "42547952231",
+    "run_id": "42548034041",
     "policy_revision": "serial-72h-v5-priority",
     "mode": "fill",
-    "started_at": "2026-11-09T03:27:18Z",
-    "completed_at": "2026-11-09T03:28:12Z",
+    "started_at": "2026-11-09T03:29:00Z",
+    "completed_at": "2026-11-09T03:29:37Z",
     "selected_target_ids": [
-      "DJ",
-      "ST",
-      "TD",
-      "MH",
-      "ML",
-      "MV",
-      "RO",
-      "BE",
-      "TN",
-      "VC",
+      "SJ",
       "GS",
       "HK",
       "HM",
@@ -107,16 +98,7 @@
       "EH"
     ],
     "attempted_target_ids": [
-      "DJ",
-      "ST",
-      "TD",
-      "MH",
-      "ML",
-      "MV",
-      "RO",
-      "BE",
-      "TN",
-      "VC",
+      "SJ",
       "GS",
       "HK",
       "HM",
@@ -139,17 +121,17 @@
     "not_started_target_ids": [],
     "resumed_target_ids": [],
     "out_of_order_target_ids": [],
-    "accepted_valid_cell_count": 50,
+    "accepted_valid_cell_count": 5,
     "initial_fill_progress_count": 0,
     "initial_fill_pending_count": 18,
     "initial_fill_eligible_count": 18,
     "initial_fill_exhausted_count": 0,
     "initial_fill_exhausted_target_ids": [],
     "immediate_continuation": true,
-    "observation_started_at": "2026-11-09T03:27:18.214912Z",
-    "observation_completed_at": "2026-11-09T03:28:12.215038Z",
+    "observation_started_at": "2026-11-09T03:29:00.869964Z",
+    "observation_completed_at": "2026-11-09T03:29:36.870067Z",
     "status_counts": {
-      "valid_quote": 50,
+      "valid_quote": 5,
       "request_failed": 90
     },
     "window": {
@@ -159,8 +141,8 @@
       "successful_within_window_count": 234,
       "overdue_target_ids": [],
       "overdue_target_count": 0,
-      "oldest_attempt_at": "2026-11-07T03:28:26.021671Z",
-      "oldest_attempt_age_hours": 47.99610509138889,
+      "oldest_attempt_at": "2026-11-07T10:50:32.292973Z",
+      "oldest_attempt_age_hours": 40.6513075075,
       "bootstrap_remaining_count": 0,
       "bootstrap_completed_at": "2026-10-19T13:16:35Z",
       "retry_pending_count": 18,
@@ -169,7 +151,7 @@
       "successful_price_window_complete": false
     },
     "environment": "GitHub Actions",
-    "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/42547952231"
+    "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/42548034041"
   },
   "deployment": {
     "state": "not_deployed",
