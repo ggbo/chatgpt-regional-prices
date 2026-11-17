@@ -1,11 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "44101239030",
+  "run_id": "44101422702",
   "policy_revision": "serial-72h-v5-priority",
   "mode": "fill",
-  "started_at": "2026-11-17T16:11:27Z",
-  "completed_at": "2026-11-17T16:12:02Z",
+  "started_at": "2026-11-17T16:12:32Z",
+  "completed_at": "2026-11-17T16:13:13Z",
   "selected_target_ids": [
+    "LS",
+    "MP",
+    "MT",
     "GS",
     "HK",
     "HM",
@@ -26,6 +29,9 @@
     "EH"
   ],
   "attempted_target_ids": [
+    "LS",
+    "MP",
+    "MT",
     "GS",
     "HK",
     "HM",
@@ -48,16 +54,17 @@
   "not_started_target_ids": [],
   "resumed_target_ids": [],
   "out_of_order_target_ids": [],
-  "accepted_valid_cell_count": 0,
+  "accepted_valid_cell_count": 15,
   "initial_fill_progress_count": 0,
   "initial_fill_pending_count": 18,
   "initial_fill_eligible_count": 18,
   "initial_fill_exhausted_count": 0,
   "initial_fill_exhausted_target_ids": [],
   "immediate_continuation": true,
-  "observation_started_at": "2026-11-17T16:11:27.990308Z",
-  "observation_completed_at": "2026-11-17T16:12:01.990497Z",
+  "observation_started_at": "2026-11-17T16:12:32.911122Z",
+  "observation_completed_at": "2026-11-17T16:13:12.911229Z",
   "status_counts": {
+    "valid_quote": 15,
     "request_failed": 90
   },
   "window": {
@@ -67,8 +74,8 @@
     "successful_within_window_count": 233,
     "overdue_target_ids": [],
     "overdue_target_count": 0,
-    "oldest_attempt_at": "2026-11-15T16:11:51.117268Z",
-    "oldest_attempt_age_hours": 48.00302298111111,
+    "oldest_attempt_at": "2026-11-15T16:13:26.118792Z",
+    "oldest_attempt_age_hours": 47.996355891111115,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
     "retry_pending_count": 19,
@@ -77,5 +84,5 @@
     "successful_price_window_complete": false
   },
   "environment": "GitHub Actions",
-  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/44101239030"
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/44101422702"
 }
