@@ -1,12 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "run_id": "44807403757",
+  "run_id": "44807586420",
   "policy_revision": "serial-72h-v5-priority",
   "mode": "fill",
-  "started_at": "2026-11-20T22:01:30Z",
-  "completed_at": "2026-11-20T22:02:06Z",
+  "started_at": "2026-11-20T22:02:59Z",
+  "completed_at": "2026-11-20T22:03:44Z",
   "selected_target_ids": [
-    "AG",
+    "AI",
+    "AL",
+    "BW",
+    "AF",
+    "JE",
     "GS",
     "HK",
     "HM",
@@ -27,7 +31,11 @@
     "EH"
   ],
   "attempted_target_ids": [
-    "AG",
+    "AI",
+    "AL",
+    "BW",
+    "AF",
+    "JE",
     "GS",
     "HK",
     "HM",
@@ -50,17 +58,17 @@
   "not_started_target_ids": [],
   "resumed_target_ids": [],
   "out_of_order_target_ids": [],
-  "accepted_valid_cell_count": 5,
+  "accepted_valid_cell_count": 25,
   "initial_fill_progress_count": 0,
   "initial_fill_pending_count": 18,
   "initial_fill_eligible_count": 18,
   "initial_fill_exhausted_count": 0,
   "initial_fill_exhausted_target_ids": [],
   "immediate_continuation": true,
-  "observation_started_at": "2026-11-20T22:01:30.227302Z",
-  "observation_completed_at": "2026-11-20T22:02:06.227441Z",
+  "observation_started_at": "2026-11-20T22:02:59.941130Z",
+  "observation_completed_at": "2026-11-20T22:03:43.941241Z",
   "status_counts": {
-    "valid_quote": 5,
+    "valid_quote": 25,
     "request_failed": 90
   },
   "window": {
@@ -70,8 +78,8 @@
     "successful_within_window_count": 233,
     "overdue_target_ids": [],
     "overdue_target_count": 0,
-    "oldest_attempt_at": "2026-11-18T22:02:20.868159Z",
-    "oldest_attempt_age_hours": 47.995869955833335,
+    "oldest_attempt_at": "2026-11-18T22:03:55.700756Z",
+    "oldest_attempt_age_hours": 47.996749789999996,
     "bootstrap_remaining_count": 0,
     "bootstrap_completed_at": "2026-10-19T13:16:35Z",
     "retry_pending_count": 19,
@@ -80,5 +88,5 @@
     "successful_price_window_complete": false
   },
   "environment": "GitHub Actions",
-  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/44807403757"
+  "run_url": "https://github.com/ggbo/chatgpt-regional-prices/actions/runs/44807586420"
 }
